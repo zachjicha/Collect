@@ -55,6 +55,15 @@
                                     <action selector="goBack:" destination="xa1-G4-QW4" eventType="touchUpInside" id="WFE-qs-HKk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCn-A5-fpZ">
+                                <rect key="frame" x="310" y="44" width="49" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Parse"/>
+                                <connections>
+                                    <action selector="parseReceipt:" destination="xa1-G4-QW4" eventType="touchUpInside" id="0Yf-WF-eiq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WI1-zT-w7Y"/>
