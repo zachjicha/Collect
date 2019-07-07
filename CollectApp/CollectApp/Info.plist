@@ -36,6 +36,8 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Collect needs to access the camera to scan receipts</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Collect needs to access the camera roll to scan receipts</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

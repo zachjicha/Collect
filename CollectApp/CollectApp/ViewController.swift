@@ -7,135 +7,98 @@
 //
 
 import UIKit
+import Alamofire
 //Import for camera usage
-import AVFoundation
+//import AVFoundation
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let captureSession = AVCaptureSession()
-    var previewLayer:CALayer!
-    var captureDevice:AVCaptureDevice!
-    
-    var takePhoto = false
+    var selectedPhoto:UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        //Init the camera
-        initializeCamera()
     }
     
-    
-    func initializeCamera() {
+    //Display an action menu to select from camera or camera roll
+    @IBAction func chooseImage(_ sender: Any) {
         
-        //Set the camera preset to photo
-        //THis auto focuses and does some other settings like ISO
-        captureSession.sessionPreset = AVCaptureSession.Preset.high
+        //Image picker controller picks an image from either the
+        //camera or camera roll based on user selection
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
         
-        //If the back camera != nil
-        if let backCam = AVCaptureDevice.default(.builtInDualCamera, for: AVMediaType.video, position: .back) {
+        //Action sheet to pick photo source
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        //Add source slections to action sheet
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
             
-            //set the capture device to the back camera
-            captureDevice = backCam
-            //Start the camera session
-            beginCameraSession()
-        }
-        
-        
-    }
-    
-    func beginCameraSession() {
-        //Try catch
-        do {
-            
-            //If we can get input from camera
-            //This cast is a warning but the code doesnt seem to work without it
-            if let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice) as? AVCaptureDeviceInput {
-                
-                //If we can add an input, add our backCamera to the capture session
-                if(captureSession.canAddInput(captureDeviceInput)) {
-                    captureSession.addInput(captureDeviceInput)
-                }
+            //Check if camera is available before accessing it
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
             }
             
-        }
-        catch {
-            //Maybe do something else here, or nothing at all
-            //This should only be if the user does not give permission
-            //to use the camera, which will mean the camera sends black frames
-            print(error.localizedDescription)
-        }
+        } ))
         
-        //Set up preview layer
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.previewLayer = previewLayer
-        self.view.layer.addSublayer(self.previewLayer)
-        self.previewLayer.frame = self.view.layer.frame
-        
-        //Start capture session
-        captureSession.startRunning()
-        
-        //Set up data output
-        let dataOutput = AVCaptureVideoDataOutput()
-        dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as String):(kCVPixelFormatType_32BGRA)]
-        
-        //Discard late frames to aid performance
-        dataOutput.alwaysDiscardsLateVideoFrames = true
-        
-        //If can add out put, add the data output
-        if captureSession.canAddOutput(dataOutput) {
-            captureSession.addOutput(dataOutput)
-        }
-        
-        //Commit the config
-        captureSession.commitConfiguration()
-        
-        let queue = DispatchQueue(label: "com.Collect.captureQueue")
-        
-        dataOutput.setSampleBufferDelegate(self, queue: queue)
-    }
-    
-    @IBAction func takePhoto(_ sender: Any) {
-        takePhoto = true
-    }
-    
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        
-        if takePhoto {
-            takePhoto = false
+        actionSheet.addAction(UIAlertAction(title: "Camera Roll", style: .default, handler: { (action: UIAlertAction) in
             
-            if let image = self.getImageFromSampleBuffer(buffer: sampleBuffer) {
-                
-                let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
-                    
-                photoVC.takenPhoto = image
-                    
-                DispatchQueue.main.async {
-                    self.present(photoVC, animated: true, completion: nil)
-                }
-            }
-        }
-    }
-    
-    func getImageFromSampleBuffer(buffer:CMSampleBuffer) -> UIImage? {
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        } ))
         
-        if let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
-            let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-            let context = CIContext()
-            
-            let imageRectangle = CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
-            
-            if let image = context.createCGImage(ciImage, from: imageRectangle) {
-                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
-            }
-        }
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        return nil
-        
+        //Present the action sheet
+        self.present(actionSheet, animated: true, completion: nil)
         
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        //Get the image from the picker controller and set it to the selected photo
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        selectedPhoto = image
+        
+        //Parse the receipt
+        self.parseReceipt()
+        
+        //Dismiss the picker controller
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    //Parse the receipt using Harsh's code
+    func parseReceipt() {
+        print("Sending")
+        
+        // API Setup:
+        let key = "a31246109d0211e98bfadfb7eb1aa8b5" // API-Key
+        guard let url = URL(string: "https://api-au.taggun.io/api/receipt/v1/verbose/file") else {
+            return
+        } // URL for API
+        
+        // Headers for JSON request
+        let headers: HTTPHeaders = [
+            "apikey": key,
+            "Content-type": "multipart/form-data",
+            "Accept" : "application/json"]
+        // Image loading (to-do: replace with controller)
+        
+        let img = selectedPhoto
+        guard let img_data = img?.jpegData(compressionQuality: 1.0) else { return  }
+        
+        // Use Alamofire to upload image
+        AF.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(img_data, withName: "file", fileName: "rec.img", mimeType: "image/jpg")
+        }, to: url, method: .post, headers: headers)
+            .responseJSON { (data) in
+                print(data)
+        }
+    }
     
 }
