@@ -8,8 +8,6 @@
 
 import UIKit
 import Alamofire
-//Import for camera usage
-//import AVFoundation
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,11 +15,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.title = "Receipts"
+        
     }
     
     //Display an action menu to select from camera or camera roll
-    @IBAction func chooseImage(_ sender: Any) {
+    @IBAction func addReceipt(_ sender: Any) {
         
         //Image picker controller picks an image from either the
         //camera or camera roll based on user selection
@@ -39,6 +38,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
             }
+            else {
+                
+                //Alert the user that the camera is not available
+                //This will probably never happen
+                let noCameraAlert = UIAlertController(title: "Camera Not Available", message: "The device's camera cannot be accessed by Collect", preferredStyle: .alert)
+                noCameraAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(noCameraAlert, animated: true, completion: nil)
+                
+            }
             
         } ))
         
@@ -54,6 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(actionSheet, animated: true, completion: nil)
         
     }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
