@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAE5EBBE22D1999E00022858 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE5EBBD22D1999E00022858 /* PhotoViewController.swift */; };
 		ED9D261722CBF8C20031EE2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D261622CBF8C20031EE2B /* AppDelegate.swift */; };
 		ED9D261922CBF8C20031EE2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D261822CBF8C20031EE2B /* ViewController.swift */; };
 		ED9D261C22CBF8C20031EE2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9D261A22CBF8C20031EE2B /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AAE5EBBD22D1999E00022858 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		ED9D261322CBF8C20031EE2B /* CollectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9D261622CBF8C20031EE2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9D261822CBF8C20031EE2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				ED9D261622CBF8C20031EE2B /* AppDelegate.swift */,
 				ED9D261822CBF8C20031EE2B /* ViewController.swift */,
+				AAE5EBBD22D1999E00022858 /* PhotoViewController.swift */,
 				ED9D261A22CBF8C20031EE2B /* Main.storyboard */,
 				ED9D261D22CBF8C40031EE2B /* Assets.xcassets */,
 				ED9D261F22CBF8C40031EE2B /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			files = (
 				ED9D261922CBF8C20031EE2B /* ViewController.swift in Sources */,
 				ED9D261722CBF8C20031EE2B /* AppDelegate.swift in Sources */,
+				AAE5EBBE22D1999E00022858 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7ZGWV3RJDC;
 				INFOPLIST_FILE = CollectApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7ZGWV3RJDC;
 				INFOPLIST_FILE = CollectApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
