@@ -147,5 +147,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    func newCell()
+    {
+        //Make the cell
+    }
+    
     
 }
