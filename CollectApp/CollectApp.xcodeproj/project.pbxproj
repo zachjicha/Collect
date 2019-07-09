@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F30E0DD0319427BB562C430 /* Pods_CollectApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC8760E5D69CF3371870635 /* Pods_CollectApp.framework */; };
-		AE7A110722CEB2F100AF9D3E /* rec.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AE7A110622CEB2F100AF9D3E /* rec.jpg */; };
+		8AC0CC9FF0D0B4B29C68DC69 /* Pods_CollectApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA86970B8029086C4F1472DE /* Pods_CollectApp.framework */; };
 		ED9D261722CBF8C20031EE2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D261622CBF8C20031EE2B /* AppDelegate.swift */; };
 		ED9D261922CBF8C20031EE2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D261822CBF8C20031EE2B /* ViewController.swift */; };
 		ED9D261C22CBF8C20031EE2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9D261A22CBF8C20031EE2B /* Main.storyboard */; };
@@ -36,10 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CC8760E5D69CF3371870635 /* Pods_CollectApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A203C2A981E3004A1A76DD08 /* Pods-CollectApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectApp.debug.xcconfig"; path = "Target Support Files/Pods-CollectApp/Pods-CollectApp.debug.xcconfig"; sourceTree = "<group>"; };
-		AE7A110622CEB2F100AF9D3E /* rec.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rec.jpg; path = CollectApp/rec.jpg; sourceTree = SOURCE_ROOT; };
-		BE794F99D29FB8C564CFD9C9 /* Pods-CollectApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectApp.release.xcconfig"; path = "Target Support Files/Pods-CollectApp/Pods-CollectApp.release.xcconfig"; sourceTree = "<group>"; };
+		5D6C57E8884961967DF3E20D /* Pods-CollectApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectApp.release.xcconfig"; path = "Target Support Files/Pods-CollectApp/Pods-CollectApp.release.xcconfig"; sourceTree = "<group>"; };
+		6B72DF2B8EAD7D72D8A0C7E6 /* Pods-CollectApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectApp.debug.xcconfig"; path = "Target Support Files/Pods-CollectApp/Pods-CollectApp.debug.xcconfig"; sourceTree = "<group>"; };
+		AA86970B8029086C4F1472DE /* Pods_CollectApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9D261322CBF8C20031EE2B /* CollectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9D261622CBF8C20031EE2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9D261822CBF8C20031EE2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F30E0DD0319427BB562C430 /* Pods_CollectApp.framework in Frameworks */,
+				8AC0CC9FF0D0B4B29C68DC69 /* Pods_CollectApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,22 +79,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5596E5C8F2683B6CECFB175C /* Frameworks */ = {
+		733BD95B45FE311CE20A29A6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0CC8760E5D69CF3371870635 /* Pods_CollectApp.framework */,
+				6B72DF2B8EAD7D72D8A0C7E6 /* Pods-CollectApp.debug.xcconfig */,
+				5D6C57E8884961967DF3E20D /* Pods-CollectApp.release.xcconfig */,
 			);
-			name = Frameworks;
+			path = Pods;
 			sourceTree = "<group>";
 		};
-		61D7515DE1921DC63DF29C5D /* Pods */ = {
+		DB0085167806D60A35D645E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A203C2A981E3004A1A76DD08 /* Pods-CollectApp.debug.xcconfig */,
-				BE794F99D29FB8C564CFD9C9 /* Pods-CollectApp.release.xcconfig */,
+				AA86970B8029086C4F1472DE /* Pods_CollectApp.framework */,
 			);
-			name = Pods;
-			path = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		ED9D260A22CBF8C20031EE2B = {
@@ -106,8 +103,8 @@
 				ED9D262A22CBF8C40031EE2B /* CollectAppTests */,
 				ED9D263522CBF8C50031EE2B /* CollectAppUITests */,
 				ED9D261422CBF8C20031EE2B /* Products */,
-				61D7515DE1921DC63DF29C5D /* Pods */,
-				5596E5C8F2683B6CECFB175C /* Frameworks */,
+				733BD95B45FE311CE20A29A6 /* Pods */,
+				DB0085167806D60A35D645E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,11 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED9D263B22CBF8C50031EE2B /* Build configuration list for PBXNativeTarget "CollectApp" */;
 			buildPhases = (
-				0957D4C71CCB54CDCE42E027 /* [CP] Check Pods Manifest.lock */,
+				84445D591C8BFC1C79D856E4 /* [CP] Check Pods Manifest.lock */,
 				ED9D260F22CBF8C20031EE2B /* Sources */,
 				ED9D261022CBF8C20031EE2B /* Frameworks */,
 				ED9D261122CBF8C20031EE2B /* Resources */,
-				9A83E4CEC7E6045816DF1BA8 /* [CP] Embed Pods Frameworks */,
+				AEE33C25BA4A557C9F5DABE2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,7 +280,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0957D4C71CCB54CDCE42E027 /* [CP] Check Pods Manifest.lock */ = {
+		84445D591C8BFC1C79D856E4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,7 +302,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9A83E4CEC7E6045816DF1BA8 /* [CP] Embed Pods Frameworks */ = {
+		AEE33C25BA4A557C9F5DABE2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -503,17 +500,18 @@
 		};
 		ED9D263C22CBF8C50031EE2B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A203C2A981E3004A1A76DD08 /* Pods-CollectApp.debug.xcconfig */;
+			baseConfigurationReference = 6B72DF2B8EAD7D72D8A0C7E6 /* Pods-CollectApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3VLB6R56X;
 				INFOPLIST_FILE = CollectApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS115.CollectApp;
+				PRODUCT_BUNDLE_IDENTIFIER = CS115;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -522,17 +520,18 @@
 		};
 		ED9D263D22CBF8C50031EE2B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE794F99D29FB8C564CFD9C9 /* Pods-CollectApp.release.xcconfig */;
+			baseConfigurationReference = 5D6C57E8884961967DF3E20D /* Pods-CollectApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3VLB6R56X;
 				INFOPLIST_FILE = CollectApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS115.CollectApp;
+				PRODUCT_BUNDLE_IDENTIFIER = CS115;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
