@@ -172,6 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     //Function for saving data using core data
+        //Will mainly be used for saving receipt references
     func SaveReceiptData (NameOfItem: String/*, ItemCost: Double*/) {
         
         //Creates variable for Container access
@@ -194,7 +195,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Setting title and message for the alert dialog
         let alertController = UIAlertController(title: "Enter details?", message: "Enter Receipt Name", preferredStyle: .alert)
         
-        //the confirm action taking the inputs
+        //Processes user input from dialog box
         let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
             
             //getting the input values from user
@@ -205,7 +206,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         }
         
-        //the cancel action doing nothing
+        //Cancel button - makes popup disappear (glorified do nothing button)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
         //adding textfields to our dialog box
@@ -217,7 +218,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
-        //finally presenting the dialog box
+        //Make the dialog box appear
         self.present(alertController, animated: true, completion: nil)
     }
         
