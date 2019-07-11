@@ -32,8 +32,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDF-UI-ZYQ">
-                                <rect key="frame" x="0.0" y="349" width="375" height="322"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Receipt Name Will Show Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDF-UI-ZYQ">
+                                <rect key="frame" x="88" y="635" width="227" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -45,6 +45,14 @@
                                 <state key="normal" title="Show Saved Data"/>
                                 <connections>
                                     <segue destination="K43-Yo-FFJ" kind="show" id="0Lb-LG-lMe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TK4-oQ-XVd">
+                                <rect key="frame" x="114" y="591" width="146" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Receipt Name"/>
+                                <connections>
+                                    <action selector="ChangeReceiptName:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qEI-YH-GOg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -61,6 +69,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="labelMessage" destination="MDF-UI-ZYQ" id="pMt-Gf-s4g"/>
                         <outlet property="loadingText" destination="9ro-be-UUQ" id="LWc-mk-gJK"/>
                         <outlet property="outputText" destination="KOj-Eu-nvW" id="zag-hH-Cvg"/>
                     </connections>
@@ -121,6 +130,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqt-gz-xfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2733.5999999999999" y="97.536945812807886"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RLV-3U-qg3">
+            <objects>
+                <viewController id="ehz-OE-zvf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OeY-xZ-yEE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jgT-0F-hoZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jEh-CD-RWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3530" y="98"/>
         </scene>
     </scenes>
 </document>

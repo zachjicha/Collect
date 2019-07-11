@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FullReceipt" representedClassName="FullReceipt" syncable="YES" codeGenerationType="class">
+        <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="FullReceipt"/>
+        </fetchedProperty>
+        <fetchedProperty name="fetchedProperty1" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="FullReceipt"/>
+        </fetchedProperty>
+        <fetchedProperty name="fetchedProperty2" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="FullReceipt"/>
+        </fetchedProperty>
+        <fetchedProperty name="fetchedProperty3" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="FullReceipt"/>
+        </fetchedProperty>
+        <fetchedProperty name="fetchedProperty4" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="FullReceipt"/>
+        </fetchedProperty>
+    </entity>
     <entity name="Receipt" representedClassName="Receipt" syncable="YES" codeGenerationType="class">
         <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="receiptNum" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Receipt" positionX="-36" positionY="9" width="128" height="60"/>
+        <element name="Receipt" positionX="-36" positionY="9" width="128" height="75"/>
+        <element name="FullReceipt" positionX="0" positionY="54" width="128" height="134"/>
     </elements>
 </model>

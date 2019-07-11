@@ -27,6 +27,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var outputText: UITextView!
     @IBOutlet weak var loadingText: UILabel!
+    @IBOutlet weak var labelMessage: UILabel!
+    
     
     //Creates variable/ref for container (Data Storage management)
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -102,9 +104,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     //Parse the receipt using Harsh's code
     func parseReceipt() {
+        
         print("IN API CALL")
         self.outputText.text = ""
         self.loadingText.text = "Analyzing..."
+        
+        showInputDialog()
+        
         // API Setup:
         let key = "a31246109d0211e98bfadfb7eb1aa8b5" // API-Key
         guard let url = URL(string: "https://api-au.taggun.io/api/receipt/v1/verbose/file") else {
@@ -148,9 +154,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             self.outputText.text += "\n"
                             
                             print(item.itemName!);
+                            
+                            //Saves item content to local storage
                             self.SaveReceiptData(NameOfItem: item.itemName!/*, ItemCost: 1*/)
                             print("Output Printed!")
                         }
+                        self.outputText.text += "\n\n\n"
+                        self.outputText.text += "Is This Receipt Correct?"
                     }
 
                 case .failure(let error):
@@ -176,8 +186,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
     }
+    
+    //Function that makes a dialog box pop up to ask for Receipt Name
+        //TEMPORARY (TEST FNCTION)
+    func showInputDialog() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Enter details?", message: "Enter Receipt Name", preferredStyle: .alert)
         
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
+            
+            //getting the input values from user
+            let name = alertController.textFields?[0].text
+            
+            //Updates label (checks for data save state)
+            self.labelMessage.text = "Name: " + name!
+            
+        }
         
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        //adding textfields to our dialog box
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Receipt Name"
+        }
+        
+        //adding the action to dialogbox
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        //finally presenting the dialog box
+        self.present(alertController, animated: true, completion: nil)
+    }
+        
+    //Button that triggers Dialog box input
+    @IBAction func ChangeReceiptName(_ sender: UIButton) {
+        showInputDialog()
+    }
     
 
 

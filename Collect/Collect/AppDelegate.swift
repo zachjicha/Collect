@@ -44,29 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
-    //AppDelegate | Data Stack imp.
+    //AppDelegate | Data Stack using containers that allow for loading and storing to local storage
     lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
+        
+        //Accesses Collect Data model container (model used for data attributes)
         let container = NSPersistentContainer(name: "Collect")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
                 /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
+                 
+                 Error handling Here
+                 
                  */
-                print("ERROR IN APP DELEGATE")
+                print("ERROR IN APP DELEGATE")  //Checkpoint
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -80,13 +70,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                /*
+                 
+                 Error handling Here
+                 
+                 */
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
+    
+    //NOTE TO SELF(Rizzian): Create function that saves specific data
+    
+    //REMINDER:  DISCUSS WITH UI TEAM ABOUT HOW THEY'LL IMPLEMENT UI
+        //DATA STORAGE IS VERY PARTICULAR WHEN IT COMES TO WHERE DATA FUNCTIONS ARE LOCATED
     
     
     
