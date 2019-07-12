@@ -40,8 +40,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.title = "Receipts"
         outputText.text = ""
         loadingText.text = "Please add a receipt"
-        self.hideKeyboardWhenTappedAround() 
+        self.hideKeyboardWhenTappedAround()
     }
+    
+    
 
     //Display an action menu to select from camera or camera roll
     @IBAction func addReceipt(_ sender: Any) {
@@ -228,7 +230,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.LoadChange.text = "No Data Found"
                 return
             }
-        self.LoadChange.text = item.itemName!
+        self.LoadChange.text = item.receiptName!
     }
     
     //Pressing the button prints the text field onto Xcode command line
@@ -241,8 +243,50 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         DeleteReceiptData(NameOfItem: GetInfo.text!)
     }
     
+    @IBOutlet weak var ItemDataText: UITextField!
     
-    
+    @IBAction func AddToReceipt(_ sender: UIButton) {
+        //Global context variable (use for fetching and storing data)
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let NameOfReceipt = Receipt(context: context)
+        NameOfReceipt.receiptName = GetInfo.text!
+        let itemInReceipt = ReceiptItems(context: context)
+        itemInReceipt.itemName = ItemDataText.text!
+        NameOfReceipt.addToItemsOnReceipt(itemInReceipt)
+        
+        
+        //Create reference to receipt
+        let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        request.predicate = NSPredicate(format: "receiptName = %@" , GetInfo.text!)
+        
+        //Executes the search
+        do {
+            let receipts = try context.fetch(request)
+            print(receipts.first!)
+            
+            var AllItems:[ReceiptItems] = []
+            //Fetches all items in receipt
+            do {
+                do {
+                    AllItems = try context.fetch(ReceiptItems.fetchRequest())
+                } catch{
+                    print(error)
+                }
+            }
+            
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+
+        
+    }
+
+
+
+
+
 }
 
 

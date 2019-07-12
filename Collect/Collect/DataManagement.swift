@@ -16,18 +16,17 @@ var context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
 //Extension for the receipt entity
 extension Receipt {
     //Alternate function that fetches specific data using the extension
-    class func FetchData (with itemName: String) -> Receipt? {
+    class func FetchData (with receiptName: String) -> Receipt? {
         //let request = Receipt.fetchRequest()
         let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
         
         //NSPredicate to specify arguments for what to look up
-        //let predicate = NSPredicate(format: "itemName = %@", itemName)
-        request.predicate = NSPredicate(format: "itemName = %@", itemName)
+        request.predicate = NSPredicate(format: "receiptName = %@", receiptName)
         
         //Attempts to find requested attribute/entities
         do {
-            let tasks = try context.fetch(request)
-            return tasks.first
+            let receipts = try context.fetch(request)
+            return receipts.first
         } catch let error {
             print(error.localizedDescription)
             return nil
@@ -42,6 +41,12 @@ extension Receipt {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
+    //----------------------------------------------------------------
+    //----------Functions regardings items in the receipt-------------
+    //----------------------------------------------------------------
+    
+    
+    
 }
 
 
@@ -51,7 +56,7 @@ func SaveReceiptData (NameOfItem: String/*, ItemCost: Double*/) {
     
     //Creates variable for Container access
     let CreateReceipt = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context)
-    CreateReceipt.setValue(NameOfItem, forKey: "itemName")
+    CreateReceipt.setValue(NameOfItem, forKey: "receiptName")
     
     //save to container/core data
     do {
