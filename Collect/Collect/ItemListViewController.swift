@@ -45,7 +45,7 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
     
     //
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath)
         let oneRecord = AllItems[indexPath.row]
         cell.textLabel!.text = oneRecord.itemName!
         return cell
@@ -55,18 +55,20 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
     func FetchData(receiptName: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        var receiptList = [ReceiptItems]()
-        let request = NSFetchRequest<ReceiptItems>(entityName: "ReceiptItems")
-        request.predicate = NSPredicate(format: "receiptName = %@", "receiptname")
+        
+        let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
+        let myPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
+        myFetch.predicate = myPredicate
+        
         do {
-            receiptList = try context.fetch(request)
-            if receiptList.count > 0 {
-                // You have found cover
-            }
+            let result = try context.fetch(myFetch)
+            print(result.count)
+            AllItems = result
         }
         catch {
-            print("Error = \(error.localizedDescription)")
+            print(error)
         }
+        
         
     }
 }

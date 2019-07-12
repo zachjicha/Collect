@@ -17,7 +17,6 @@ var context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
 extension Receipt {
     //Alternate function that fetches specific data using the extension
     class func FetchData (with receiptName: String) -> Receipt? {
-        //let request = Receipt.fetchRequest()
         let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
         
         //NSPredicate to specify arguments for what to look up
@@ -44,6 +43,9 @@ extension Receipt {
     //----------------------------------------------------------------
     //----------Functions regardings items in the receipt-------------
     //----------------------------------------------------------------
+    func FetchReceiptItems(receiptName: String) {
+        
+    }
     
     
     
@@ -52,11 +54,11 @@ extension Receipt {
 
 //Function for saving data using core data
 //Will mainly be used for saving receipt references
-func SaveReceiptData (NameOfItem: String/*, ItemCost: Double*/) {
+func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
     
     //Creates variable for Container access
     let CreateReceipt = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context)
-    CreateReceipt.setValue(NameOfItem, forKey: "receiptName")
+    CreateReceipt.setValue(NameOfReceipt, forKey: "receiptName")
     
     //save to container/core data
     do {
