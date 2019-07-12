@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Collect/Receipt+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Collect/Receipt+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Collect.xcodeproj">
    </FileRef>
    <FileRef

@@ -21,7 +21,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.FetchSpecificData()
+        self.FetchData()
         self.tableView.reloadData()
     }
     
@@ -52,19 +52,18 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         } catch{
             print(error)
         }
-        
-        
     }
     
     //Function that fetches specific data
-    func FetchSpecificData() {
+    //Ideas: Use an array of numbers as keys for receipts
+    func FetchSpecificData(key: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Receipt")
-        let predicate = NSPredicate(format: "itemName = %@", argumentArray: ["1  Chardonay  4.45"]) // Specify your condition here
+        let predicate = NSPredicate(format: "itemName = %@", argumentArray: ["1  Chardonay  4.45"])
         // Or for integer value
-        // let predicate = NSPredicate(format: "age > %d", argumentArray: [10])
+        // let predicate = NSPredicate(format: "amount > %d", argumentArray: [10])
         
         fetch.predicate = predicate
         
@@ -77,15 +76,14 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         } catch {
             print("Failed")
         }
-        
-        //Function that deletes specific data (implement in main story board(?))
-        
-        //function that modifies/updates data (implement in main story board(?))
-        
-        
-        
-        
-        
     }
+    
+
+    //function that modifies/updates specific data (implement in main story board(?))
+    
+    
+    
+    
+    
     
 }

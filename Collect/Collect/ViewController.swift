@@ -20,6 +20,8 @@ struct Item : Codable
     let totalAmount: Double?
 }
 
+
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var selectedPhoto:UIImage!
@@ -38,6 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.title = "Receipts"
         outputText.text = ""
         loadingText.text = "Please add a receipt"
+        self.hideKeyboardWhenTappedAround() 
     }
 
     //Display an action menu to select from camera or camera roll
@@ -156,7 +159,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             print(item.itemName!);
                             
                             //Saves item content to local storage
-                            self.SaveReceiptData(NameOfItem: item.itemName!/*, ItemCost: 1*/)
+                            SaveReceiptData(NameOfItem: item.itemName!/*, ItemCost: 1*/)
                             print("Output Printed!")
                         }
                         self.outputText.text += "\n\n\n"
@@ -169,24 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    
-    
-    //Function for saving data using core data
-        //Will mainly be used for saving receipt references
-    func SaveReceiptData (NameOfItem: String/*, ItemCost: Double*/) {
-        
-        //Creates variable for Container access
-        let CreateReceipt = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context)
-        CreateReceipt.setValue(NameOfItem, forKey: "itemName")
-        
-        //save to container/core data
-        do {
-            try context.save()
-        } catch {
-            print(error)
-        }
-        
-    }
+
     
     //Function that makes a dialog box pop up to ask for Receipt Name
         //TEMPORARY (TEST FNCTION)
@@ -227,6 +213,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         showInputDialog()
     }
     
-
-
+    
+    @IBOutlet weak var GetInfo: UITextField!
+    @IBOutlet weak var LoadChange: UILabel!
+    
+    
+    //Pressing the button will load the data
+    @IBAction func LoadTextData(_ sender: UIButton) {
+        
+        //Fetches the specific data
+        guard let item = Receipt.FetchData(with: GetInfo.text!)
+            //If data is not found, returns no data found
+            else {
+                self.LoadChange.text = "No Data Found"
+                return
+            }
+        self.LoadChange.text = item.itemName!
+    }
+    
+    //Pressing the button prints the text field onto Xcode command line
+    @IBAction func SaveTextData(_ sender: UIButton) {
+        SaveReceiptData(NameOfItem: GetInfo.text!)
+    }
+    
+    //Pressing the button will delete the data in text field from core data
+    @IBAction func DeleteTextData(_ sender: UIButton) {
+        DeleteReceiptData(NameOfItem: GetInfo.text!)
+    }
+    
+    
+    
 }
+
+

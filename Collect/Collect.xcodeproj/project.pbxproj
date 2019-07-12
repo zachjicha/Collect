@@ -15,6 +15,7 @@
 		ED972B0A22D6B68800CD6B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED972B0922D6B68800CD6B01 /* Assets.xcassets */; };
 		ED972B0D22D6B68800CD6B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED972B0B22D6B68800CD6B01 /* LaunchScreen.storyboard */; };
 		ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */; };
+		ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1A22D82A3800CD6B01 /* DataManagement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		ED972B0C22D6B68800CD6B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED972B0E22D6B68800CD6B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
+		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				ED972B0E22D6B68800CD6B01 /* Info.plist */,
 				ED972B0622D6B68300CD6B01 /* Collect.xcdatamodeld */,
 				ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */,
+				ED972B1A22D82A3800CD6B01 /* DataManagement.swift */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */,
 				ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */,
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
