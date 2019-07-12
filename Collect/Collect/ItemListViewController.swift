@@ -33,8 +33,6 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     
-    
-    
     //Returns number of sections
     func SecNum (in tableView: UITableView) -> Int {
         return 1
@@ -57,27 +55,18 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
     func FetchData(receiptName: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
-        request.predicate = NSPredicate(format: "receiptName = %@" , receiptname)
+        var receiptList = [ReceiptItems]()
+        let request = NSFetchRequest<ReceiptItems>(entityName: "ReceiptItems")
+        request.predicate = NSPredicate(format: "receiptName = %@", "receiptname")
+        do {
+            receiptList = try context.fetch(request)
+            if receiptList.count > 0 {
+                // You have found cover
+            }
+        }
+        catch {
+            print("Error = \(error.localizedDescription)")
+        }
         
-        //let AllReceipts:[Receipt] = []
-        print(receiptname)
-        
-        //do {
-            //Fetches receipt
-            //let receipts = try context.fetch(request)
-            
-            
-            //Fetches items in receipt
-            
-            
-        //} catch{
-        //    print(error)
-        //}
-    //}
-    
-    
     }
-    
-
 }

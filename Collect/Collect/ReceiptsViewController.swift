@@ -28,24 +28,16 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         self.FetchData()
         self.tableView.reloadData()
     }
-    /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        //Access the array that you have used to fill the tableViewCell
-        //print(AllReceipts[indexPath.row].receiptName!)
-        receiptToOpen = AllReceipts[indexPath.row].receiptName!
-        
-    }
+
     //Override function for passing data from one ViewController to another
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is ItemListViewController
-        {
-            let vc = segue.destination as? ItemListViewController
-            vc?.receiptname = receiptToOpen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowReceiptItems" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! ItemListViewController
+                controller.receiptname = AllReceipts[indexPath.row].receiptName!
+            }
         }
-    }*/
-    
+    }
     
     //Returns number of sections
     func SecNum (in tableView: UITableView) -> Int {
@@ -58,7 +50,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         return AllReceipts.count
     }
     
-    //
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let oneRecord = AllReceipts[indexPath.row]
@@ -66,22 +58,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowReceiptItems", sender: indexPath) //Pass indexPath as sender instead of self
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowReceiptItems" {
-            
-            let receiptPointer = segue.destination as! ItemListViewController
-            let indexPath = sender as! IndexPath
-            receiptPointer.receiptname = AllReceipts[indexPath.row].receiptName!
-        }
-    }
-    
-    
-    
+
     
     //Function that fetches all data and inputs it into the table view
     func FetchData() {
