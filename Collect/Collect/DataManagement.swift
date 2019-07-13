@@ -10,12 +10,15 @@ import Foundation
 import CoreData
 import UIKit
 
+
+
+
 //Global context variable (use for fetching and storing data)
 var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 //Extension for the receipt entity
 extension Receipt {
-    //Alternate function that fetches specific data using the extension
+    //Function that returns Receipt data through the use of the receipt name
     class func FetchData (with receiptName: String) -> Receipt? {
         let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
         
@@ -43,12 +46,34 @@ extension Receipt {
     //----------------------------------------------------------------
     //----------Functions regardings items in the receipt-------------
     //----------------------------------------------------------------
-    func FetchReceiptItems(receiptName: String) {
-        
-    }
     
     
-    
+    //Function that fethces the receipt items based on the receipt Name given and returns it
+    //NOTE: WORK IN PROGRESS
+    /*
+    func FetchReceiptItems(receiptName: String) -> Receipt{
+     
+        AllItems:[ReceiptItems] = []
+     
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+     
+        //Creates fetch request for all items
+        let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
+        let myPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
+        myFetch.predicate = myPredicate
+     
+        //Does the actual fetching of data
+        do {
+            let result = try context.fetch(myFetch)
+            print(result.count)
+            AllItems = result
+        }
+        catch {
+            print(error)
+        }
+     
+        return result
+    }*/
 }
 
 
@@ -68,7 +93,34 @@ func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
     }
 }
 
-//Function that will delete the specified data
+//Function for saving full receipt Data
+//Takes name of receipt and an item struct array as inputs
+func SaveAllReceiptData (NameOfReceipt: String, Items: Item) {
+    
+    //context variable for fetching and storing data
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //Creates Receipt Entity Context
+    let ReceiptName = Receipt(context: context)
+    ReceiptName.receiptName = NameOfReceipt
+    
+    //Create NSOrderedSet object (array) of all items
+    //let allReceiptItems = NSOrderedSet(array: Items)
+    let itemsInReceipt = ReceiptItems(context: context)
+    itemsInReceipt.itemName = Items.itemName
+    ReceiptName.addToItemsOnReceipt(itemsInReceipt)
+    
+
+    //save to container/core data
+    do {
+        try context.save()
+    } catch {
+        print(error)
+    }
+}
+
+
+//Function that will delete the specified receipt (It will also delete item data)
 func DeleteReceiptData (NameOfItem: String) {
     
     //delete specific data
@@ -78,7 +130,6 @@ func DeleteReceiptData (NameOfItem: String) {
 
 
 //DELETE LATER: Function used to dismiss keyboard
-// Put this piece of code anywhere you like
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))

@@ -47,7 +47,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     //Display an action menu to select from camera or camera roll
     @IBAction func addReceipt(_ sender: Any) {
-
+        
+        if (GetInfo.text == "") {
+            print("Please Enter a receipt Name")
+            loadingText.text = "Required: Receipt Name"
+            return
+        }
+        
+        
         //Image picker controller picks an image from either the
         //camera or camera roll based on user selection
         let imagePickerController = UIImagePickerController()
@@ -161,11 +168,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             print(item.itemName!);
                             
                             //Saves item content to local storage
-                            SaveReceiptData(NameOfItem: item.itemName!/*, ItemCost: 1*/)
+                            SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: item)
                             print("Output Printed!")
                         }
-                        self.outputText.text += "\n\n\n"
-                        self.outputText.text += "Is This Receipt Correct?"
                     }
 
                 case .failure(let error):
@@ -235,7 +240,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //Pressing the button prints the text field onto Xcode command line
     @IBAction func SaveTextData(_ sender: UIButton) {
-        SaveReceiptData(NameOfItem: GetInfo.text!)
+        SaveReceiptData(NameOfReceipt: GetInfo.text!)
     }
     
     //Pressing the button will delete the data in text field from core data
@@ -246,7 +251,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var ItemDataText: UITextField!
     
     @IBAction func AddToReceipt(_ sender: UIButton) {
-        //Global context variable (use for fetching and storing data)
+        //context variable (use for fetching and storing data)
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let NameOfReceipt = Receipt(context: context)
@@ -256,6 +261,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NameOfReceipt.addToItemsOnReceipt(itemInReceipt)
         
         
+        
+        
+        /*
         //Create reference to receipt
         let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
         request.predicate = NSPredicate(format: "receiptName = %@" , GetInfo.text!)
@@ -278,7 +286,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         } catch let error {
             print(error.localizedDescription)
-        }
+        }*/
 
         
     }
