@@ -1,0 +1,92 @@
+//
+//  DataManagement.swift
+//  Collect
+//
+//  Created by Rizzian Tuazon on 7/11/19.
+//  Copyright © 2019 The Collective. All rights reserved.
+//
+
+import Foundation
+import CoreData
+import UIKit
+
+//Global context variable (use for fetching and storing data)
+var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+//Extension for the receipt entity
+extension Receipt {
+    //Alternate function that fetches specific data using the extension
+    class func FetchData (with receiptName: String) -> Receipt? {
+        let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        
+        //NSPredicate to specify arguments for what to look up
+        request.predicate = NSPredicate(format: "receiptName = %@", receiptName)
+        
+        //Attempts to find requested attribute/entities
+        do {
+            let receipts = try context.fetch(request)
+            return receipts.first
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    //A function that deletes the receipt
+    func deleteReceipt() {
+        //let item = Receipt.FetchData(with: itemName)
+        //Does the actual deleting
+        context.delete(self)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    //----------------------------------------------------------------
+    //----------Functions regardings items in the receipt-------------
+    //----------------------------------------------------------------
+    func FetchReceiptItems(receiptName: String) {
+        
+    }
+    
+    
+    
+}
+
+
+//Function for saving data using core data
+//Will mainly be used for saving receipt references
+func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
+    
+    //Creates variable for Container access
+    let CreateReceipt = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context)
+    CreateReceipt.setValue(NameOfReceipt, forKey: "receiptName")
+    
+    //save to container/core data
+    do {
+        try context.save()
+    } catch {
+        print(error)
+    }
+}
+
+//Function that will delete the specified data
+func DeleteReceiptData (NameOfItem: String) {
+    
+    //delete specific data
+    guard let item = Receipt.FetchData(with: NameOfItem) else { return }
+    item.deleteReceipt()
+}
+
+
+//DELETE LATER: Function used to dismiss keyboard
+// Put this piece of code anywhere you like
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
