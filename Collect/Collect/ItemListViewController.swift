@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class ItemListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var AllItems:[ReceiptItems] = []
     @IBOutlet weak var tableView: UITableView!
     
@@ -51,23 +51,17 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     //Fetches item data based on the receipt name selected
-    //The receipt name was the data passed through the segue
+    //The receiptName is the data passed through the segue
     func FetchData(receiptName: String) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        //Creates fetch request
-        let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
-        let myPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
-        myFetch.predicate = myPredicate
-        
-        //Does the actual fetching of data
-        do {
-            let result = try context.fetch(myFetch)
-            print(result.count)
-            AllItems = result
+        //Fetches the specific data
+        guard let receiptItemsObj = ReceiptItems.FetchReceiptItems(with: receiptName)
+            //If data is not found, returns no data found
+            else {
+                print("Data Not Found")
+                return
         }
-        catch {
-            print(error)
-        }
+        print("SUCCESS")
+        AllItems = receiptItemsObj
     }
 }
