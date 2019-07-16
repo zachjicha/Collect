@@ -18,7 +18,8 @@ var context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
 
 //Extension for the receipt entity
 extension Receipt {
-    //Function that returns Receipt data through the use of the receipt name
+    
+    //Function that returns Receipt data through the use of the receipt name (1 receipt only) [USED FOR DELETING]
     class func FetchData (with receiptName: String) -> Receipt? {
         let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
         
@@ -35,33 +36,46 @@ extension Receipt {
         }
     }
     
+    //Class function that returns an array of Receipt Entities
+    class func FetchListOfReceipts () -> [Receipt]? {
+        
+        //variable to return (itialized as empty)
+        var AllReceipts:[Receipt] = []
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            AllReceipts = try context.fetch(Receipt.fetchRequest())
+        } catch{
+            print(error)
+        }
+        return AllReceipts
+    }
+    
+    
     //A function that deletes the receipt
     func deleteReceipt() {
-        //let item = Receipt.FetchData(with: itemName)
         //Does the actual deleting
         context.delete(self)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
+}
+
+//Creates an extension for receipt items
+extension ReceiptItems {
     
-    //----------------------------------------------------------------
-    //----------Functions regardings items in the receipt-------------
-    //----------------------------------------------------------------
-    
-    
-    //Function that fethces the receipt items based on the receipt Name given and returns it
-    //NOTE: WORK IN PROGRESS
-    /*
-    func FetchReceiptItems(receiptName: String) -> Receipt{
-     
-        AllItems:[ReceiptItems] = []
-     
+    //Function that fetches the receipt items based on the receipt name given and returns the receipt item entity array
+    //Returns an array of ReceiptItems
+    class func FetchReceiptItems(with receiptName: String) -> [ReceiptItems]? {
+        
+        var AllItems:[ReceiptItems] = []
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-     
+        
         //Creates fetch request for all items
         let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
         let myPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
         myFetch.predicate = myPredicate
-     
+        
         //Does the actual fetching of data
         do {
             let result = try context.fetch(myFetch)
@@ -71,10 +85,11 @@ extension Receipt {
         catch {
             print(error)
         }
-     
-        return result
-    }*/
+        return AllItems
+    }
 }
+
+
 
 
 //Function for saving data using core data
@@ -93,7 +108,8 @@ func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
     }
 }
 
-//Function for saving full receipt Data
+//Function for saving full receipt Data using
+//(not part of the Receipt and ReceiptItems Extension)
 //Takes name of receipt and an item struct array as inputs
 func SaveAllReceiptData (NameOfReceipt: String, Items: Item) {
     
