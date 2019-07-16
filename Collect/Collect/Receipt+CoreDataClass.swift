@@ -2,7 +2,7 @@
 //  Receipt+CoreDataClass.swift
 //  Collect
 //
-//  Created by Rizzian Tuazon on 7/12/19.
+//  Created by Rizzian Tuazon on 7/16/19.
 //  Copyright © 2019 The Collective. All rights reserved.
 //
 //

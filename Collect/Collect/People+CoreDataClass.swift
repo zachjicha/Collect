@@ -1,5 +1,5 @@
 //
-//  ReceiptItems+CoreDataClass.swift
+//  People+CoreDataClass.swift
 //  Collect
 //
 //  Created by Rizzian Tuazon on 7/16/19.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(ReceiptItems)
-public class ReceiptItems: NSManagedObject {
+@objc(People)
+public class People: NSManagedObject {
 
 }
