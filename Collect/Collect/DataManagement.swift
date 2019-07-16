@@ -65,7 +65,6 @@ extension Receipt {
 extension ReceiptItems {
     
     //Function that fetches the receipt items based on the receipt name given and returns the receipt item entity array
-    //Returns an array of ReceiptItems
     class func FetchReceiptItems(with receiptName: String) -> [ReceiptItems]? {
         
         var AllItems:[ReceiptItems] = []
@@ -119,12 +118,13 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item]) {
     let ReceiptName = Receipt(context: context)
     ReceiptName.receiptName = NameOfReceipt
     
+    //Loops through all items to create a relaitonsip with the receipt
     for item in Items {
         let itemsInReceipt = ReceiptItems(context: context)
         itemsInReceipt.itemName = item.itemName
+        itemsInReceipt.itemPrice = item.totalAmount!
+        print("Item: " + itemsInReceipt.itemName! + "\nPrice: " + String(itemsInReceipt.itemPrice))
         ReceiptName.addToItemsOnReceipt(itemsInReceipt)
-        
-        
     }
     //save to container/core data
     do {
@@ -141,6 +141,28 @@ func DeleteReceiptData (NameOfItem: String) {
     //delete specific data
     guard let item = Receipt.FetchData(with: NameOfItem) else { return }
     item.deleteReceipt()
+}
+
+//Checks if receipt name already exists within core database
+//Return results:  True - The name already exists | false - name does not exist
+func CheckDuplicity (receiptName: String) -> Bool {
+    
+    let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+    
+    //NSPredicate to specify arguments for what to look up
+    request.predicate = NSPredicate(format: "receiptName = %@", receiptName)
+    
+    //Attempts to find requested attribute/entities
+    do {
+        let result = try context.fetch(request)
+        let isEqual = (receiptName == result.first?.receiptName)
+        return isEqual //returns a boolean
+        
+    } catch let error {
+        print(error.localizedDescription)
+        return false
+    }
+        return true //place holder so xcode wont complain (code will never get to this line of code during execution)
 }
 
 

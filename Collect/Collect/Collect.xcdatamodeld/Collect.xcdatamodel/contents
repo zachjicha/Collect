@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="People" representedClassName="People" syncable="YES" codeGenerationType="class">
+    <entity name="People" representedClassName="People" syncable="YES">
         <attribute name="personName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="mainReceiptToPeople" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="peopleToMainReceipt" inverseEntity="Receipt" syncable="YES"/>
         <relationship name="personToItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReceiptItems" inverseName="itemToPerson" inverseEntity="ReceiptItems" syncable="YES"/>
@@ -12,12 +12,13 @@
     </entity>
     <entity name="ReceiptItems" representedClassName="ReceiptItems" syncable="YES">
         <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="itemReceipt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="itemsOnReceipt" inverseEntity="Receipt" syncable="YES"/>
         <relationship name="itemToPerson" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="personToItem" inverseEntity="People" syncable="YES"/>
     </entity>
     <elements>
         <element name="Receipt" positionX="-36" positionY="9" width="128" height="90"/>
-        <element name="ReceiptItems" positionX="0" positionY="54" width="128" height="90"/>
+        <element name="ReceiptItems" positionX="0" positionY="54" width="128" height="105"/>
         <element name="People" positionX="-18" positionY="54" width="128" height="90"/>
     </elements>
 </model>

@@ -48,9 +48,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Display an action menu to select from camera or camera roll
     @IBAction func addReceipt(_ sender: Any) {
         
+        //Checks to make sure a receipt name was entered
         if (GetInfo.text == "") {
             print("Please Enter a receipt Name")
             loadingText.text = "Required: Receipt Name"
+            return
+        }
+        
+        //Checks to see if the receipt name entered already exists within the core database
+        if (CheckDuplicity(receiptName: GetInfo.text!) == true) {
+            print("Data already exists")
+            loadingText.text = "Receipt name already exists"
             return
         }
         

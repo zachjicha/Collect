@@ -17,10 +17,12 @@
 		ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */; };
 		ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1A22D82A3800CD6B01 /* DataManagement.swift */; };
 		ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */; };
-		ED972B2A22D921FE00CD6B01 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2622D921FE00CD6B01 /* Receipt+CoreDataClass.swift */; };
-		ED972B2B22D921FE00CD6B01 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2722D921FE00CD6B01 /* Receipt+CoreDataProperties.swift */; };
-		ED972B2C22D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2822D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift */; };
-		ED972B2D22D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2922D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift */; };
+		EDFE1A9622DDBAEE0083FAD6 /* People+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9022DDBAEE0083FAD6 /* People+CoreDataClass.swift */; };
+		EDFE1A9722DDBAEE0083FAD6 /* People+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9122DDBAEE0083FAD6 /* People+CoreDataProperties.swift */; };
+		EDFE1A9822DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9222DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift */; };
+		EDFE1A9922DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9322DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift */; };
+		EDFE1A9A22DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9422DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift */; };
+		EDFE1A9B22DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9522DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +40,12 @@
 		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
-		ED972B2622D921FE00CD6B01 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
-		ED972B2722D921FE00CD6B01 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ED972B2822D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
-		ED972B2922D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EDFE1A9022DDBAEE0083FAD6 /* People+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "People+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EDFE1A9122DDBAEE0083FAD6 /* People+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "People+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EDFE1A9222DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EDFE1A9322DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EDFE1A9422DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EDFE1A9522DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +98,12 @@
 		ED972AFE22D6B68300CD6B01 /* Collect */ = {
 			isa = PBXGroup;
 			children = (
-				ED972B2622D921FE00CD6B01 /* Receipt+CoreDataClass.swift */,
-				ED972B2722D921FE00CD6B01 /* Receipt+CoreDataProperties.swift */,
-				ED972B2822D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift */,
-				ED972B2922D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift */,
+				EDFE1A9022DDBAEE0083FAD6 /* People+CoreDataClass.swift */,
+				EDFE1A9122DDBAEE0083FAD6 /* People+CoreDataProperties.swift */,
+				EDFE1A9222DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift */,
+				EDFE1A9322DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift */,
+				EDFE1A9422DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift */,
+				EDFE1A9522DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift */,
 				ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */,
 				ED972B0122D6B68300CD6B01 /* ViewController.swift */,
 				ED972B0322D6B68300CD6B01 /* Main.storyboard */,
@@ -227,16 +233,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFE1A9922DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift in Sources */,
 				ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */,
 				ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */,
-				ED972B2A22D921FE00CD6B01 /* Receipt+CoreDataClass.swift in Sources */,
+				EDFE1A9722DDBAEE0083FAD6 /* People+CoreDataProperties.swift in Sources */,
 				ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */,
-				ED972B2B22D921FE00CD6B01 /* Receipt+CoreDataProperties.swift in Sources */,
-				ED972B2D22D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift in Sources */,
+				EDFE1A9B22DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift in Sources */,
+				EDFE1A9822DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift in Sources */,
+				EDFE1A9622DDBAEE0083FAD6 /* People+CoreDataClass.swift in Sources */,
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
+				EDFE1A9A22DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,
-				ED972B2C22D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
