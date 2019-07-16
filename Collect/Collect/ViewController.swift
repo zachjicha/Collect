@@ -168,9 +168,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             print(item.itemName!);
                             
                             //Saves item content to local storage
-                            SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: item)
+                            //SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: item)
                             print("Output Printed!")
                         }
+                         //Paases array
+                         SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items)
                     }
 
                 case .failure(let error):
@@ -259,42 +261,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let itemInReceipt = ReceiptItems(context: context)
         itemInReceipt.itemName = ItemDataText.text!
         NameOfReceipt.addToItemsOnReceipt(itemInReceipt)
-        
-        
-        
-        
-        /*
-        //Create reference to receipt
-        let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
-        request.predicate = NSPredicate(format: "receiptName = %@" , GetInfo.text!)
-        
-        //Executes the search
-        do {
-            let receipts = try context.fetch(request)
-            print(receipts.first!)
-            
-            var AllItems:[ReceiptItems] = []
-            //Fetches all items in receipt
-            do {
-                do {
-                    AllItems = try context.fetch(ReceiptItems.fetchRequest())
-                } catch{
-                    print(error)
-                }
-            }
-            
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }*/
-
-        
     }
-
-
-
-
-
 }
 
 

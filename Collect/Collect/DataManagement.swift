@@ -10,9 +10,6 @@ import Foundation
 import CoreData
 import UIKit
 
-
-
-
 //Global context variable (use for fetching and storing data)
 var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -37,6 +34,7 @@ extension Receipt {
     }
     
     //Class function that returns an array of Receipt Entities
+    //This strictly returns strings (not other data)
     class func FetchListOfReceipts () -> [Receipt]? {
         
         //variable to return (itialized as empty)
@@ -45,6 +43,9 @@ extension Receipt {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do {
             AllReceipts = try context.fetch(Receipt.fetchRequest())
+            let fetchSet = Set(AllReceipts)
+            print(fetchSet)
+            
         } catch{
             print(error)
         }
@@ -90,8 +91,6 @@ extension ReceiptItems {
 }
 
 
-
-
 //Function for saving data using core data
 //Will mainly be used for saving receipt references
 func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
@@ -111,7 +110,7 @@ func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
 //Function for saving full receipt Data using
 //(not part of the Receipt and ReceiptItems Extension)
 //Takes name of receipt and an item struct array as inputs
-func SaveAllReceiptData (NameOfReceipt: String, Items: Item) {
+func SaveAllReceiptData (NameOfReceipt: String, Items: [Item]) {
     
     //context variable for fetching and storing data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -120,13 +119,13 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: Item) {
     let ReceiptName = Receipt(context: context)
     ReceiptName.receiptName = NameOfReceipt
     
-    //Create NSOrderedSet object (array) of all items
-    //let allReceiptItems = NSOrderedSet(array: Items)
-    let itemsInReceipt = ReceiptItems(context: context)
-    itemsInReceipt.itemName = Items.itemName
-    ReceiptName.addToItemsOnReceipt(itemsInReceipt)
-    
-
+    for item in Items {
+        let itemsInReceipt = ReceiptItems(context: context)
+        itemsInReceipt.itemName = item.itemName
+        ReceiptName.addToItemsOnReceipt(itemsInReceipt)
+        
+        
+    }
     //save to container/core data
     do {
         try context.save()
