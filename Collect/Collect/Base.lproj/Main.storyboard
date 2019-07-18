@@ -161,6 +161,66 @@
             </objects>
             <point key="canvasLocation" x="852" y="98.275862068965523"/>
         </scene>
+        <!--Item Amount View Controller-->
+        <scene sceneID="RA1-Rb-qfj">
+            <objects>
+                <viewController title="Item Amount View Controller" id="fr7-Wd-64B" customClass="ItemAmountViewController" customModule="Collect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xl5-SZ-3hJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="Wtw-5L-rVL">
+                                <rect key="frame" x="86.666666666666686" y="365.66666666666669" width="202" height="81"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsq-1R-6fB">
+                                        <rect key="frame" x="0.0" y="0.0" width="202" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="202" id="wpN-W0-MZ2"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WtT-PT-0sS">
+                                        <rect key="frame" x="0.0" y="51" width="202" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="202" id="o5S-LE-2oo"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91w-0f-z9x">
+                                <rect key="frame" x="161" y="479.66666666666669" width="53" height="38.000000000000057"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <state key="normal" title="Enter">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterTapped:" destination="fr7-Wd-64B" eventType="touchUpInside" id="IFZ-mj-Vkw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Wtw-5L-rVL" firstAttribute="centerY" secondItem="Xl5-SZ-3hJ" secondAttribute="centerY" id="Ql9-51-345"/>
+                            <constraint firstItem="91w-0f-z9x" firstAttribute="centerX" secondItem="Xl5-SZ-3hJ" secondAttribute="centerX" id="SNQ-5M-D6f"/>
+                            <constraint firstItem="91w-0f-z9x" firstAttribute="top" secondItem="Wtw-5L-rVL" secondAttribute="bottom" constant="33.329999999999998" id="U54-3n-wYZ"/>
+                            <constraint firstItem="Wtw-5L-rVL" firstAttribute="centerX" secondItem="Xl5-SZ-3hJ" secondAttribute="centerX" id="XXh-GT-jrO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BkM-kk-fjM"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountField" destination="WtT-PT-0sS" id="NfO-mi-zqQ"/>
+                        <outlet property="itemField" destination="lsq-1R-6fB" id="VJh-tg-J0v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GNc-fF-Mp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4636" y="460.34482758620692"/>
+        </scene>
         <!--Receipts View Controller-->
         <scene sceneID="f0d-5P-Tt9">
             <objects>
@@ -208,7 +268,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2c1-e3-4gX">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="641"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
