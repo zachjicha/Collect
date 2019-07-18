@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		15BF53EF22E03EA900BB1C22 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */; };
 		15BF53F022E03EA900BB1C22 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */; };
-		15BF53F122E03EA900BB1C22 /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53EC22E03EA900BB1C22 /* ReceiptItems+CoreDataClass.swift */; };
-		15BF53F222E03EA900BB1C22 /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53ED22E03EA900BB1C22 /* ReceiptItems+CoreDataProperties.swift */; };
 		15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */; };
 		15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */; };
 		15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */; };
@@ -28,13 +26,13 @@
 		ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */; };
 		ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1A22D82A3800CD6B01 /* DataManagement.swift */; };
 		ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */; };
+		EDFCA71D22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */; };
+		EDFCA71E22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
 		15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		15BF53EC22E03EA900BB1C22 /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
-		15BF53ED22E03EA900BB1C22 /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemViewController.swift; sourceTree = "<group>"; };
 		15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNamesViewController.swift; sourceTree = "<group>"; };
 		15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSwitchesTableViewCell.swift; sourceTree = "<group>"; };
@@ -56,6 +54,8 @@
 		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
+		EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +81,10 @@
 		15BF540422E0E71000BB1C22 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */,
+				EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */,
 				15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */,
 				15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */,
-				15BF53EC22E03EA900BB1C22 /* ReceiptItems+CoreDataClass.swift */,
-				15BF53ED22E03EA900BB1C22 /* ReceiptItems+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -265,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15BF53F122E03EA900BB1C22 /* ReceiptItems+CoreDataClass.swift in Sources */,
 				15BF540322E0DD4300BB1C22 /* HomeScreenViewController.swift in Sources */,
 				15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */,
 				A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */,
@@ -275,9 +274,10 @@
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
 				15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */,
 				15BF53EF22E03EA900BB1C22 /* Receipt+CoreDataClass.swift in Sources */,
-				15BF53F222E03EA900BB1C22 /* ReceiptItems+CoreDataProperties.swift in Sources */,
+				EDFCA71E22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
 				15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */,
+				EDFCA71D22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */,
 				15BF53F022E03EA900BB1C22 /* Receipt+CoreDataProperties.swift in Sources */,
 				A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,
@@ -430,14 +430,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D3VLB6R56X;
+				DEVELOPMENT_TEAM = 2U3HN2D38E;
 				INFOPLIST_FILE = Collect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dsfdsafg;
+				PRODUCT_BUNDLE_IDENTIFIER = rqereqw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,14 +450,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D3VLB6R56X;
+				DEVELOPMENT_TEAM = 2U3HN2D38E;
 				INFOPLIST_FILE = Collect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dsfdsafg;
+				PRODUCT_BUNDLE_IDENTIFIER = rqereqw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
