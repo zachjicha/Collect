@@ -35,10 +35,6 @@ import UIKit
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
-    }
     
     func fetchPeople(receiptName: String)
     {
@@ -84,6 +80,24 @@ import UIKit
         self.title = "Receipients"
         fetchPeople(receiptName: receiptName)
         self.tableView.reloadData()
+    }
+    
+    //Override function for passing data from one ViewController to another
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //segue identifier set at segue properties in toolbar (right side)
+        if segue.identifier == "ShowItemList" {
+            
+            let controller = segue.destination as! ReceiptItemViewController
+            controller.receiptName = receiptName
+            
+        }/*
+         if segue.identifier == "AddPeopleVC" {
+         if let indexPath = self.tableView.indexPathForSelectedRow {
+         //In Storyboard ItemListViewController, there is a global variable titled "receiptname".  This sends the receipt name to the ItemListViewController so it can load the items of that specific receipt
+         let controller = segue.destination as! ViewControllerB
+         controller.receiptName = AllReceipts[indexPath.row].receiptName!
+         }
+         }*/
     }
     
     

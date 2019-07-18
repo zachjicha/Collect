@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="PeopleList" representedClassName="PeopleList" syncable="YES">
+    <entity name="PeopleList" representedClassName="PeopleList" syncable="YES" codeGenerationType="class">
         <attribute name="nameOfPerson" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="personToItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReceiptItems" inverseName="itemToPerson" inverseEntity="ReceiptItems" syncable="YES"/>
         <relationship name="personToReceipt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="receiptToPerson" inverseEntity="Receipt" syncable="YES"/>
@@ -16,8 +16,8 @@
         <relationship name="itemToPerson" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeopleList" inverseName="personToItems" inverseEntity="PeopleList" syncable="YES"/>
     </entity>
     <elements>
+        <element name="PeopleList" positionX="-22.79296875" positionY="-211.69140625" width="128" height="90"/>
         <element name="Receipt" positionX="-303.0390625" positionY="-228.63671875" width="128" height="88"/>
         <element name="ReceiptItems" positionX="-117.5703125" positionY="109.7578125" width="128" height="90"/>
-        <element name="PeopleList" positionX="-22.79296875" positionY="-211.69140625" width="128" height="88"/>
     </elements>
 </model>
