@@ -8,22 +8,17 @@
 
 import Foundation
 
-class Item {
+class ReceiptItem {
     
-    var itemName:String?
-    var itemCost:Double?
-    var isNameEnabled:[Bool]?
+    var itemName:String
+    var itemCost:Double
+    var itemSplitters:[String]? = []
     
     init(itemName: String, itemCost: Double) {
         
         //Init memeber fields
         self.itemName = itemName
         self.itemCost = itemCost
-        
-        //Append 6 falses
-        for index in 0...5 {
-            isNameEnabled?.append(false)
-        }
         
     }
     

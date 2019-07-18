@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1514286C22D7AC8B004E7083 /* MultiSelectSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1514286B22D7AC8B004E7083 /* MultiSelectSegmentedControl.swift */; };
 		1560D2F222D723FB0022C4EA /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560D2F122D723FB0022C4EA /* ItemTableView.swift */; };
-		1560D2F422D724930022C4EA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560D2F322D724930022C4EA /* Item.swift */; };
+		1560D2F422D724930022C4EA /* ReceiptItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560D2F322D724930022C4EA /* ReceiptItem.swift */; };
 		1560D2F622D729550022C4EA /* ItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560D2F522D729550022C4EA /* ItemTableCell.swift */; };
-		1585124622D52EAA00DB9720 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1585124522D52EAA00DB9720 /* TableViewController.swift */; };
+		15E9EAC822DCDD2E00A66E59 /* DebtsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9EAC722DCDD2E00A66E59 /* DebtsView.swift */; };
 		8AC0CC9FF0D0B4B29C68DC69 /* Pods_CollectApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA86970B8029086C4F1472DE /* Pods_CollectApp.framework */; };
 		ED9D261722CBF8C20031EE2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D261622CBF8C20031EE2B /* AppDelegate.swift */; };
 		ED9D261922CBF8C20031EE2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D261822CBF8C20031EE2B /* ViewController.swift */; };
@@ -39,10 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1514286B22D7AC8B004E7083 /* MultiSelectSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectSegmentedControl.swift; sourceTree = "<group>"; };
 		1560D2F122D723FB0022C4EA /* ItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
-		1560D2F322D724930022C4EA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		1560D2F322D724930022C4EA /* ReceiptItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItem.swift; sourceTree = "<group>"; };
 		1560D2F522D729550022C4EA /* ItemTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableCell.swift; sourceTree = "<group>"; };
-		1585124522D52EAA00DB9720 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		15E9EAC722DCDD2E00A66E59 /* DebtsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsView.swift; sourceTree = "<group>"; };
 		5D6C57E8884961967DF3E20D /* Pods-CollectApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectApp.release.xcconfig"; path = "Target Support Files/Pods-CollectApp/Pods-CollectApp.release.xcconfig"; sourceTree = "<group>"; };
 		6B72DF2B8EAD7D72D8A0C7E6 /* Pods-CollectApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectApp.debug.xcconfig"; path = "Target Support Files/Pods-CollectApp/Pods-CollectApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA86970B8029086C4F1472DE /* Pods_CollectApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,13 +134,14 @@
 				ED9D261622CBF8C20031EE2B /* AppDelegate.swift */,
 				ED9D261822CBF8C20031EE2B /* ViewController.swift */,
 				ED9D261A22CBF8C20031EE2B /* Main.storyboard */,
-				1560D2F322D724930022C4EA /* Item.swift */,
+				1560D2F322D724930022C4EA /* ReceiptItem.swift */,
 				1560D2F122D723FB0022C4EA /* ItemTableView.swift */,
-				1585124522D52EAA00DB9720 /* TableViewController.swift */,
 				ED9D261D22CBF8C40031EE2B /* Assets.xcassets */,
 				ED9D261F22CBF8C40031EE2B /* LaunchScreen.storyboard */,
 				ED9D262222CBF8C40031EE2B /* Info.plist */,
 				1560D2F522D729550022C4EA /* ItemTableCell.swift */,
+				15E9EAC722DCDD2E00A66E59 /* DebtsView.swift */,
+				1514286B22D7AC8B004E7083 /* MultiSelectSegmentedControl.swift */,
 			);
 			path = CollectApp;
 			sourceTree = "<group>";
@@ -336,11 +339,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1560D2F422D724930022C4EA /* Item.swift in Sources */,
+				1560D2F422D724930022C4EA /* ReceiptItem.swift in Sources */,
 				1560D2F622D729550022C4EA /* ItemTableCell.swift in Sources */,
 				1560D2F222D723FB0022C4EA /* ItemTableView.swift in Sources */,
 				ED9D261922CBF8C20031EE2B /* ViewController.swift in Sources */,
-				1585124622D52EAA00DB9720 /* TableViewController.swift in Sources */,
+				1514286C22D7AC8B004E7083 /* MultiSelectSegmentedControl.swift in Sources */,
+				15E9EAC822DCDD2E00A66E59 /* DebtsView.swift in Sources */,
 				ED9D261722CBF8C20031EE2B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

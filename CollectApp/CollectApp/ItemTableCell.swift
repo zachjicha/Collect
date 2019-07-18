@@ -9,14 +9,23 @@
 import UIKit
 
 class ItemTableCell: UITableViewCell {
-    @IBOutlet weak var nameSegment: UISegmentedControl!
-    @IBOutlet weak var text: UILabel!
+
+    @IBOutlet weak var itemLabel: UILabel!
     
+    @IBOutlet weak var nameSegment: MultiSelectSegmentedControl!
     
-    func setCell(segmentControl: [Bool], text: String) {
-        for (index, isNameEnabled) in segmentControl.enumerated() {
-            nameSegment.setEnabled(isNameEnabled, index)
+    func setItemName(recepitItem: ReceiptItem) {
+        itemLabel.text = recepitItem.itemName
+        
+    }
+    
+    func setItemGroup(splittingGroup: [String]) {
+        nameSegment.removeAllSegments()
+        
+        for index in 0...splittingGroup.count - 1 {
+            nameSegment.insertSegment(withTitle: splittingGroup[index], at: index, animated: false)
         }
+        
     }
 
 }

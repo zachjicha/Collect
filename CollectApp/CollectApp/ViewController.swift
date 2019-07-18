@@ -19,7 +19,7 @@ struct Item : Codable
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var selectedPhoto:UIImage!
-    var Items : [Item] = []
+    var Items : [ReceiptItem] = []
     
     @IBOutlet weak var outputText: UITextView!
     @IBOutlet weak var loadingText: UILabel!
@@ -87,6 +87,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //Dismiss the picker controller
         picker.dismiss(animated: true, completion: nil)
+        
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -125,18 +127,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     {
                         for JSONItem in amounts
                         {
-                            let item = Item(itemName: JSONItem["text"].string, totalAmount: JSONItem["data"].double)
+                            let item = ReceiptItem(itemName: JSONItem["text"].string!, itemCost: JSONItem["data"].double!)
                             // print(item.itemName!, item.totalAmount!)
-                            self.Items.append(item)
+                            let lowerItem = item.itemName.lowercased()
+                            if(!lowerItem.contains("total") && !lowerItem.contains("debit")) {
+                                self.Items.append(item)
+                            }
                         }
                         //self.printItems()
                         self.loadingText.text = "Items:"
-                        for item in self.Items
+                        /*for item in self.Items
                         {
-                            self.outputText.text += item.itemName!
+                            self.outputText.text += item.itemName
                             self.outputText.text += "\n"
                             
-                        }
+                        }*/
+                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        
+                        guard let destinationVC = mainStoryBoard.instantiateViewController(withIdentifier: "ItemTableView") as? ItemTableView else {return}
+                        destinationVC.receiptItems = self.Items
+                        
+                        self.navigationController?.pushViewController(destinationVC, animated: true)
                     }
                     
                 case .failure(let error):
@@ -145,11 +156,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         
-    }
-    
-    func newCell()
-    {
-        //Make the cell
     }
     
     
