@@ -12,6 +12,7 @@ import SwiftyGif
 class HomeScreenViewController: UIViewController {
 
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var loadingImageView: UIImageView!
     @IBOutlet weak var newReceiptView: UIView!
     @IBOutlet weak var savedReceiptsView: UIView!
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class HomeScreenViewController: UIViewController {
         newReceiptView.addGestureRecognizer(tapGestureForNew)
         savedReceiptsView.addGestureRecognizer(tapGestureForSaved)
         
-        //loadGif()
+        loadGif()
     }
     
     @objc func tappedNewReceipt() {
@@ -42,7 +43,7 @@ class HomeScreenViewController: UIViewController {
     func loadGif() {
         do {
             let gif = try UIImage(gifName: "Loading-Final TM.gif")
-            self.logoImageView.setGifImage(gif)
+            self.loadingImageView.setGifImage(gif)
         } catch {
             print(error)
         }

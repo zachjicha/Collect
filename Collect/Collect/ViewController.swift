@@ -152,7 +152,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         {
                             let item = Item(itemName: JSONItem["text"].string, totalAmount: JSONItem["data"].double)
                             // print(item.itemName!, item.totalAmount!)
-                            self.Items.append(item)
+                            let lowerItem = item.itemName!.lowercased()
+                            if(!lowerItem.contains("total") && !lowerItem.contains("debit") && !lowerItem.contains("debit")) {
+                                self.Items.append(item)
+                            }
                         }
                         //self.printItems()
                         self.loadingText.text = "Items:"
