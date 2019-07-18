@@ -38,6 +38,13 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
                 controller.receiptname = AllReceipts[indexPath.row].receiptName!
             }
         }
+        if segue.identifier == "AddPeopleVC" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                //In Storyboard ItemListViewController, there is a global variable titled "receiptname".  This sends the receipt name to the ItemListViewController so it can load the items of that specific receipt
+                let controller = segue.destination as! ViewControllerB
+                controller.receiptName = AllReceipts[indexPath.row].receiptName!
+            }
+        }
     }
     
     //Sets number of sections of the table view

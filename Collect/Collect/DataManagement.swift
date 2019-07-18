@@ -89,6 +89,33 @@ extension ReceiptItems {
     }
 }
 
+extension PeopleList
+{
+    // Gets the list of people associated with a given receipt name
+    class func FetchPeopleList(with receiptName: String) -> [PeopleList]? {
+        // Array of all people
+        var allPeople : [PeopleList] = []
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //Creates fetch request for all items
+        let myFetch:NSFetchRequest<PeopleList> = PeopleList.fetchRequest()
+        // Name of relationship to other entity -> Attribute name we want within that entity
+        let myPredicate = NSPredicate(format: "personToReceipt.receiptName == %@", receiptName)
+        myFetch.predicate = myPredicate
+        
+        do {
+            let result = try context.fetch(myFetch)
+            print("People Fetched", result.count)
+            allPeople = result
+        }
+        catch {
+            print(error)
+        }
+        return allPeople
+        
+    }
+}
 
 
 
@@ -144,6 +171,27 @@ func DeleteReceiptData (NameOfItem: String) {
     item.deleteReceipt()
 }
 
+func addPerson(nameOfPerson : String, nameOfReceipt : String)
+{
+    
+    //context variable for fetching and storing data
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //Creates Person Entity Context
+    let personContext = PeopleList(context: context)
+    personContext.nameOfPerson = nameOfPerson
+    
+    
+    guard let receipt = Receipt.FetchData(with: nameOfReceipt) else { return }
+    receipt.addToReceiptToPerson(personContext)
+    print("ADDING ", nameOfPerson)
+    print("Rec. Name: ", nameOfReceipt)
+    do {
+        try context.save()
+    } catch {
+        print(error)
+    }
+}
 
 //DELETE LATER: Function used to dismiss keyboard
 extension UIViewController {
