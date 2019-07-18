@@ -2,7 +2,7 @@
 //  Receipt+CoreDataProperties.swift
 //  Collect
 //
-//  Created by Rizzian Tuazon on 7/12/19.
+//  Created by Harsh Karia on 7/16/19.
 //  Copyright © 2019 The Collective. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension Receipt {
 
     @NSManaged public var receiptName: String?
     @NSManaged public var itemsOnReceipt: NSOrderedSet?
+    @NSManaged public var receiptToPerson: NSSet?
 
 }
 
@@ -54,5 +55,22 @@ extension Receipt {
 
     @objc(removeItemsOnReceipt:)
     @NSManaged public func removeFromItemsOnReceipt(_ values: NSOrderedSet)
+
+}
+
+// MARK: Generated accessors for receiptToPerson
+extension Receipt {
+
+    @objc(addReceiptToPersonObject:)
+    @NSManaged public func addToReceiptToPerson(_ value: PeopleList)
+
+    @objc(removeReceiptToPersonObject:)
+    @NSManaged public func removeFromReceiptToPerson(_ value: PeopleList)
+
+    @objc(addReceiptToPerson:)
+    @NSManaged public func addToReceiptToPerson(_ values: NSSet)
+
+    @objc(removeReceiptToPerson:)
+    @NSManaged public func removeFromReceiptToPerson(_ values: NSSet)
 
 }

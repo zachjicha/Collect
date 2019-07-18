@@ -2,7 +2,7 @@
 //  ReceiptItems+CoreDataProperties.swift
 //  Collect
 //
-//  Created by Rizzian Tuazon on 7/12/19.
+//  Created by Harsh Karia on 7/16/19.
 //  Copyright © 2019 The Collective. All rights reserved.
 //
 //
@@ -19,5 +19,23 @@ extension ReceiptItems {
 
     @NSManaged public var itemName: String?
     @NSManaged public var itemReceipt: Receipt?
+    @NSManaged public var itemToPerson: NSSet?
+
+}
+
+// MARK: Generated accessors for itemToPerson
+extension ReceiptItems {
+
+    @objc(addItemToPersonObject:)
+    @NSManaged public func addToItemToPerson(_ value: PeopleList)
+
+    @objc(removeItemToPersonObject:)
+    @NSManaged public func removeFromItemToPerson(_ value: PeopleList)
+
+    @objc(addItemToPerson:)
+    @NSManaged public func addToItemToPerson(_ values: NSSet)
+
+    @objc(removeItemToPerson:)
+    @NSManaged public func removeFromItemToPerson(_ values: NSSet)
 
 }
