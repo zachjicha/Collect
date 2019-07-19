@@ -13,6 +13,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     var peopleArray:[PeopleList] = []
     var receiptName:String = ""
+    var itemToOpen:String = ""
     var AllItems:[ReceiptItems] = []
     
     
@@ -75,6 +76,12 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
             let controller = segue.destination as! SelectNamesViewController
             controller.receiptName = receiptName
             
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                //In Storyboard ItemListViewController, there is a global variable titled "receiptname".  This sends the receipt name to the ItemListViewController so it can load the items of that specific receipt
+                let controller = segue.destination as! SelectNamesViewController
+                controller.itemName = AllItems[indexPath.row].itemName!
+                print("Item Name Being passed: " + controller.itemName)
+            }
         }
     }
     

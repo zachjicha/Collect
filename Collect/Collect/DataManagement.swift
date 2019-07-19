@@ -96,6 +96,31 @@ extension ReceiptItems {
         }
         return AllItems
     }
+    
+    
+    //Function that adds people to an item
+    class func addPersonToItem (itemName: String, nameOfPerson: String) {
+     
+        //context variable for fetching and storing data
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+     
+        //Creates ReceiptItem Entity Context
+        let ItemEntity = ReceiptItems(context: context)
+        ItemEntity.itemName = itemName
+     
+        //Creates a relationshiop between item and person
+        let peopleListForItems = PeopleList(context: context)
+        peopleListForItems.nameOfPerson = nameOfPerson
+        ItemEntity.addToItemToPerson(peopleListForItems)
+        //save to container/core data
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    
+    
 }
 
 extension PeopleList
@@ -130,6 +155,7 @@ extension PeopleList
 
 //Function for saving data using core data
 //Will mainly be used for saving receipt references
+//*************THIS FUNCTION IS TO BE DELETED*****************
 func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
     
     //Creates variable for Container access
@@ -208,6 +234,38 @@ func CheckDuplicity (receiptName: String) -> Bool {
         return false
     }
     return true //place holder so xcode wont complain (code will never get to this line of code during execution)
+}
+
+//Function that checks to see if a person is in a certain item's people list
+func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: String) {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    //First, fetch relationship from Receipt to Items
+    var AllItems:[ReceiptItems] = []
+    
+    //Creates fetch request for all items
+    let fetchItems:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
+    let fetchItemsPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
+    fetchItems.predicate = fetchItemsPredicate
+    
+    //Does the actual fetching of data
+    do {
+        let result = try context.fetch(fetchItems)
+        print(result.count)
+        AllItems = result
+    }
+    catch {
+        print(error)
+    }
+    
+    //Now, fetch relationship from Items to Receipt
+    
+    
+    
+    
+    
 }
 
 
