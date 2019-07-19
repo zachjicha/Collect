@@ -62,8 +62,13 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         
         let cellSwitch = UISwitch(frame: .zero)
         
+        
+        var item = ReceiptItems(context: context)
+        item = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
+        
+        
         //If statement to check and see if the name is within the list of ppl associated with the item
-        if (CheckItemPeopleList(receiptName: receiptName, itemName: itemName, nameOfPerson: person.nameOfPerson!) == true) {
+        if (item.CheckItemPeopleList(nameOfPerson: person.nameOfPerson!) == true) {
             cellSwitch.setOn(true, animated: true)
         }
         else {
@@ -102,8 +107,11 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         else {
             print("DETECTED OFF for itm: " + itemName + " for " + peopleArray[sender.tag].nameOfPerson!)
             
+            //Retrives item
+            let item = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
+            
             //Removes person as a payer for the item
-            deletePayerOfItemRelationship(with: peopleArray[sender.tag].nameOfPerson!, with: itemName, with: receiptName)
+            item.deletePayerOfItemRelationship(with: peopleArray[sender.tag].nameOfPerson!)
         }
         do {
             try context.save()
