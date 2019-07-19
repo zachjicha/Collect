@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15BF53EF22E03EA900BB1C22 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */; };
+		15BF53F022E03EA900BB1C22 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */; };
+		15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */; };
+		15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */; };
+		15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */; };
+		15BF540122E0DD0F00BB1C22 /* Loading-Final TM.gif in Resources */ = {isa = PBXBuildFile; fileRef = 15BF540022E0DD0F00BB1C22 /* Loading-Final TM.gif */; };
+		15BF540322E0DD4300BB1C22 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF540222E0DD4300BB1C22 /* HomeScreenViewController.swift */; };
+		A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */; };
+		A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */; };
 		EB6F20C85A21879ED50E72F3 /* Pods_Collect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */; };
 		ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */; };
 		ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B0122D6B68300CD6B01 /* ViewController.swift */; };
@@ -17,16 +26,21 @@
 		ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */; };
 		ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1A22D82A3800CD6B01 /* DataManagement.swift */; };
 		ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */; };
-		EDFE1A9622DDBAEE0083FAD6 /* People+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9022DDBAEE0083FAD6 /* People+CoreDataClass.swift */; };
-		EDFE1A9722DDBAEE0083FAD6 /* People+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9122DDBAEE0083FAD6 /* People+CoreDataProperties.swift */; };
-		EDFE1A9822DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9222DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift */; };
-		EDFE1A9922DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9322DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift */; };
-		EDFE1A9A22DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9422DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift */; };
-		EDFE1A9B22DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE1A9522DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift */; };
+		EDFCA71D22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */; };
+		EDFCA71E22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemViewController.swift; sourceTree = "<group>"; };
+		15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNamesViewController.swift; sourceTree = "<group>"; };
+		15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSwitchesTableViewCell.swift; sourceTree = "<group>"; };
+		15BF540022E0DD0F00BB1C22 /* Loading-Final TM.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Loading-Final TM.gif"; sourceTree = "<group>"; };
+		15BF540222E0DD4300BB1C22 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		86EFF462AFFFE55B8A93B41D /* Pods-Collect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.release.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.release.xcconfig"; sourceTree = "<group>"; };
+		A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		A885A0ACCEF4C8A8E96F62D2 /* Pods-Collect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.debug.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.debug.xcconfig"; sourceTree = "<group>"; };
 		E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFC22D6B68300CD6B01 /* Collect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,12 +54,8 @@
 		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
-		EDFE1A9022DDBAEE0083FAD6 /* People+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "People+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EDFE1A9122DDBAEE0083FAD6 /* People+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "People+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EDFE1A9222DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EDFE1A9322DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EDFE1A9422DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EDFE1A9522DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15BF53FF22E0DCDE00BB1C22 /* gifs */ = {
+			isa = PBXGroup;
+			children = (
+				15BF540022E0DD0F00BB1C22 /* Loading-Final TM.gif */,
+			);
+			path = gifs;
+			sourceTree = "<group>";
+		};
+		15BF540422E0E71000BB1C22 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */,
+				EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */,
+				15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */,
+				15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		973BAA1D4CA34A0816BECA0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,22 +127,24 @@
 		ED972AFE22D6B68300CD6B01 /* Collect */ = {
 			isa = PBXGroup;
 			children = (
-				EDFE1A9022DDBAEE0083FAD6 /* People+CoreDataClass.swift */,
-				EDFE1A9122DDBAEE0083FAD6 /* People+CoreDataProperties.swift */,
-				EDFE1A9222DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift */,
-				EDFE1A9322DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift */,
-				EDFE1A9422DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift */,
-				EDFE1A9522DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift */,
+				15BF540422E0E71000BB1C22 /* CoreData */,
+				15BF53FF22E0DCDE00BB1C22 /* gifs */,
+				ED972B0322D6B68300CD6B01 /* Main.storyboard */,
+				ED972B0B22D6B68800CD6B01 /* LaunchScreen.storyboard */,
 				ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */,
 				ED972B0122D6B68300CD6B01 /* ViewController.swift */,
-				ED972B0322D6B68300CD6B01 /* Main.storyboard */,
+				15BF540222E0DD4300BB1C22 /* HomeScreenViewController.swift */,
+				15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */,
 				ED972B0922D6B68800CD6B01 /* Assets.xcassets */,
-				ED972B0B22D6B68800CD6B01 /* LaunchScreen.storyboard */,
 				ED972B0E22D6B68800CD6B01 /* Info.plist */,
 				ED972B0622D6B68300CD6B01 /* Collect.xcdatamodeld */,
 				ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */,
 				ED972B1A22D82A3800CD6B01 /* DataManagement.swift */,
 				ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */,
+				A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */,
+				15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */,
+				A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */,
+				15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -180,6 +211,7 @@
 			files = (
 				ED972B0D22D6B68800CD6B01 /* LaunchScreen.storyboard in Resources */,
 				ED972B0A22D6B68800CD6B01 /* Assets.xcassets in Resources */,
+				15BF540122E0DD0F00BB1C22 /* Loading-Final TM.gif in Resources */,
 				ED972B0522D6B68300CD6B01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,17 +265,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDFE1A9922DDBAEE0083FAD6 /* Receipt+CoreDataProperties.swift in Sources */,
+				15BF540322E0DD4300BB1C22 /* HomeScreenViewController.swift in Sources */,
+				15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */,
+				A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */,
 				ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */,
 				ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */,
-				EDFE1A9722DDBAEE0083FAD6 /* People+CoreDataProperties.swift in Sources */,
 				ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */,
-				EDFE1A9B22DDBAEE0083FAD6 /* ReceiptItems+CoreDataProperties.swift in Sources */,
-				EDFE1A9822DDBAEE0083FAD6 /* Receipt+CoreDataClass.swift in Sources */,
-				EDFE1A9622DDBAEE0083FAD6 /* People+CoreDataClass.swift in Sources */,
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
-				EDFE1A9A22DDBAEE0083FAD6 /* ReceiptItems+CoreDataClass.swift in Sources */,
+				15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */,
+				15BF53EF22E03EA900BB1C22 /* Receipt+CoreDataClass.swift in Sources */,
+				EDFCA71E22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
+				15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */,
+				EDFCA71D22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */,
+				15BF53F022E03EA900BB1C22 /* Receipt+CoreDataProperties.swift in Sources */,
+				A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +363,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -381,6 +418,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -399,7 +437,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS115.Collect;
+				PRODUCT_BUNDLE_IDENTIFIER = rqereqw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -419,7 +457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS115.Collect;
+				PRODUCT_BUNDLE_IDENTIFIER = rqereqw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -10,12 +10,16 @@ import Foundation
 import CoreData
 import UIKit
 
+
+
+
 //Global context variable (use for fetching and storing data)
 var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 //Extension for the receipt entity
 extension Receipt {
     
+    //***********************DO NOT USE THESE FUNCTIONS INDIVUDUALLY**********************************
     //Function that returns Receipt data through the use of the receipt name (1 receipt only) [USED FOR DELETING]
     class func FetchData (with receiptName: String) -> Receipt? {
         let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
@@ -33,8 +37,23 @@ extension Receipt {
         }
     }
     
+    //A function that deletes the receipt
+    func deleteReceipt() {
+        //Does the actual deleting
+        context.delete(self)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    // update change name of the receipt
+    func updateData(with name: String) {
+        self.receiptName = name
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+//***************************************************************************************************
+    
+    
     //Class function that returns an array of Receipt Entities
-    //This strictly returns strings (not other data)
     class func FetchListOfReceipts () -> [Receipt]? {
         
         //variable to return (itialized as empty)
@@ -43,21 +62,10 @@ extension Receipt {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do {
             AllReceipts = try context.fetch(Receipt.fetchRequest())
-            let fetchSet = Set(AllReceipts)
-            print(fetchSet)
-            
         } catch{
             print(error)
         }
         return AllReceipts
-    }
-    
-    
-    //A function that deletes the receipt
-    func deleteReceipt() {
-        //Does the actual deleting
-        context.delete(self)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
 }
 
@@ -65,6 +73,7 @@ extension Receipt {
 extension ReceiptItems {
     
     //Function that fetches the receipt items based on the receipt name given and returns the receipt item entity array
+    //Returns an array of ReceiptItems
     class func FetchReceiptItems(with receiptName: String) -> [ReceiptItems]? {
         
         var AllItems:[ReceiptItems] = []
@@ -88,6 +97,35 @@ extension ReceiptItems {
         return AllItems
     }
 }
+
+extension PeopleList
+{
+    // Gets the list of people associated with a given receipt name
+    class func FetchPeopleList(with receiptName: String) -> [PeopleList]? {
+        // Array of all people
+        var allPeople : [PeopleList] = []
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //Creates fetch request for all items
+        let myFetch:NSFetchRequest<PeopleList> = PeopleList.fetchRequest()
+        // Name of relationship to other entity -> Attribute name we want within that entity
+        let myPredicate = NSPredicate(format: "personToReceipt.receiptName == %@", receiptName)
+        myFetch.predicate = myPredicate
+        
+        do {
+            let result = try context.fetch(myFetch)
+            print("People Fetched", result.count)
+            allPeople = result
+        }
+        catch {
+            print(error)
+        }
+        return allPeople
+        
+    }
+}
+
 
 
 //Function for saving data using core data
@@ -143,6 +181,13 @@ func DeleteReceiptData (NameOfItem: String) {
     item.deleteReceipt()
 }
 
+//Function that updates the receipt data (for midifications)
+    //This is limited to receipt name so far
+func updateReceiptData (receiptName: String,newReceiptName: String) {
+    guard let item = Receipt.FetchData(with: receiptName) else { return }
+    item.updateData(with: newReceiptName)
+}
+
 //Checks if receipt name already exists within core database
 //Return results:  True - The name already exists | false - name does not exist
 func CheckDuplicity (receiptName: String) -> Bool {
@@ -162,9 +207,31 @@ func CheckDuplicity (receiptName: String) -> Bool {
         print(error.localizedDescription)
         return false
     }
-        return true //place holder so xcode wont complain (code will never get to this line of code during execution)
+    return true //place holder so xcode wont complain (code will never get to this line of code during execution)
 }
 
+
+func addPerson(nameOfPerson : String, nameOfReceipt : String)
+{
+    
+    //context variable for fetching and storing data
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //Creates Person Entity Context
+    let personContext = PeopleList(context: context)
+    personContext.nameOfPerson = nameOfPerson
+    
+    
+    guard let receipt = Receipt.FetchData(with: nameOfReceipt) else { return }
+    receipt.addToReceiptToPerson(personContext)
+    print("ADDING ", nameOfPerson)
+    print("Rec. Name: ", nameOfReceipt)
+    do {
+        try context.save()
+    } catch {
+        print(error)
+    }
+}
 
 //DELETE LATER: Function used to dismiss keyboard
 extension UIViewController {

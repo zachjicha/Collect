@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class ItemListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var AllItems:[ReceiptItems] = []
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,14 +44,9 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
     
     //Uses identifier of table view cell (can be set in properties of the cell) to retrieve the data that will be displayed within each row of the table (in this case, its the item names of within the receipt entity)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath)
-
-        
-        
         let oneRecord = AllItems[indexPath.row]
         cell.textLabel!.text = oneRecord.itemName!
-        cell.detailTextLabel!.text = String(oneRecord.itemPrice)
         return cell
     }
     

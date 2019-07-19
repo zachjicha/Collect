@@ -48,17 +48,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Display an action menu to select from camera or camera roll
     @IBAction func addReceipt(_ sender: Any) {
         
-        //Checks to make sure a receipt name was entered
+        //Ensures that a receipt name is inputted
         if (GetInfo.text == "") {
             print("Please Enter a receipt Name")
-            loadingText.text = "Required: Receipt Name"
+            ReceiptNameRequiredAlert()
             return
         }
         
         //Checks to see if the receipt name entered already exists within the core database
+            //If it does already exist, tells the user to input a new name
         if (CheckDuplicity(receiptName: GetInfo.text!) == true) {
             print("Data already exists")
-            loadingText.text = "Receipt name already exists"
+            DuplicityAlert()
             return
         }
         
@@ -153,14 +154,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 {
                 case .success(let value):
                     let json = JSON(value)
-                    // print(json["amounts"])
+                    //print(json["amounts"])
+                    print(json)
                     if let amounts = json["amounts"].array
+                        
                     {
                         for JSONItem in amounts
                         {
                             let item = Item(itemName: JSONItem["text"].string, totalAmount: JSONItem["data"].double)
                             // print(item.itemName!, item.totalAmount!)
-                            self.Items.append(item)
+                            let lowerItem = item.itemName!.lowercased()
+                            if(!lowerItem.contains("total") && !lowerItem.contains("debit") && !lowerItem.contains("debit")) {
+                                self.Items.append(item)
+                            }
                         }
                         //self.printItems()
                         self.loadingText.text = "Items:"
@@ -173,14 +179,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             self.outputText.text += item.itemName!
                             self.outputText.text += "\n"
                             
-                            print(item.itemName!);
-                            
-                            //Saves item content to local storage
-                            //SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: item)
-                            print("Output Printed!")
+                            print(item.itemName!)
                         }
-                         //Paases array
-                         SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items)
+                        
+                        //Gets the total cost from taggun response json
+                        /*
+                        print("-------------------")
+                        print("WILL NOW TRY TO PRINT TOTAL COST")
+                        if let getTotalAmount = json["totalAmount"].array {
+                            for JsonItem in getTotalAmount {
+                                let subtotal = JsonItem["data"].string
+                                print(subtotal!)
+                            }
+                        }
+                        //print(totalcost)
+                        print("-------------------")
+                        */
+                        
+                        //Saves item content to local storage
+                        //Paases array
+                        SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items)
                     }
 
                 case .failure(let error):
@@ -224,6 +242,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Make the dialog box appear
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    //Function that makes an alert pop up saying the receipt name already exists
+    func DuplicityAlert() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Receipt Name Error", message: "The receipt name entered already exists", preferredStyle: .alert)
+        
+        //Cancel button - makes popup disappear (glorified do nothing button)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (_) in }
+        
+        //adding the action to dialogbox
+        alertController.addAction(cancelAction)
+        
+        //Make the dialog box appear
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //Function that makes an alert pop up saying the a receipt name is required
+    func ReceiptNameRequiredAlert() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Receipt Name Error", message: "A receipt name must be entered before proceeding", preferredStyle: .alert)
+        
+        //Cancel button - makes popup disappear (glorified do nothing button)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (_) in }
+        
+        //adding the action to dialogbox
+        alertController.addAction(cancelAction)
+        
+        //Make the dialog box appear
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
         
     //Button that triggers Dialog box input
     @IBAction func ChangeReceiptName(_ sender: UIButton) {
@@ -270,6 +321,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         itemInReceipt.itemName = ItemDataText.text!
         NameOfReceipt.addToItemsOnReceipt(itemInReceipt)
     }
+
+
+
+
+
 }
 
 

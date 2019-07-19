@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
     var AllReceipts:[Receipt] = []  //Array of receipts
     var receiptToOpen = ""
@@ -27,7 +27,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         self.FetchData()
         self.tableView.reloadData()
     }
-
+    
     //Override function for passing data from one ViewController to another
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //segue identifier set at segue properties in toolbar (right side)
@@ -38,13 +38,20 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
                 controller.receiptname = AllReceipts[indexPath.row].receiptName!
             }
         }
+        if segue.identifier == "AddPeopleVC" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                //In Storyboard ItemListViewController, there is a global variable titled "receiptname".  This sends the receipt name to the ItemListViewController so it can load the items of that specific receipt
+                let controller = segue.destination as! ViewControllerB
+                controller.receiptName = AllReceipts[indexPath.row].receiptName!
+            }
+        }
     }
     
     //Sets number of sections of the table view
     func SecNum (in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     //Sets the number of rows for the table view
     //In this case, the table view will constantly expend, thereby using the array size of the Receipt entity
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,9 +68,9 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-
+    
     //Function that fetches all data and inputs it into the table view
-        //Must be changed to fetch all non-repeating data (this also implies the need to implement a restriction of not having the same receipt names for multiple receipts)
+    //Must be changed to fetch all non-repeating data (this also implies the need to implement a restriction of not having the same receipt names for multiple receipts)
     func FetchData() {
         //Fetches the specific data
         guard let receiptObj = Receipt.FetchListOfReceipts()
@@ -72,6 +79,6 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
                 return
         }
         AllReceipts = receiptObj
-
+        
     }
 }
