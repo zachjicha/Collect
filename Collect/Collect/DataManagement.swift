@@ -193,8 +193,6 @@ extension PeopleList
     }
 }
 
-
-
 //Function for saving data using core data
 //Will mainly be used for saving receipt references
 //*************THIS FUNCTION IS TO BE DELETED*****************
@@ -239,7 +237,6 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item]) {
         print(error)
     }
 }
-
 
 //Function that will delete the specified receipt (It will also delete item data)
 func DeleteReceiptData (NameOfItem: String) {
@@ -300,14 +297,13 @@ func addPerson(nameOfPerson : String, nameOfReceipt : String)
     }
 }
 
-//DELETE LATER: Function used to dismiss keyboard
+//Allows for the UIViewController to dismiss the keyboard if we tap anywhere else in the screen
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
