@@ -84,26 +84,27 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         //Creates item variable for the specific item to be changed/modified (in terms of relationship)
         var item = ReceiptItems(context: context)
         item = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
-        print(item)
+        //print(item)
         
         
         //if On, add the person to the list of ppl associated with the items
         if (sender.isOn == true) {
             print("Detected ON for item: " + itemName + " for " + peopleArray[sender.tag].nameOfPerson!)
-            item.addToItemToPerson(peopleArray[sender.tag])
             
-            do {
-                try context.save()
-            } catch {
-                print(error)
-            }
+            //Converts PeopleList to PeoplePaying
+            let personPaying = PeoplePaying(context: context)
+            personPaying.nameOfPayer = peopleArray[sender.tag].nameOfPerson
+            
+            //Adds person as a payer for the item
+            item.addToPayerOfItem(personPaying)
         }
         //If off, remove the person from the list of ppl associated with the items
         else {
             print("DETECTED OFF for itm: " + itemName + " for " + peopleArray[sender.tag].nameOfPerson!)
-            item.removeFromItemToPerson(peopleArray[sender.tag])
+            
+            //Removes person as a payer for the item
+            deletePayerOfItemRelationship(with: peopleArray[sender.tag].nameOfPerson!, with: itemName, with: receiptName)
         }
-        
         do {
             try context.save()
         } catch {

@@ -26,8 +26,8 @@
 		ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */; };
 		ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1A22D82A3800CD6B01 /* DataManagement.swift */; };
 		ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */; };
-		EDFCA71D22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */; };
-		EDFCA71E22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */; };
+		EDFCA72922E269D0007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA72722E269D0007ED8BA /* ReceiptItems+CoreDataClass.swift */; };
+		EDFCA72A22E269D0007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA72822E269D0007ED8BA /* ReceiptItems+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,8 +54,8 @@
 		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
-		EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EDFCA72722E269D0007ED8BA /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EDFCA72822E269D0007ED8BA /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 		15BF540422E0E71000BB1C22 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				EDFCA71B22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift */,
-				EDFCA71C22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift */,
+				EDFCA72722E269D0007ED8BA /* ReceiptItems+CoreDataClass.swift */,
+				EDFCA72822E269D0007ED8BA /* ReceiptItems+CoreDataProperties.swift */,
 				15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */,
 				15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */,
 			);
@@ -274,10 +274,10 @@
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
 				15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */,
 				15BF53EF22E03EA900BB1C22 /* Receipt+CoreDataClass.swift in Sources */,
-				EDFCA71E22E10C0F007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
+				EDFCA72A22E269D0007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
 				15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */,
-				EDFCA71D22E10C0F007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */,
+				EDFCA72922E269D0007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */,
 				15BF53F022E03EA900BB1C22 /* Receipt+CoreDataProperties.swift in Sources */,
 				A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,

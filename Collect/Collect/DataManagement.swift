@@ -124,32 +124,6 @@ extension ReceiptItems {
         }
         return AllItems
     }
-    
-    
-    //Function that adds people to an item
-    /*class func addPersonToItem (itemName: String, nameOfPerson: String) {
-     
-        //context variable for fetching and storing data
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-     
-        //Creates ReceiptItem Entity Context
-        let ItemEntity = ReceiptItems(context: context)
-        ItemEntity = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
-        ItemEntity.itemName = itemName
-     
-        //Creates a relationshiop between item and person
-        let peopleListForItems = PeopleList(context: context)
-        peopleListForItems.nameOfPerson = nameOfPerson
-        ItemEntity.addToItemToPerson(peopleListForItems)
-        //save to container/core data
-        do {
-            try context.save()
-        } catch {
-            print(error)
-        }
-    }*/
-    
-    
 }
 
 extension PeopleList
@@ -275,10 +249,6 @@ func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: St
     let fetchItems:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
     let fetchItemsPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
     fetchItems.predicate = fetchItemsPredicate
-    //Creates fetch request for all people that are under the items fetched
-    let fetchPeopleList: NSFetchRequest<PeopleList> = PeopleList.fetchRequest()
-    let fetchPeopleListPredicate = NSPredicate(format: "personToItems.itemName == %@", itemName)
-    fetchPeopleList.predicate = fetchPeopleListPredicate
     //Does the actual fetching of data
     do {
         let results = try context.fetch(fetchItems)
@@ -289,48 +259,84 @@ func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: St
         }
         
         //Accesses the relationship between the item and the people related to that item (people who will pay for that item)
-        let itemPeopleList: NSSet = filteredItemResults.first!.itemToPerson!
+        let itemPeopleList: NSSet = filteredItemResults.first!.payerOfItem!
         
-        //Filters the itemPeopleList to figure out if the person we're looking for is within the list
-        let peopleResult = itemPeopleList.filtered(using: fetchPeopleListPredicate)
+        //Creates fetch predicate for all people that are under the items fetched
+        let fetchPeopleListPredicate = NSPredicate(format: "itemToPayFor.itemName == %@", itemName)
+        //Filters the itemPeopleList to figure out if the person we're looking for is within the list (also converts to a NSSet)
+        let peopleResult = itemPeopleList.filtered(using: fetchPeopleListPredicate) as NSSet
         
-        print("********************")
-        //print(filteredItemResults)
-        print("********************")
-        print(peopleResult)
-        print("____________________")
+        //Creates fetch predicate to find specific person within the list
+        let fetchSpecificPayer = NSPredicate(format: "nameOfPayer == %@", nameOfPerson)
         
-        if (peopleResult.count > 0) {
+        //Filters the payer list to check if the person we are looking for is within the list
+        let payerResult = peopleResult.filtered(using: fetchSpecificPayer)
+        
+        
+        //print("********************")
+        //print(peopleResult)
+        //print("********************")
+        print(payerResult.count)
+        //print("____________________")
+        
+        if (payerResult.count > 0) {
             return true
         }
         else {
             return false
         }
-    
-        /*
-        //peopleResult is the result of people who will/must pay for the specific item
-        let peopleResult = try context.fetch(fetchPeopleList)
-        print(peopleResult)
-        
-        //Filters the results
-        let filteredresults = peopleResult.filter {
-            $0.nameOfPerson!.contains(nameOfPerson)
-        }
-        
-        //Returns true or false depending on if the name is found or not
-        if (filteredresults.count > 0) {
-            print("Filtered Results Count: " + String(filteredresults.count))
-            return true
-        }
-        else {
-            return false
-        }*/
     }
     catch {
         print(error)
     }
 
     return false
+}
+
+//Function that deletes a specific entity from a relationship
+func deletePayerOfItemRelationship(with nameOfPerson: String, with itemName: String, with receiptName: String) {
+    //Create the context reference to the container
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //Creates fetch request for all items
+    let fetchItems:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
+    let fetchItemsPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
+    fetchItems.predicate = fetchItemsPredicate
+    //Does the actual fetching of data
+    do {
+        let results = try context.fetch(fetchItems)
+        
+        //Filters the items to get the specific item we're looking for
+        let filteredItemResults = results.filter {
+            $0.itemName!.contains(itemName)
+        }
+        
+        //Accesses the relationship between the item and the people related to that item (people who will pay for that item)
+        let itemPeopleList: NSSet = filteredItemResults.first!.payerOfItem!
+        
+        //Creates fetch predicate for all people that are under the items fetched
+        let fetchPeopleListPredicate = NSPredicate(format: "itemToPayFor.itemName == %@", itemName)
+        //Filters the itemPeopleList to figure out if the person we're looking for is within the list (also converts to a NSSet)
+        let peopleResult = itemPeopleList.filtered(using: fetchPeopleListPredicate) as NSSet
+        
+        //Creates fetch predicate to find specific person within the list
+        let fetchSpecificPayer = NSPredicate(format: "nameOfPayer == %@", nameOfPerson)
+        
+        //Filters the payer list to check if the person we are looking for is within the list
+        let payerResult = peopleResult.filtered(using: fetchSpecificPayer) as NSSet
+        
+        
+        //Fetches the item to be whose relationship will be removed
+        var item = ReceiptItems(context: context)
+        item = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
+        
+        item.removeFromPayerOfItem(payerResult)
+        
+        
+        
+    } catch {
+        print(error)
+    }
 }
 
 

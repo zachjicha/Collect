@@ -5,6 +5,10 @@
         <relationship name="personToItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReceiptItems" inverseName="itemToPerson" inverseEntity="ReceiptItems" syncable="YES"/>
         <relationship name="personToReceipt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="receiptToPerson" inverseEntity="Receipt" syncable="YES"/>
     </entity>
+    <entity name="PeoplePaying" representedClassName="PeoplePaying" syncable="YES" codeGenerationType="class">
+        <attribute name="nameOfPayer" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="itemToPayFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReceiptItems" inverseName="payerOfItem" inverseEntity="ReceiptItems" syncable="YES"/>
+    </entity>
     <entity name="Receipt" representedClassName="Receipt" syncable="YES">
         <attribute name="receiptName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="itemsOnReceipt" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ReceiptItems" inverseName="itemReceipt" inverseEntity="ReceiptItems" syncable="YES"/>
@@ -15,10 +19,12 @@
         <attribute name="itemPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="itemReceipt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="itemsOnReceipt" inverseEntity="Receipt" syncable="YES"/>
         <relationship name="itemToPerson" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeopleList" inverseName="personToItems" inverseEntity="PeopleList" syncable="YES"/>
+        <relationship name="payerOfItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PeoplePaying" inverseName="itemToPayFor" inverseEntity="PeoplePaying" syncable="YES"/>
     </entity>
     <elements>
         <element name="PeopleList" positionX="-22.79296875" positionY="-211.69140625" width="128" height="90"/>
         <element name="Receipt" positionX="-303.0390625" positionY="-228.63671875" width="128" height="90"/>
-        <element name="ReceiptItems" positionX="-117.5703125" positionY="109.7578125" width="128" height="105"/>
+        <element name="ReceiptItems" positionX="-117.5703125" positionY="109.7578125" width="128" height="120"/>
+        <element name="PeoplePaying" positionX="-162" positionY="-72" width="128" height="75"/>
     </elements>
 </model>
