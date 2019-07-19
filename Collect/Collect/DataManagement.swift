@@ -72,6 +72,34 @@ extension Receipt {
 //Creates an extension for receipt items
 extension ReceiptItems {
     
+    //Function that returns a specific Item entity
+    class func FetchSingleReceiptItem(with receiptName: String, with itemName: String) -> ReceiptItems {
+        
+        var ReceiptItem:[ReceiptItems] = []
+        
+        //Fetch 1 item within the a list of receipts
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //Creates fetch request for all items
+        let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
+        let myPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
+        myFetch.predicate = myPredicate
+        
+        //Does the search and filters results to a single item
+        do {
+            let result = try context.fetch(myFetch)
+            print(result.count)
+            let filteredresults = result.filter {
+                $0.itemName!.contains(itemName)
+            }
+            ReceiptItem = filteredresults
+        }
+        catch {
+            print(error)
+        }
+        return ReceiptItem.first!        
+    }
+    
     //Function that fetches the receipt items based on the receipt name given and returns the receipt item entity array
     //Returns an array of ReceiptItems
     class func FetchReceiptItems(with receiptName: String) -> [ReceiptItems]? {
@@ -237,35 +265,43 @@ func CheckDuplicity (receiptName: String) -> Bool {
 }
 
 //Function that checks to see if a person is in a certain item's people list
-func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: String) {
-    
+func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: String) -> Bool{
+    //Create the context reference to the container
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
-    //First, fetch relationship from Receipt to Items
-    var AllItems:[ReceiptItems] = []
-    
+
     //Creates fetch request for all items
     let fetchItems:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
     let fetchItemsPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
     fetchItems.predicate = fetchItemsPredicate
     
+    let fetchPeopleList: NSFetchRequest<PeopleList> = PeopleList.fetchRequest()
+    let fetchPeopleListPredicate = NSPredicate(format: "personToItems.itemName == %@", itemName)
+    fetchPeopleList.predicate = fetchPeopleListPredicate
     //Does the actual fetching of data
     do {
         let result = try context.fetch(fetchItems)
-        print(result.count)
-        AllItems = result
+        //peopleResult is the result of people who will/must pay for the specific item
+        let peopleResult = try context.fetch(fetchPeopleList)
+        
+        //Filters the results
+        let filteredresults = peopleResult.filter {
+            $0.nameOfPerson!.contains(nameOfPerson)
+        }
+        
+        //Returns true or false depending on if the name is found or not
+        if (filteredresults.count > 0) {
+            return true
+        }
+        else {
+            return false
+        }
     }
     catch {
         print(error)
     }
-    
     //Now, fetch relationship from Items to Receipt
-    
-    
-    
-    
-    
+
+    return false
 }
 
 

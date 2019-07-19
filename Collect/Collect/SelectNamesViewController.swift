@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -62,27 +63,42 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         let cellSwitch = UISwitch(frame: .zero)
         
         //If statement to check and see if the name is within the list of ppl associated with the item
-        
-        cellSwitch.setOn(false, animated: true)
+        if (CheckItemPeopleList(receiptName: receiptName, itemName: itemName, nameOfPerson: person.nameOfPerson!) == true) {
+            cellSwitch.setOn(true, animated: true)
+        }
+        else {
+            cellSwitch.setOn(false, animated: true)
+        }
+        //Sets the cell switch properties
         cellSwitch.tag = indexPath.row // for detect which row switch Changed
         cellSwitch.addTarget(self, action: #selector(self.SwitchToggleDelection(_:)), for: .valueChanged)
         cell.accessoryView = cellSwitch
         
-        
-        
         return cell
     }
     
-    //Function that detects if the switches are toggled or not
     @objc func SwitchToggleDelection(_ sender : UISwitch!){
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //Creates item variable for the specific item to be changed/modified (in terms of relationship)
+        var item = ReceiptItems(context: context)
+        item = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
+        
+        
         //if On, add the person to the list of ppl associated with the items
         if (sender.isOn == true) {
             print("Detected ON for item: " + itemName + " for " + peopleArray[sender.tag].nameOfPerson!)
+            item.addToItemToPerson(peopleArray[sender.tag])
+            
         }
         //If off, remove the person from the list of ppl associated with the items
         else {
             print("DETECTED OFF for itm: " + itemName + " for " + peopleArray[sender.tag].nameOfPerson!)
+            item.removeFromItemToPerson(peopleArray[sender.tag])
         }
+        
+        CheckItemPeopleList(receiptName: receiptName, itemName: itemName, nameOfPerson: peopleArray[sender.tag].nameOfPerson!)
         
     }
    
