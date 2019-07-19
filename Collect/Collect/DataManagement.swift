@@ -282,9 +282,35 @@ func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: St
     //Does the actual fetching of data
     do {
         let results = try context.fetch(fetchItems)
-        print(results)
+        
+        //Filters the items to get the specific item we're looking for
+        let filteredItemResults = results.filter {
+            $0.itemName!.contains(itemName)
+        }
+        
+        //Accesses the relationship between the item and the people related to that item (people who will pay for that item)
+        let itemPeopleList: NSSet = filteredItemResults.first!.itemToPerson!
+        
+        //Filters the itemPeopleList to figure out if the person we're looking for is within the list
+        let peopleResult = itemPeopleList.filtered(using: fetchPeopleListPredicate)
+        
+        print("********************")
+        //print(filteredItemResults)
+        print("********************")
+        print(peopleResult)
+        print("____________________")
+        
+        if (peopleResult.count > 0) {
+            return true
+        }
+        else {
+            return false
+        }
+    
+        /*
         //peopleResult is the result of people who will/must pay for the specific item
         let peopleResult = try context.fetch(fetchPeopleList)
+        print(peopleResult)
         
         //Filters the results
         let filteredresults = peopleResult.filter {
@@ -298,7 +324,7 @@ func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: St
         }
         else {
             return false
-        }
+        }*/
     }
     catch {
         print(error)

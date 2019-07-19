@@ -109,6 +109,6 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         } catch {
             print(error)
         }
-        viewDidLoad() //refreshes data
+        //viewDidLoad() //refreshes data
     }
 }
