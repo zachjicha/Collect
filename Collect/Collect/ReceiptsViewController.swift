@@ -74,8 +74,6 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
             //Deletes the data and reloads the entire table view
             DeleteReceiptData(NameOfItem: AllReceipts[indexPath.row].receiptName!)
             viewDidLoad()
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
     
