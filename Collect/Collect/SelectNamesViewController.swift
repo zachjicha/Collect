@@ -84,6 +84,7 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         //Creates item variable for the specific item to be changed/modified (in terms of relationship)
         var item = ReceiptItems(context: context)
         item = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
+        print(item)
         
         
         //if On, add the person to the list of ppl associated with the items
@@ -91,6 +92,11 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
             print("Detected ON for item: " + itemName + " for " + peopleArray[sender.tag].nameOfPerson!)
             item.addToItemToPerson(peopleArray[sender.tag])
             
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
         }
         //If off, remove the person from the list of ppl associated with the items
         else {
@@ -98,9 +104,11 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
             item.removeFromItemToPerson(peopleArray[sender.tag])
         }
         
-        CheckItemPeopleList(receiptName: receiptName, itemName: itemName, nameOfPerson: peopleArray[sender.tag].nameOfPerson!)
-        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+        viewDidLoad() //refreshes data
     }
-   
-
 }

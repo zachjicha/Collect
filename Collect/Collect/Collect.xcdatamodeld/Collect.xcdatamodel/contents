@@ -8,7 +8,7 @@
     <entity name="Receipt" representedClassName="Receipt" syncable="YES">
         <attribute name="receiptName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="itemsOnReceipt" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ReceiptItems" inverseName="itemReceipt" inverseEntity="ReceiptItems" syncable="YES"/>
-        <relationship name="receiptToPerson" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeopleList" inverseName="personToReceipt" inverseEntity="PeopleList" syncable="YES"/>
+        <relationship name="receiptToPerson" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PeopleList" inverseName="personToReceipt" inverseEntity="PeopleList" syncable="YES"/>
     </entity>
     <entity name="ReceiptItems" representedClassName="ReceiptItems" syncable="YES">
         <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +18,7 @@
     </entity>
     <elements>
         <element name="PeopleList" positionX="-22.79296875" positionY="-211.69140625" width="128" height="90"/>
-        <element name="Receipt" positionX="-303.0390625" positionY="-228.63671875" width="128" height="88"/>
+        <element name="Receipt" positionX="-303.0390625" positionY="-228.63671875" width="128" height="90"/>
         <element name="ReceiptItems" positionX="-117.5703125" positionY="109.7578125" width="128" height="105"/>
     </elements>
 </model>

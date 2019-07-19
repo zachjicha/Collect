@@ -127,13 +127,14 @@ extension ReceiptItems {
     
     
     //Function that adds people to an item
-    class func addPersonToItem (itemName: String, nameOfPerson: String) {
+    /*class func addPersonToItem (itemName: String, nameOfPerson: String) {
      
         //context variable for fetching and storing data
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
      
         //Creates ReceiptItem Entity Context
         let ItemEntity = ReceiptItems(context: context)
+        ItemEntity = ReceiptItems.FetchSingleReceiptItem(with: receiptName, with: itemName)
         ItemEntity.itemName = itemName
      
         //Creates a relationshiop between item and person
@@ -146,7 +147,7 @@ extension ReceiptItems {
         } catch {
             print(error)
         }
-    }
+    }*/
     
     
 }
@@ -265,6 +266,7 @@ func CheckDuplicity (receiptName: String) -> Bool {
 }
 
 //Function that checks to see if a person is in a certain item's people list
+//ISSUE:  Not correctly fetching the data from relationship
 func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: String) -> Bool{
     //Create the context reference to the container
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -273,13 +275,14 @@ func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: St
     let fetchItems:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
     let fetchItemsPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
     fetchItems.predicate = fetchItemsPredicate
-    
+    //Creates fetch request for all people that are under the items fetched
     let fetchPeopleList: NSFetchRequest<PeopleList> = PeopleList.fetchRequest()
     let fetchPeopleListPredicate = NSPredicate(format: "personToItems.itemName == %@", itemName)
     fetchPeopleList.predicate = fetchPeopleListPredicate
     //Does the actual fetching of data
     do {
-        let result = try context.fetch(fetchItems)
+        let results = try context.fetch(fetchItems)
+        print(results)
         //peopleResult is the result of people who will/must pay for the specific item
         let peopleResult = try context.fetch(fetchPeopleList)
         
@@ -290,6 +293,7 @@ func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: St
         
         //Returns true or false depending on if the name is found or not
         if (filteredresults.count > 0) {
+            print("Filtered Results Count: " + String(filteredresults.count))
             return true
         }
         else {
@@ -299,7 +303,6 @@ func CheckItemPeopleList(receiptName: String, itemName: String, nameOfPerson: St
     catch {
         print(error)
     }
-    //Now, fetch relationship from Items to Receipt
 
     return false
 }
