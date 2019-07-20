@@ -155,11 +155,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 case .success(let value):
                     let json = JSON(value)
                     //print(json["amounts"])
-                    // print(json)
+                    //print(json)
+                    
+                    //Gets the total amount and the tax amount
                     let totalAmount = json["totalAmount"]["data"].double
                     let taxAmount = json["taxAmount"]["data"].double
-                    print("TOTAL AMOUNT: \(String(describing: totalAmount))")
-                    print("TAX AMOUNT: \(String(describing: taxAmount))")
+                    
+                    //Gets the tax percent of the receipt based on totalAmount and taxAmount
+                    let taxPercent = Double(taxAmount!)/Double(totalAmount!)
+                    
+                    //print("TOTAL AMOUNT: \(String(describing: totalAmount))")
+                    //print("TAX AMOUNT: \(String(describing: taxAmount))")
                     if let amounts = json["amounts"].array
                         
                     {
@@ -185,23 +191,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             
                             print(item.itemName!)
                         }
-                        //Gets the total cost from taggun response json
-                        /*
-                         print("-------------------")
-                         print("WILL NOW TRY TO PRINT TOTAL COST")
-                         if let getTotalAmount = json["totalAmount"].array {
-                         for JsonItem in getTotalAmount {
-                         let subtotal = JsonItem["data"].string
-                         print(subtotal!)
-                         }
-                         }
-                         //print(totalcost)
-                         print("-------------------")
-                         */
+
                         
                         //Saves item content to local storage
-                        //Paases array
-                        SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items)
+                        //Passes array of Items
+                        SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items, taxPercent: taxPercent)
                     }
                     
                 case .failure(let error):

@@ -161,6 +161,13 @@ extension ReceiptItems {
             return false //returns false if name does not exist within the list
         }
     }
+    
+    //Function that gets the tax % of the receipt that this item is related to
+    func GetTaxPercent () -> Double {
+        //Retrieves receipt tax percent
+        let receiptTaxPercent = (self.itemReceipt)?.taxPercent
+        return receiptTaxPercent!
+    }
 }
 
 extension PeopleList
@@ -211,7 +218,7 @@ func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
 //Function for saving full receipt Data using
 //(not part of the Receipt and ReceiptItems Extension)
 //Takes name of receipt and an item struct array as inputs
-func SaveAllReceiptData (NameOfReceipt: String, Items: [Item]) {
+func SaveAllReceiptData (NameOfReceipt: String, Items: [Item], taxPercent: Double) {
     
     //context variable for fetching and storing data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -219,6 +226,7 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item]) {
     //Creates Receipt Entity Context
     let ReceiptName = Receipt(context: context)
     ReceiptName.receiptName = NameOfReceipt
+    ReceiptName.taxPercent = taxPercent
     
     //Loops through all items to create a relaitonsip with the receipt
     for item in Items {

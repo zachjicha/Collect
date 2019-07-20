@@ -117,7 +117,8 @@ import UIKit
             //Divide the split cost among each splitter
             for (index, person) in peopleArray.enumerated() {
                 if (item.CheckItemPeopleList(nameOfPerson: person.nameOfPerson!) == true) {
-                    moneyOwed[index] += item.itemPrice/Double(numberOfSplitters)
+                    moneyOwed[index] += (item.itemPrice + (item.itemPrice * item.GetTaxPercent()))/Double(numberOfSplitters)
+                    //item.GetTaxPercent()
                 }
             }
         }

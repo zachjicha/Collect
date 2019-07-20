@@ -2,7 +2,7 @@
 //  Receipt+CoreDataProperties.swift
 //  Collect
 //
-//  Created by Brian Thyfault on 7/17/19.
+//  Created by Rizzian Tuazon on 7/20/19.
 //  Copyright © 2019 The Collective. All rights reserved.
 //
 //
@@ -18,6 +18,7 @@ extension Receipt {
     }
 
     @NSManaged public var receiptName: String?
+    @NSManaged public var taxPercent: Double
     @NSManaged public var itemsOnReceipt: NSOrderedSet?
     @NSManaged public var receiptToPerson: NSSet?
 

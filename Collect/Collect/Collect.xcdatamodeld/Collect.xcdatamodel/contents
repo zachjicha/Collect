@@ -11,6 +11,7 @@
     </entity>
     <entity name="Receipt" representedClassName="Receipt" syncable="YES">
         <attribute name="receiptName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taxPercent" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="itemsOnReceipt" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ReceiptItems" inverseName="itemReceipt" inverseEntity="ReceiptItems" syncable="YES"/>
         <relationship name="receiptToPerson" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PeopleList" inverseName="personToReceipt" inverseEntity="PeopleList" syncable="YES"/>
     </entity>
@@ -23,8 +24,8 @@
     </entity>
     <elements>
         <element name="PeopleList" positionX="-22.79296875" positionY="-211.69140625" width="128" height="90"/>
-        <element name="Receipt" positionX="-303.0390625" positionY="-228.63671875" width="128" height="88"/>
-        <element name="ReceiptItems" positionX="-117.5703125" positionY="109.7578125" width="128" height="120"/>
         <element name="PeoplePaying" positionX="-153" positionY="-63" width="128" height="75"/>
+        <element name="Receipt" positionX="-303.0390625" positionY="-228.63671875" width="128" height="105"/>
+        <element name="ReceiptItems" positionX="-117.5703125" positionY="109.7578125" width="128" height="120"/>
     </elements>
 </model>

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15BF53EF22E03EA900BB1C22 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */; };
-		15BF53F022E03EA900BB1C22 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */; };
 		15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */; };
 		15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */; };
 		15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */; };
@@ -28,11 +26,11 @@
 		ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */; };
 		EDFCA73522E2D450007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA73322E2D450007ED8BA /* ReceiptItems+CoreDataClass.swift */; };
 		EDFCA73622E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA73422E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift */; };
+		EDFCA73922E3B5CA007ED8BA /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA73722E3B5C9007ED8BA /* Receipt+CoreDataClass.swift */; };
+		EDFCA73A22E3B5CA007ED8BA /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFCA73822E3B5C9007ED8BA /* Receipt+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
-		15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemViewController.swift; sourceTree = "<group>"; };
 		15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNamesViewController.swift; sourceTree = "<group>"; };
 		15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSwitchesTableViewCell.swift; sourceTree = "<group>"; };
@@ -56,6 +54,8 @@
 		ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		EDFCA73322E2D450007ED8BA /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EDFCA73422E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EDFCA73722E3B5C9007ED8BA /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EDFCA73822E3B5C9007ED8BA /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +81,10 @@
 		15BF540422E0E71000BB1C22 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				EDFCA73722E3B5C9007ED8BA /* Receipt+CoreDataClass.swift */,
+				EDFCA73822E3B5C9007ED8BA /* Receipt+CoreDataProperties.swift */,
 				EDFCA73322E2D450007ED8BA /* ReceiptItems+CoreDataClass.swift */,
 				EDFCA73422E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift */,
-				15BF53EA22E03EA900BB1C22 /* Receipt+CoreDataClass.swift */,
-				15BF53EB22E03EA900BB1C22 /* Receipt+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -266,19 +266,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BF540322E0DD4300BB1C22 /* HomeScreenViewController.swift in Sources */,
+				EDFCA73922E3B5CA007ED8BA /* Receipt+CoreDataClass.swift in Sources */,
 				15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */,
 				A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */,
+				EDFCA73A22E3B5CA007ED8BA /* Receipt+CoreDataProperties.swift in Sources */,
 				ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */,
 				ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */,
 				ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */,
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
 				15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */,
-				15BF53EF22E03EA900BB1C22 /* Receipt+CoreDataClass.swift in Sources */,
 				EDFCA73622E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
 				15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */,
 				EDFCA73522E2D450007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */,
-				15BF53F022E03EA900BB1C22 /* Receipt+CoreDataProperties.swift in Sources */,
 				A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,
 			);
