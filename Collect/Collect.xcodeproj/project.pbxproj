@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */; };
 		A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */; };
-		A4B1DF5B22DC48A000E8DBEF /* AddNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5A22DC48A000E8DBEF /* AddNameController.swift */; };
 		EB6F20C85A21879ED50E72F3 /* Pods_Collect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */; };
 		ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */; };
 		ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B0122D6B68300CD6B01 /* ViewController.swift */; };
@@ -20,17 +19,12 @@
 		ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */; };
 		ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1A22D82A3800CD6B01 /* DataManagement.swift */; };
 		ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */; };
-		ED972B2A22D921FE00CD6B01 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2622D921FE00CD6B01 /* Receipt+CoreDataClass.swift */; };
-		ED972B2B22D921FE00CD6B01 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2722D921FE00CD6B01 /* Receipt+CoreDataProperties.swift */; };
-		ED972B2C22D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2822D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift */; };
-		ED972B2D22D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2922D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		86EFF462AFFFE55B8A93B41D /* Pods-Collect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.release.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.release.xcconfig"; sourceTree = "<group>"; };
 		A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
-		A4B1DF5A22DC48A000E8DBEF /* AddNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNameController.swift; sourceTree = "<group>"; };
 		A885A0ACCEF4C8A8E96F62D2 /* Pods-Collect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.debug.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.debug.xcconfig"; sourceTree = "<group>"; };
 		E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFC22D6B68300CD6B01 /* Collect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,10 +38,6 @@
 		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
-		ED972B2622D921FE00CD6B01 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
-		ED972B2722D921FE00CD6B01 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ED972B2822D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataClass.swift"; sourceTree = "<group>"; };
-		ED972B2922D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +90,6 @@
 		ED972AFE22D6B68300CD6B01 /* Collect */ = {
 			isa = PBXGroup;
 			children = (
-				ED972B2622D921FE00CD6B01 /* Receipt+CoreDataClass.swift */,
-				ED972B2722D921FE00CD6B01 /* Receipt+CoreDataProperties.swift */,
-				ED972B2822D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift */,
-				ED972B2922D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift */,
 				ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */,
 				ED972B0122D6B68300CD6B01 /* ViewController.swift */,
 				ED972B0322D6B68300CD6B01 /* Main.storyboard */,
@@ -116,7 +102,6 @@
 				ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */,
 				A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */,
 				A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */,
-				A4B1DF5A22DC48A000E8DBEF /* AddNameController.swift */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -239,16 +224,11 @@
 				A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */,
 				ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */,
 				ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */,
-				ED972B2A22D921FE00CD6B01 /* Receipt+CoreDataClass.swift in Sources */,
 				ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */,
-				ED972B2B22D921FE00CD6B01 /* Receipt+CoreDataProperties.swift in Sources */,
-				ED972B2D22D921FE00CD6B01 /* ReceiptItems+CoreDataProperties.swift in Sources */,
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
-				A4B1DF5B22DC48A000E8DBEF /* AddNameController.swift in Sources */,
 				A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,
-				ED972B2C22D921FE00CD6B01 /* ReceiptItems+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
