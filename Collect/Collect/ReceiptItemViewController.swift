@@ -49,7 +49,6 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         let receiptItem = AllItems[indexPath.row]
         cell.textLabel!.text = receiptItem.itemName!
         cell.detailTextLabel!.text = String(receiptItem.itemPrice)
-        //TODO ADD COST HERE AS SUBTITLE
         return cell
     }
     

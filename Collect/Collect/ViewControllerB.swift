@@ -13,8 +13,9 @@ import UIKit
     // creates an array for the list of names
     var recipient: [Names] = []
     var receiptName: String = ""
-    
-    var peopleArray : [PeopleList] = []
+    var AllItems:[ReceiptItems] = []
+    var peopleArray:[PeopleList] = []
+    var moneyOwed:[Double] = []
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -28,18 +29,20 @@ import UIKit
     @IBAction func sharePressed(_ sender: Any) {
         
         var shareString = ""
-        let cost = 5
         
         for (index, person) in peopleArray.enumerated() {
-            //Replace cost with each person's amount owed
-            shareString += person.nameOfPerson! + ": $" + String(cost)
             
-            if(index != peopleArray.count-1) {
-                shareString += "\n"
+            //If the person owes no money, no need to tell them that
+            if(moneyOwed[index] == 0) {
+                continue
             }
             
+            //Replace cost with each person's amount owed
+            shareString += String(format: "%@: $%.2f\n", person.nameOfPerson!, moneyOwed[index])
         }
         
+        //Remove the last newline character
+        shareString.remove(at: shareString.index(before: shareString.endIndex))
         
         let activityController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
         
@@ -48,11 +51,13 @@ import UIKit
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath)
         let person = peopleArray[indexPath.row]
         
         
         cell.textLabel!.text = person.nameOfPerson!
+        //Set the right detail text to the amount owed for that person
+        cell.detailTextLabel!.text = String(format: "$%.2f", moneyOwed[indexPath.row])
         
         return cell
     }
@@ -69,8 +74,55 @@ import UIKit
         }
         print("SUCCESS")
         peopleArray = peopleItems
+        
         print(peopleArray.count)
     }
+    
+    func fetchData(receiptName: String) {
+        //Fetches the specific data
+        guard let receiptItemsObj = ReceiptItems.FetchReceiptItems(with: receiptName)
+            //If data is not found, returns no data found
+            else {
+                print("Data Not Found")
+                return
+        }
+        print("SUCCESS")
+        AllItems = receiptItemsObj
+    }
+    
+    func splitItems() {
+        
+        //Reset the array to have the same number of entries as people
+        moneyOwed = []
+        for _ in peopleArray {
+            moneyOwed.append(0)
+        }
+        
+        //Loop through each item in the receipt
+        for item in AllItems {
+            
+            //Count how many people are splitting the item
+            var numberOfSplitters = 0
+            for person in peopleArray {
+                if (item.CheckItemPeopleList(nameOfPerson: person.nameOfPerson!) == true) {
+                    numberOfSplitters += 1
+                }
+            }
+            
+            //If no one is splitting, skip this item
+            if(numberOfSplitters == 0) {
+                continue
+            }
+            
+            //Divide the split cost among each splitter
+            for (index, person) in peopleArray.enumerated() {
+                if (item.CheckItemPeopleList(nameOfPerson: person.nameOfPerson!) == true) {
+                    moneyOwed[index] += item.itemPrice/Double(numberOfSplitters)
+                }
+            }
+        }
+    }
+    
     @objc func addMethod()
     {
         let alert = UIAlertController(title: "Add Receipient", message: "Enter their name", preferredStyle: .alert)
@@ -85,8 +137,13 @@ import UIKit
                 {
                     addPerson(nameOfPerson: name, nameOfReceipt: self.receiptName)
                 }
+                
+                //Add an entry to money owed for the new person
+                self.moneyOwed.append(0)
+                
                 self.fetchPeople(receiptName: self.receiptName)
                 self.tableView.reloadData()
+                
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -101,7 +158,15 @@ import UIKit
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMethod))
         self.title = "Receipients"
         fetchPeople(receiptName: receiptName)
+        fetchData(receiptName: receiptName)
+        splitItems()
         self.tableView.reloadData()
+    }
+    
+    //Called whenever the view appears, used for refreshing when popping off view controller stack
+    override func viewDidAppear(_ animated: Bool) {
+        //Refresh the view
+        self.viewDidLoad()
     }
     
     //Override function for passing data from one ViewController to another
