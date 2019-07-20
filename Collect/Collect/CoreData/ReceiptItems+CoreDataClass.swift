@@ -2,7 +2,7 @@
 //  ReceiptItems+CoreDataClass.swift
 //  Collect
 //
-//  Created by Brian Thyfault on 7/17/19.
+//  Created by Rizzian Tuazon on 7/18/19.
 //  Copyright © 2019 The Collective. All rights reserved.
 //
 //

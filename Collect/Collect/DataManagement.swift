@@ -19,6 +19,7 @@ var context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
 //Extension for the receipt entity
 extension Receipt {
     
+    //***********************DO NOT USE THESE FUNCTIONS INDIVUDUALLY**********************************
     //Function that returns Receipt data through the use of the receipt name (1 receipt only) [USED FOR DELETING]
     class func FetchData (with receiptName: String) -> Receipt? {
         let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
@@ -36,6 +37,22 @@ extension Receipt {
         }
     }
     
+    //A function that deletes the receipt
+    func deleteReceipt() {
+        //Does the actual deleting
+        context.delete(self)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    // update change name of the receipt
+    func updateData(with name: String) {
+        self.receiptName = name
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+//***************************************************************************************************
+    
+    
     //Class function that returns an array of Receipt Entities
     class func FetchListOfReceipts () -> [Receipt]? {
         
@@ -49,14 +66,6 @@ extension Receipt {
             print(error)
         }
         return AllReceipts
-    }
-    
-    
-    //A function that deletes the receipt
-    func deleteReceipt() {
-        //Does the actual deleting
-        context.delete(self)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
 }
 
@@ -138,7 +147,7 @@ func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
 //Function for saving full receipt Data using
 //(not part of the Receipt and ReceiptItems Extension)
 //Takes name of receipt and an item struct array as inputs
-func SaveAllReceiptData (NameOfReceipt: String, Items: Item) {
+func SaveAllReceiptData (NameOfReceipt: String, Items: [Item]) {
     
     //context variable for fetching and storing data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -147,13 +156,14 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: Item) {
     let ReceiptName = Receipt(context: context)
     ReceiptName.receiptName = NameOfReceipt
     
-    //Create NSOrderedSet object (array) of all items
-    //let allReceiptItems = NSOrderedSet(array: Items)
-    let itemsInReceipt = ReceiptItems(context: context)
-    itemsInReceipt.itemName = Items.itemName
-    ReceiptName.addToItemsOnReceipt(itemsInReceipt)
-    
-    
+    //Loops through all items to create a relaitonsip with the receipt
+    for item in Items {
+        let itemsInReceipt = ReceiptItems(context: context)
+        itemsInReceipt.itemName = item.itemName
+        itemsInReceipt.itemPrice = item.totalAmount!
+        print("Item: " + itemsInReceipt.itemName! + "\nPrice: " + String(itemsInReceipt.itemPrice))
+        ReceiptName.addToItemsOnReceipt(itemsInReceipt)
+    }
     //save to container/core data
     do {
         try context.save()
@@ -170,6 +180,36 @@ func DeleteReceiptData (NameOfItem: String) {
     guard let item = Receipt.FetchData(with: NameOfItem) else { return }
     item.deleteReceipt()
 }
+
+//Function that updates the receipt data (for midifications)
+    //This is limited to receipt name so far
+func updateReceiptData (receiptName: String,newReceiptName: String) {
+    guard let item = Receipt.FetchData(with: receiptName) else { return }
+    item.updateData(with: newReceiptName)
+}
+
+//Checks if receipt name already exists within core database
+//Return results:  True - The name already exists | false - name does not exist
+func CheckDuplicity (receiptName: String) -> Bool {
+    
+    let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+    
+    //NSPredicate to specify arguments for what to look up
+    request.predicate = NSPredicate(format: "receiptName = %@", receiptName)
+    
+    //Attempts to find requested attribute/entities
+    do {
+        let result = try context.fetch(request)
+        let isEqual = (receiptName == result.first?.receiptName)
+        return isEqual //returns a boolean
+        
+    } catch let error {
+        print(error.localizedDescription)
+        return false
+    }
+    return true //place holder so xcode wont complain (code will never get to this line of code during execution)
+}
+
 
 func addPerson(nameOfPerson : String, nameOfReceipt : String)
 {
