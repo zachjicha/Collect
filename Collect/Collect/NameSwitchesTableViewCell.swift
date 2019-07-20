@@ -23,5 +23,9 @@ class NameSwitchesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func switchValueChanged (sender: UISwitch) {
+        
+    }
 
 }

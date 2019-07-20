@@ -443,6 +443,18 @@
                                     <segue destination="ehz-OE-zvf" kind="show" identifier="ShowItemList" id="Gcm-pv-WBk"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBn-ba-WW6">
+                                <rect key="frame" x="0.0" y="646" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem id="46B-jf-uMF"/>
+                                    <barButtonItem title="Share" id="pki-qb-mEg">
+                                        <connections>
+                                            <action selector="sharePressed:" destination="eSi-Aw-jGs" id="O0D-eM-UFl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.99952584509999998" green="0.0" blue="0.1635358334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

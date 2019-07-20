@@ -25,6 +25,28 @@ import UIKit
         return peopleArray.count
     }
 
+    @IBAction func sharePressed(_ sender: Any) {
+        
+        var shareString = ""
+        let cost = 5
+        
+        for (index, person) in peopleArray.enumerated() {
+            //Replace cost with each person's amount owed
+            shareString += person.nameOfPerson! + ": $" + String(cost)
+            
+            if(index != peopleArray.count-1) {
+                shareString += "\n"
+            }
+            
+        }
+        
+        
+        let activityController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+        
+        present(activityController, animated: true, completion: nil)
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath)
         let person = peopleArray[indexPath.row]
