@@ -68,6 +68,15 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    //Function that adds the swipe to delete function to the receipt view
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            //Deletes the data and reloads the entire table view
+            DeleteReceiptData(NameOfItem: AllReceipts[indexPath.row].receiptName!)
+            viewDidLoad()
+        }
+    }
+    
     
     //Function that fetches all data and inputs it into the table view
     //Must be changed to fetch all non-repeating data (this also implies the need to implement a restriction of not having the same receipt names for multiple receipts)

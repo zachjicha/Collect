@@ -48,8 +48,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath)
         let receiptItem = AllItems[indexPath.row]
         cell.textLabel!.text = receiptItem.itemName!
-        cell.detailTextLabel!.text = String(receiptItem
-            .itemPrice)
+        cell.detailTextLabel!.text = String(receiptItem.itemPrice)
         //TODO ADD COST HERE AS SUBTITLE
         return cell
     }
@@ -69,12 +68,19 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         AllItems = receiptItemsObj
     }
     
+    //Segue data transfer for data dependancies within SelectNamesViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowNameSwitches" {
             
             let controller = segue.destination as! SelectNamesViewController
             controller.receiptName = receiptName
             
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                //In Storyboard ItemListViewController, there is a global variable titled "receiptname".  This sends the receipt name to the ItemListViewController so it can load the items of that specific receipt
+                let controller = segue.destination as! SelectNamesViewController
+                controller.itemName = AllItems[indexPath.row].itemName!
+                print("Item Name Being passed: " + controller.itemName)
+            }
         }
     }
     

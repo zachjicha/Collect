@@ -367,30 +367,22 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameSwitchCell" rowHeight="45" id="Ijm-Ky-P4R" customClass="NameSwitchesTableViewCell" customModule="Collect" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameSwitchCell" textLabel="kZb-Fp-ThW" rowHeight="45" style="IBUITableViewCellStyleDefault" id="Ijm-Ky-P4R" customClass="NameSwitchesTableViewCell" customModule="Collect" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ijm-Ky-P4R" id="2uL-YY-Ndx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-rN-ql6">
-                                                    <rect key="frame" x="25" y="11" width="206" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kZb-Fp-ThW">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="44.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IG4-qy-eBZ">
-                                                    <rect key="frame" x="298" y="6" width="49" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                                </switch>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="nameLabel" destination="sO6-rN-ql6" id="s92-A0-P6D"/>
-                                            <outlet property="switchToggle" destination="IG4-qy-eBZ" id="rFy-LO-76m"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

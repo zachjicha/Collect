@@ -2,7 +2,7 @@
 //  ReceiptItems+CoreDataProperties.swift
 //  Collect
 //
-//  Created by Rizzian Tuazon on 7/18/19.
+//  Created by Rizzian Tuazon on 7/19/19.
 //  Copyright © 2019 The Collective. All rights reserved.
 //
 //
@@ -21,6 +21,7 @@ extension ReceiptItems {
     @NSManaged public var itemPrice: Double
     @NSManaged public var itemReceipt: Receipt?
     @NSManaged public var itemToPerson: NSSet?
+    @NSManaged public var payerOfItem: NSSet?
 
 }
 
@@ -38,5 +39,22 @@ extension ReceiptItems {
 
     @objc(removeItemToPerson:)
     @NSManaged public func removeFromItemToPerson(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for payerOfItem
+extension ReceiptItems {
+
+    @objc(addPayerOfItemObject:)
+    @NSManaged public func addToPayerOfItem(_ value: PeoplePaying)
+
+    @objc(removePayerOfItemObject:)
+    @NSManaged public func removeFromPayerOfItem(_ value: PeoplePaying)
+
+    @objc(addPayerOfItem:)
+    @NSManaged public func addToPayerOfItem(_ values: NSSet)
+
+    @objc(removePayerOfItem:)
+    @NSManaged public func removeFromPayerOfItem(_ values: NSSet)
 
 }

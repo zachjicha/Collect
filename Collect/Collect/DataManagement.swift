@@ -50,7 +50,7 @@ extension Receipt {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
-//***************************************************************************************************
+    //***************************************************************************************************
     
     
     //Class function that returns an array of Receipt Entities
@@ -71,6 +71,34 @@ extension Receipt {
 
 //Creates an extension for receipt items
 extension ReceiptItems {
+    
+    //Function that returns a specific Item entity
+    class func FetchSingleReceiptItem(with receiptName: String, with itemName: String) -> ReceiptItems {
+        
+        var ReceiptItem:[ReceiptItems] = []
+        
+        //Fetch 1 item within the a list of receipts
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //Creates fetch request for all items
+        let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
+        let myPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
+        myFetch.predicate = myPredicate
+        
+        //Does the search and filters results to a single item
+        do {
+            let result = try context.fetch(myFetch)
+            print(result.count)
+            let filteredresults = result.filter {
+                $0.itemName!.contains(itemName)
+            }
+            ReceiptItem = filteredresults
+        }
+        catch {
+            print(error)
+        }
+        return ReceiptItem.first!
+    }
     
     //Function that fetches the receipt items based on the receipt name given and returns the receipt item entity array
     //Returns an array of ReceiptItems
@@ -95,6 +123,43 @@ extension ReceiptItems {
             print(error)
         }
         return AllItems
+    }
+    
+    //Function that deletes a specific entity from a relationship
+    func deletePayerOfItemRelationship(with nameOfPerson: String) {
+        
+        //Accesses the relationship pertaining to the people who will pay for this item
+        let itemPayerList: NSSet = self.payerOfItem!
+        
+        //Creates NSPredicate for to look for the person to delete that is associated with this item
+        let fetchPayerPredicate = NSPredicate(format: "nameOfPayer == %@", nameOfPerson)
+        
+        //Filters the payer list to pinpoint the single person we need to delete
+        let payer = itemPayerList.filtered(using: fetchPayerPredicate) as NSSet
+        
+        //Fetches the item to be whose relationship will be removed
+        self.removeFromPayerOfItem(payer)
+    }
+    
+    
+    //Function that checks to see if a person is in a certain item's people list
+    func CheckItemPeopleList(nameOfPerson: String) -> Bool{
+        
+        //Accesses the relationship pertaining to the people who will pay for this item
+        let itemPayerList: NSSet = self.payerOfItem!
+        
+        //Creates NSPredicate for to look for the person to delete that is associated with this item
+        let fetchPayerPredicate = NSPredicate(format: "nameOfPayer == %@", nameOfPerson)
+        
+        //Filters the payer list to pinpoint the single person we need to delete
+        let payer = itemPayerList.filtered(using: fetchPayerPredicate) as NSSet
+        
+        if (payer.count > 0) {
+            return true //returns true if name already exists within the list
+        }
+        else {
+            return false //returns false if name does not exist within the list
+        }
     }
 }
 
@@ -126,10 +191,9 @@ extension PeopleList
     }
 }
 
-
-
 //Function for saving data using core data
 //Will mainly be used for saving receipt references
+//*************THIS FUNCTION IS TO BE DELETED*****************
 func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
     
     //Creates variable for Container access
@@ -172,7 +236,6 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item]) {
     }
 }
 
-
 //Function that will delete the specified receipt (It will also delete item data)
 func DeleteReceiptData (NameOfItem: String) {
     
@@ -182,7 +245,7 @@ func DeleteReceiptData (NameOfItem: String) {
 }
 
 //Function that updates the receipt data (for midifications)
-    //This is limited to receipt name so far
+//This is limited to receipt name so far
 func updateReceiptData (receiptName: String,newReceiptName: String) {
     guard let item = Receipt.FetchData(with: receiptName) else { return }
     item.updateData(with: newReceiptName)
@@ -203,13 +266,12 @@ func CheckDuplicity (receiptName: String) -> Bool {
         let isEqual = (receiptName == result.first?.receiptName)
         return isEqual //returns a boolean
         
-    } catch let error {
+    } catch {
         print(error.localizedDescription)
         return false
     }
     return true //place holder so xcode wont complain (code will never get to this line of code during execution)
 }
-
 
 func addPerson(nameOfPerson : String, nameOfReceipt : String)
 {
@@ -233,14 +295,13 @@ func addPerson(nameOfPerson : String, nameOfReceipt : String)
     }
 }
 
-//DELETE LATER: Function used to dismiss keyboard
+//Allows for the UIViewController to dismiss the keyboard if we tap anywhere else in the screen
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
