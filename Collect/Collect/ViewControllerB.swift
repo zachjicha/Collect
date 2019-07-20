@@ -177,6 +177,7 @@ import UIKit
             
             let controller = segue.destination as! ReceiptItemViewController
             controller.receiptName = receiptName
+            controller.peopleArray = peopleArray
             
         }/*
          if segue.identifier == "AddPeopleVC" {

@@ -27,7 +27,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         //Fetches the necessary data based on the receipt name passed from the previous storyboard/viewController
         self.FetchData(receiptName: receiptName)
         self.tableView.reloadData()
-        print(AllItems)
+        //print(AllItems)
     }
     
     
@@ -48,7 +48,33 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath)
         let receiptItem = AllItems[indexPath.row]
         cell.textLabel!.text = receiptItem.itemName!
-        cell.detailTextLabel!.text = String(receiptItem.itemPrice)
+        
+        //Predefined strings for detailedTextLabel
+        let prependText = "Payers:  "
+        var listOfPayers = ""
+        
+        //For loop that searches for names based on the item to identify if they're a payer or not
+        for person in peopleArray {
+            //If statement to check and see if the person is associated with the item
+            if (AllItems[indexPath.row].CheckItemPeopleList(nameOfPerson: person.nameOfPerson!) == true) {
+                listOfPayers.append("\(person.nameOfPerson!), ")
+            }
+        }
+        //Removes the space and comma at the end
+        listOfPayers = String(listOfPayers.dropLast())
+        listOfPayers = String(listOfPayers.dropLast())
+        
+        //Sets who will pay for that item instead of the item price
+        if (listOfPayers == "") {
+            cell.detailTextLabel!.text = (prependText + "None")
+        }
+        else {
+            cell.detailTextLabel!.text = (prependText + listOfPayers)
+        }
+        
+        //Sets the color of the payers
+        cell.detailTextLabel!.textColor = UIColor.red
+        
         return cell
     }
     
@@ -81,6 +107,12 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
                 print("Item Name Being passed: " + controller.itemName)
             }
         }
+    }
+    
+    //Called whenever the view appears, used for refreshing when popping off view controller stack
+    override func viewDidAppear(_ animated: Bool) {
+        //Refresh the view
+        self.viewDidLoad()
     }
     
 

@@ -162,6 +162,16 @@ extension ReceiptItems {
         }
     }
     
+    //Funciton that returns a list of payer of a specific item (returns an NSSet)
+    /*func getPayerList () -> String {
+        let payerList:[PeoplePaying] = self.payerOfItem!
+        
+        
+        
+        
+        
+    }*/
+    
     //Function that gets the tax % of the receipt that this item is related to
     func GetTaxPercent () -> Double {
         //Retrieves receipt tax percent
