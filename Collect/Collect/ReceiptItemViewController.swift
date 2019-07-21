@@ -28,6 +28,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         self.FetchData(receiptName: receiptName)
         self.tableView.reloadData()
         //print(AllItems)
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     
