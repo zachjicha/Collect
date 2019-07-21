@@ -126,8 +126,7 @@ import SCLAlertView
             //Divide the split cost among each splitter
             for (index, person) in peopleArray.enumerated() {
                 if (item.CheckItemPeopleList(nameOfPerson: person.nameOfPerson!) == true) {
-                    moneyOwed[index] += (item.itemPrice + (item.itemPrice * item.GetTaxPercent()))/Double(numberOfSplitters)
-                    //item.GetTaxPercent()
+                    moneyOwed[index] += (item.itemPrice + (Double(item.itemPrice) * Double(item.GetTaxPercent())))/Double(numberOfSplitters)
                 }
             }
         }

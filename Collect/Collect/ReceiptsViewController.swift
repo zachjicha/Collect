@@ -153,13 +153,16 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                     //print(json)
                     
                     //Variable to keep track of taxPercent (initialized to 0 in case taxAmount is not valid)
-                    var taxPercent: Double = 0
+                    var taxPercent: Double = 0.000
                     
                     //Gets the total amount and the tax amount
                     let totalAmount = json["totalAmount"]["data"].double
                     if let taxAmount = json["taxAmount"]["data"].double {
+                        //Gets the total amount before taxes
+                        let totalAmountWithoutTax = Double(totalAmount!) - Double(taxAmount)
+                        
                         //Gets the tax percent of the receipt based on totalAmount and taxAmount
-                        taxPercent = Double(taxAmount)/Double(totalAmount!)
+                        taxPercent = Double(taxAmount)/Double(totalAmountWithoutTax)
                     }
                     
                     //print("TOTAL AMOUNT: \(String(describing: totalAmount))")
