@@ -21,6 +21,10 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     
     @objc func newReceiptButton()
     {
+        
+        //Re-initializes Items array back to having nothing (previous items stay if you scan 2 or more receipts in 1 session)
+        Items = []
+        
         // Custom alert view
         let alert = SCLAlertView()
         let GetInfo = alert.addTextField("Enter receipt name")
@@ -155,15 +159,17 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                 {
                 case .success(let value):
                     let json = JSON(value)
-                    //print(json["amounts"])
                     //print(json)
+                    
+                    //Variable to keep track of taxPercent (initialized to 0 in case taxAmount is not valid)
+                    var taxPercent: Double = 0
                     
                     //Gets the total amount and the tax amount
                     let totalAmount = json["totalAmount"]["data"].double
-                    let taxAmount = json["taxAmount"]["data"].double
-                    
-                    //Gets the tax percent of the receipt based on totalAmount and taxAmount
-                    let taxPercent = Double(taxAmount ?? 0)/Double(totalAmount!) 
+                    if let taxAmount = json["taxAmount"]["data"].double {
+                        //Gets the tax percent of the receipt based on totalAmount and taxAmount
+                        taxPercent = Double(taxAmount)/Double(totalAmount!)
+                    }
                     
                     //print("TOTAL AMOUNT: \(String(describing: totalAmount))")
                     //print("TAX AMOUNT: \(String(describing: taxAmount))")
