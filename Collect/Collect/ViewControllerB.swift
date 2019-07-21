@@ -169,6 +169,7 @@ import SCLAlertView
         self.tableView.delegate = self
         self.tableView.dataSource = self;
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMethod))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.red
         self.title = "Receipients"
         fetchPeople(receiptName: receiptName)
         fetchData(receiptName: receiptName)
