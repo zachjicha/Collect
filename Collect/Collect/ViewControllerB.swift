@@ -143,8 +143,17 @@ import SCLAlertView
             if let name = alert.textFields?.first?.text
             {
                 print(name)
+                //Checks to see if name entry is empty or not
                 if (name != "")
                 {
+                    //Chakes to see if person already exists within the list of people (to prevent fetch errors)
+                    for people in self.peopleArray {
+                        if (people.nameOfPerson == name) {
+                            SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.")
+                            return
+                        }
+                    }
+                    
                     addPerson(nameOfPerson: name, nameOfReceipt: self.receiptName)
                     
                     //Add an entry to money owed for the new person
@@ -213,14 +222,11 @@ import SCLAlertView
                     item.deletePayerOfItemRelationship(with: peopleArray[indexPath.row].nameOfPerson!)
                 }
             }
-            
             //Deletes the person from person list
             peopleArray[indexPath.row].deletePerson()
             viewDidLoad()
         }
     }
-    
-    
 }
 
 class Names {
