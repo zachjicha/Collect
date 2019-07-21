@@ -31,7 +31,7 @@ import SCLAlertView
         
         //If there are no recipients, show an alert and cancel sharing
         if(peopleArray.count == 0) {
-            SCLAlertView().showError("Share Error", subTitle: "You must enter recipients before sharing")
+            SCLAlertView().showError("Share Error", subTitle: "You must enter recipients before sharing", colorStyle: 0xFF002A)
             return
         }
         
@@ -51,6 +51,11 @@ import SCLAlertView
         //Remove the last newline character
         if(shareString.count > 0) {
             shareString.remove(at: shareString.index(before: shareString.endIndex))
+        }
+        
+        if(shareString == "") {
+            SCLAlertView().showError("Share Error", subTitle: "No recipients owe any money", colorStyle: 0xFF002A)
+            return
         }
         
         let activityController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
