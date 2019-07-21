@@ -14,6 +14,7 @@
 		15BF540322E0DD4300BB1C22 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF540222E0DD4300BB1C22 /* HomeScreenViewController.swift */; };
 		A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */; };
 		A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */; };
+		AE69FCDE22E403C100FF0641 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE69FCDD22E403C100FF0641 /* Foundation.framework */; };
 		EB6F20C85A21879ED50E72F3 /* Pods_Collect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */; };
 		ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */; };
 		ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B0122D6B68300CD6B01 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		A885A0ACCEF4C8A8E96F62D2 /* Pods-Collect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.debug.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.debug.xcconfig"; sourceTree = "<group>"; };
+		AE69FCDD22E403C100FF0641 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFC22D6B68300CD6B01 /* Collect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE69FCDE22E403C100FF0641 /* Foundation.framework in Frameworks */,
 				EB6F20C85A21879ED50E72F3 /* Pods_Collect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +95,7 @@
 		973BAA1D4CA34A0816BECA0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE69FCDD22E403C100FF0641 /* Foundation.framework */,
 				E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */,
 			);
 			name = Frameworks;
