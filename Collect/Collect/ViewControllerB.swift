@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
  class ViewControllerB: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -28,6 +29,12 @@ import UIKit
 
     @IBAction func sharePressed(_ sender: Any) {
         
+        //If there are no recipients, show an alert and cancel sharing
+        if(peopleArray.count == 0) {
+            SCLAlertView().showError("Share Error", subTitle: "You must enter recipients before sharing")
+            return
+        }
+        
         var shareString = ""
         
         for (index, person) in peopleArray.enumerated() {
@@ -42,7 +49,9 @@ import UIKit
         }
         
         //Remove the last newline character
-        shareString.remove(at: shareString.index(before: shareString.endIndex))
+        if(shareString.count > 0) {
+            shareString.remove(at: shareString.index(before: shareString.endIndex))
+        }
         
         let activityController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
         
@@ -129,6 +138,7 @@ import UIKit
         let alert = UIAlertController(title: "Add Receipient", message: "Enter their name", preferredStyle: .alert)
         alert.addTextField(configurationHandler: { (textField) in
             textField.placeholder = "Enter First Name"
+            textField.autocapitalizationType = UITextAutocapitalizationType.words
         })
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
             if let name = alert.textFields?.first?.text
@@ -137,13 +147,15 @@ import UIKit
                 if (name != "")
                 {
                     addPerson(nameOfPerson: name, nameOfReceipt: self.receiptName)
+                    
+                    //Add an entry to money owed for the new person
+                    self.moneyOwed.append(0)
+                    
+                    self.fetchPeople(receiptName: self.receiptName)
+                    self.tableView.reloadData()
                 }
                 
-                //Add an entry to money owed for the new person
-                self.moneyOwed.append(0)
                 
-                self.fetchPeople(receiptName: self.receiptName)
-                self.tableView.reloadData()
                 
             }
         }))
