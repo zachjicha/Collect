@@ -19,7 +19,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func newReceiptButton(_ sender: Any)
+    @objc func newReceiptButton()
     {
         // Custom alert view
         let alert = SCLAlertView()
@@ -120,13 +120,14 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 alert.setSubTitle("Progress: 80%")
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     alert.setSubTitle("Progress: 95%")
                     
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     alert.setSubTitle("Progress: 100%")
                     alert.close()
+                    self.viewDidAppear(false)
                 }
             }
         }
@@ -220,6 +221,9 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         //Fetches data needed to be loaded into table view
         self.FetchData()
         self.tableView.reloadData()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.newReceiptButton))
+        
+        
     }
     
     //Override function for passing data from one ViewController to another
