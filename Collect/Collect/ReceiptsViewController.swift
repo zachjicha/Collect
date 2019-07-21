@@ -222,7 +222,8 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         self.FetchData()
         self.tableView.reloadData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.newReceiptButton))
-        
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
     }
     
@@ -263,6 +264,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let oneRecord = AllReceipts[indexPath.row]
         cell.textLabel!.text = oneRecord.receiptName!
+        cell.textLabel?.textColor = UIColor.red
         return cell
     }
     
