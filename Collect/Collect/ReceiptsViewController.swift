@@ -32,12 +32,12 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
             // If field is empty
             if (GetInfo.text == "") {
                 print("Please Enter a receipt Name")
-                SCLAlertView().showError("Add Error", subTitle: "You must enter a receipt name")
+                SCLAlertView().showError("Add Error", subTitle: "You must enter a receipt name", colorStyle:0xFF002A)
                 return
             }
             if (CheckDuplicity(receiptName: GetInfo.text!) == true) {
                 print("Data already exists")
-                SCLAlertView().showError("Add Error", subTitle: "This receipt name already exists.")
+                SCLAlertView().showError("Add Error", subTitle: "This receipt name already exists.", colorStyle:0xFF002A)
                 return
             }
             else

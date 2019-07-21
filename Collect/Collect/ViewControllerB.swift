@@ -139,14 +139,14 @@ import SCLAlertView
         alert.addButton("Add Recipient") {
             // If field is empty
             if (name.text == "") {
-                SCLAlertView().showError("Add Error", subTitle: "You Must Enter a Recipient's name")
+                SCLAlertView().showError("Receipt Name Error", subTitle: "You Must Enter a Recipient's name", colorStyle:0xFF002A)
                 return
             }
             else {
                 //Chakes to see if person already exists within the list of people (to prevent fetch errors)
                 for people in self.peopleArray {
                     if (people.nameOfPerson == name.text) {
-                        SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.")
+                        SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.", colorStyle:0xFF002A)
                         return
                     }
                 }
