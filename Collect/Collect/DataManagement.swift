@@ -67,6 +67,24 @@ extension Receipt {
         }
         return AllReceipts
     }
+    
+    //Function that deletes a specific person from PeopleList that is associated with this receipt
+    func DeletePersonFromReceipt (nameOfPerson: String) {
+        let request: NSFetchRequest<PeopleList> = PeopleList.fetchRequest()
+        
+        //NSPredicate to specify arguments for what to look up
+        request.predicate = NSPredicate(format: "receiptToPerson.nameOfPerson = %@", nameOfPerson)
+        
+        //Attempts to find requested attribute/entities
+        do {
+            let personToDelete = try context.fetch(request)
+            personToDelete.first!.deletePerson()
+        } catch {
+            print(error)
+        }
+        
+    }
+    
 }
 
 //Creates an extension for receipt items
@@ -204,7 +222,13 @@ extension PeopleList
             print(error)
         }
         return allPeople
-        
+    }
+    
+    //A function that deletes the person form the list
+    func deletePerson() {
+        //Does the actual deleting
+        context.delete(self)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
 }
 
