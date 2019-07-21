@@ -75,6 +75,16 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         //Sets the color of the payers
         cell.detailTextLabel!.textColor = UIColor.red
         
+        // Accessory View
+        // Image containing red arrow
+        let image = UIImage(named: "arrow.png")
+        // Image View (0,0) because it will attach to accessoryView.
+        let checkmark  = UIImageView(frame:CGRect(x:0, y:0, width:(image?.size.width)!/2, height:(image?.size.height)!/2));
+        // Set the image view's image to the arrow
+        checkmark.image = image
+        // Add it to the cell's accessory view
+        cell.accessoryView = checkmark
+        
         return cell
     }
     

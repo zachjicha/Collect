@@ -15,6 +15,7 @@
 		A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */; };
 		A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */; };
 		AE69FCDE22E403C100FF0641 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE69FCDD22E403C100FF0641 /* Foundation.framework */; };
+		AE69FCE022E5086400FF0641 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE69FCDF22E5086400FF0641 /* arrow.png */; };
 		EB6F20C85A21879ED50E72F3 /* Pods_Collect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */; };
 		ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */; };
 		ED972B0222D6B68300CD6B01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B0122D6B68300CD6B01 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		A885A0ACCEF4C8A8E96F62D2 /* Pods-Collect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.debug.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.debug.xcconfig"; sourceTree = "<group>"; };
 		AE69FCDD22E403C100FF0641 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AE69FCDF22E5086400FF0641 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFC22D6B68300CD6B01 /* Collect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		ED972AFE22D6B68300CD6B01 /* Collect */ = {
 			isa = PBXGroup;
 			children = (
+				AE69FCDF22E5086400FF0641 /* arrow.png */,
 				15BF540422E0E71000BB1C22 /* CoreData */,
 				15BF53FF22E0DCDE00BB1C22 /* gifs */,
 				ED972B0322D6B68300CD6B01 /* Main.storyboard */,
@@ -216,6 +219,7 @@
 				ED972B0D22D6B68800CD6B01 /* LaunchScreen.storyboard in Resources */,
 				ED972B0A22D6B68800CD6B01 /* Assets.xcassets in Resources */,
 				15BF540122E0DD0F00BB1C22 /* Loading-Final TM.gif in Resources */,
+				AE69FCE022E5086400FF0641 /* arrow.png in Resources */,
 				ED972B0522D6B68300CD6B01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
