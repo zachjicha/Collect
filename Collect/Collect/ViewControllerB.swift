@@ -132,46 +132,69 @@ import SCLAlertView
         }
     }
     
+    @IBAction func addRecipient(_ sender: UIBarButtonItem) {
+        // Custom alert view
+        let alert = SCLAlertView()
+        let name = alert.addTextField("Enter Recipient Name")
+        alert.addButton("Add Recipient") {
+            // If field is empty
+            if (name.text == "") {
+                SCLAlertView().showError("Add Error", subTitle: "You Must Enter a Recipient's name")
+                return
+            }
+            else {
+                //Chakes to see if person already exists within the list of people (to prevent fetch errors)
+                for people in self.peopleArray {
+                    if (people.nameOfPerson == name.text) {
+                        SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.")
+                        return
+                    }
+                }
+                addPerson(nameOfPerson: name.text!, nameOfReceipt: self.receiptName)
+                
+                //Add an entry to money owed for the new person
+                self.moneyOwed.append(0)
+                
+                self.fetchPeople(receiptName: self.receiptName)
+                self.tableView.reloadData()
+            }
+        }
+        alert.showEdit("Add a Recipient", subTitle: "Either upload from camera roll or take a picture")
+    }
+    
+    
     @objc func addMethod()
     {
-        let alert = UIAlertController(title: "Add Receipient", message: "Enter their name", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "Enter First Name"
-            textField.autocapitalizationType = UITextAutocapitalizationType.words
-        })
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
-            if let name = alert.textFields?.first?.text
-            {
-                print(name)
-                //Checks to see if name entry is empty or not
-                if (name != "")
-                {
-                    //Chakes to see if person already exists within the list of people (to prevent fetch errors)
-                    for people in self.peopleArray {
-                        if (people.nameOfPerson == name) {
-                            SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.")
-                            return
-                        }
-                    }
-                    
-                    addPerson(nameOfPerson: name, nameOfReceipt: self.receiptName)
-                    
-                    //Add an entry to money owed for the new person
-                    self.moneyOwed.append(0)
-                    
-                    self.fetchPeople(receiptName: self.receiptName)
-                    self.tableView.reloadData()
-                }
-                
-                
-                
+        
+        // Custom alert view
+        let alert = SCLAlertView()
+        let name = alert.addTextField("Enter Recipient Name")
+        alert.addButton("Add Recipient") {
+            // If field is empty
+            if (name.text == "") {
+                SCLAlertView().showError("Add Error", subTitle: "You Must Enter a Recipient's name")
+                return
             }
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true)
-        
+            else {
+                //Chakes to see if person already exists within the list of people (to prevent fetch errors)
+                for people in self.peopleArray {
+                    if (people.nameOfPerson == name.text) {
+                        SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.")
+                        return
+                    }
+                }
+                addPerson(nameOfPerson: name.text!, nameOfReceipt: self.receiptName)
+                
+                //Add an entry to money owed for the new person
+                self.moneyOwed.append(0)
+                
+                self.fetchPeople(receiptName: self.receiptName)
+                self.tableView.reloadData()
+            }
+        }
+        alert.showEdit("Add a Recipient", subTitle: "Either upload from camera roll or take a picture")
     }
+    
     // displays list
     override func viewDidLoad() {
         self.tableView.delegate = self
