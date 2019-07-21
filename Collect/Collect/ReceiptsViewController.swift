@@ -107,32 +107,23 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     func parseReceipt() {
         
         print("IN API CALL")
-        // Hide close button
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )
         
         let alert = SCLAlertView(appearance: appearance).showWait(self.recName, subTitle: "Adding receipt to Collect...", closeButtonTitle: nil, timeout: nil, colorStyle: nil, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.topToBottom)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             alert.setSubTitle("Progress: 50%")
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 alert.setSubTitle("Progress: 80%")
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     alert.setSubTitle("Progress: 95%")
                     
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    alert.setSubTitle("Progress: 100%")
-                    alert.close()
-                    self.viewDidAppear(false)
-                }
             }
         }
-        
-        
         // API Setup:
         let key = "a31246109d0211e98bfadfb7eb1aa8b5" // API-Key
         guard let url = URL(string: "https://api-au.taggun.io/api/receipt/v1/verbose/file") else {
@@ -197,6 +188,12 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                         //Saves item content to local storage
                         //Passes array of Items
                         SaveAllReceiptData(NameOfReceipt: self.recName, Items: self.Items, taxPercent: taxPercent)
+                        // Close Alert View
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                        {
+                                    alert.setSubTitle("Added to Collect")
+                                    alert.close()
+                        }
                         self.viewDidAppear(false)
                     }
                     
