@@ -85,7 +85,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                 
             }
         }
-        alert.showEdit("Add a Receipt", subTitle: "Either upload from camera roll or take a picture")
+        alert.showEdit("Add a Receipt", subTitle: "Either upload from camera roll or take a picture", colorStyle:0xFF002A)
 
     }
     

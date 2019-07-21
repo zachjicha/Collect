@@ -159,7 +159,7 @@ import SCLAlertView
                 self.tableView.reloadData()
             }
         }
-        alert.showEdit("Add a Recipient", subTitle: "Please Add a Recipient's Name")
+        alert.showEdit("Add a Recipient", subTitle: "Please Add a Recipient's Name", colorStyle:0xFF002A)
     }
     
     
@@ -192,7 +192,7 @@ import SCLAlertView
                 self.tableView.reloadData()
             }
         }
-        alert.showEdit("Add a Recipient", subTitle: "Either upload from camera roll or take a picture")
+        alert.showEdit("Add a Recipient", subTitle: "Please Add a Recipient's Name")
     }
     
     // displays list
