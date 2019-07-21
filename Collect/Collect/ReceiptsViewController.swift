@@ -161,7 +161,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                         //Gets the total amount before taxes
                         let totalAmountWithoutTax = Double(totalAmount!) - Double(taxAmount)
                         
-                        //Gets the tax percent of the receipt based on totalAmount and taxAmount
+                        //Gets the tax percent of the receipt based on totalAmountWithoutTax and taxAmount
                         taxPercent = Double(taxAmount)/Double(totalAmountWithoutTax)
                     }
                     
