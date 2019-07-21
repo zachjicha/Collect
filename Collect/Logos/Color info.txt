@@ -1,0 +1,4 @@
+Colors:
+
+Collect Red: #FF002A
+Background: #FAFAFA
