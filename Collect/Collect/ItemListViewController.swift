@@ -50,6 +50,24 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    //Function that adds swipe to delete feature
+    //Function that adds the swipe to delete function to the receipt view
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            //Goes through all items to see if the person is within the list, then deletes them from every item
+            for item in AllItems {
+                //If name is found within item's payer list, it will be deleted/removed
+                if (item.CheckItemPeopleList(nameOfPerson: peopleArray[indexPath.row].nameOfPerson!) == true) {
+                    item.deletePayerOfItemRelationship(with: peopleArray[indexPath.row].nameOfPerson!)
+                }
+            }
+            //Deletes the person from person list
+            peopleArray[indexPath.row].deletePerson()
+            viewDidLoad()
+        }
+    }
+    
     //Fetches item data based on the receipt name selected
     //The receiptName is the data passed through the segue
     func FetchData(receiptName: String) {
@@ -63,24 +81,5 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         print("SUCCESS")
         AllItems = receiptItemsObj
-    }
-    
-    //Function to implement "swipe to delete" row
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = deleteAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [delete])
-    }
-    
-    func deleteAction(at indexPath: IndexPath) -> UIContextualAction{
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            self.AllItems.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            completion(true)
-        }
-        //Icon for "swipe to delete" row
-        action.image = #imageLiteral(resourceName: "Trash")
-        action.backgroundColor = .red
-        
-        return action
     }
 }
