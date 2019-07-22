@@ -178,6 +178,11 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
                 print("Item Name Being passed: " + controller.itemName)
             }
         }
+        if segue.identifier == "DebtList" {
+            let controller = segue.destination as! DebtListViewController
+            controller.receiptName = receiptName
+            
+        }
     }
     
     

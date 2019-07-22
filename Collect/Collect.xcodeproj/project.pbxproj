@@ -14,6 +14,8 @@
 		15BF540322E0DD4300BB1C22 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF540222E0DD4300BB1C22 /* HomeScreenViewController.swift */; };
 		A4B1DF5722DC2DB900E8DBEF /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */; };
 		A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */; };
+		A4FD43E222E594CE00090898 /* DebtListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FD43E022E594CE00090898 /* DebtListViewController.swift */; };
+		A4FD43E322E594CE00090898 /* DebtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FD43E122E594CE00090898 /* DebtCell.swift */; };
 		AE69FCDE22E403C100FF0641 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE69FCDD22E403C100FF0641 /* Foundation.framework */; };
 		AE69FCE022E5086400FF0641 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE69FCDF22E5086400FF0641 /* arrow.png */; };
 		EB6F20C85A21879ED50E72F3 /* Pods_Collect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */; };
@@ -41,6 +43,8 @@
 		86EFF462AFFFE55B8A93B41D /* Pods-Collect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.release.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.release.xcconfig"; sourceTree = "<group>"; };
 		A4B1DF5622DC2DB900E8DBEF /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
+		A4FD43E022E594CE00090898 /* DebtListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtListViewController.swift; path = "../../../xcode_proj/untitled folder/Collect/Collect/DebtListViewController.swift"; sourceTree = "<group>"; };
+		A4FD43E122E594CE00090898 /* DebtCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtCell.swift; path = "../../../xcode_proj/untitled folder/Collect/Collect/DebtCell.swift"; sourceTree = "<group>"; };
 		A885A0ACCEF4C8A8E96F62D2 /* Pods-Collect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.debug.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.debug.xcconfig"; sourceTree = "<group>"; };
 		AE69FCDD22E403C100FF0641 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE69FCDF22E5086400FF0641 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */,
 				A4B1DF5822DC342E00E8DBEF /* ViewControllerB.swift */,
 				15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */,
+				A4FD43E122E594CE00090898 /* DebtCell.swift */,
+				A4FD43E022E594CE00090898 /* DebtListViewController.swift */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -285,9 +291,11 @@
 				15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */,
 				EDFCA73622E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
+				A4FD43E322E594CE00090898 /* DebtCell.swift in Sources */,
 				15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */,
 				EDFCA73522E2D450007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */,
 				A4B1DF5922DC342E00E8DBEF /* ViewControllerB.swift in Sources */,
+				A4FD43E222E594CE00090898 /* DebtListViewController.swift in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
