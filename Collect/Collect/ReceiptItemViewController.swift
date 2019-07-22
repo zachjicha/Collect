@@ -53,13 +53,19 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
             let alert = SCLAlertView()
             let getNewName = alert.addTextField("Enter a new Item name")
             let getNewPrice = alert.addTextField("Enter new item price")
+            
+            //Auto fill the name field as most will just want to edit price
+            getNewName.text = self.AllItems[indexPath.row].itemName
+            //Uncomment to add autofill for price as well
+            //getNewPrice.text = String(self.AllItems[indexPath.row].itemPrice)
+            
             alert.addButton("Finish Editing") {
-                // If field is empty
+                // If field is empty, alert the user
                 if (getNewName.text == "" || getNewPrice.text == "") {
                     SCLAlertView().showError("Edit Error", subTitle: "You must enter a new name and price", colorStyle:0xFF002A)
                     return
                 }
-                //If price is not a double
+                //If price is not a double, alert the user
                 else if (Double(getNewPrice.text!) == nil) {
                     SCLAlertView().showError("Edit Error", subTitle: "You must enter a valid price", colorStyle:0xFF002A)
                     return
