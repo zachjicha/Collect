@@ -115,7 +115,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
             showCloseButton: false
         )
         
-        let alert = SCLAlertView(appearance: appearance).showWait(self.recName, subTitle: "Adding receipt to Collect...", closeButtonTitle: nil, timeout: nil, colorStyle: nil, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.topToBottom)
+        let alert = SCLAlertView(appearance: appearance).showWait(self.recName, subTitle: "Adding receipt to Collect...", closeButtonTitle: nil, timeout: nil, colorStyle: 0xFF002A, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.topToBottom)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             alert.setSubTitle("Progress: 50%")
             
