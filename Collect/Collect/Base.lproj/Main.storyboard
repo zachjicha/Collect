@@ -284,8 +284,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2c1-e3-4gX">
-                                <rect key="frame" x="0.0" y="97" width="375" height="681"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2c1-e3-4gX">
+                                <rect key="frame" x="0.0" y="97" width="375" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="14" reuseIdentifier="itemsCell" textLabel="7Be-gB-0KK" detailTextLabel="q8v-r7-NDu" style="IBUITableViewCellStyleSubtitle" id="ZiJ-W4-ebw">
@@ -318,6 +318,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5Z-qe-LAJ">
+                                <rect key="frame" x="0.0" y="554" width="375" height="224"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.99952584509999998" green="0.0" blue="0.1635358334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -331,6 +335,7 @@
                         <viewLayoutGuide key="safeArea" id="jgT-0F-hoZ"/>
                     </view>
                     <connections>
+                        <outlet property="receiptImage" destination="B5Z-qe-LAJ" id="WP8-vW-dGh"/>
                         <outlet property="tableView" destination="2c1-e3-4gX" id="VJD-uy-9gk"/>
                     </connections>
                 </viewController>

@@ -15,6 +15,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
     var receiptName:String = ""
     var AllItems:[ReceiptItems] = []
     
+    @IBOutlet weak var receiptImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         //Fetches the necessary data based on the receipt name passed from the previous storyboard/viewController
         self.FetchData(receiptName: receiptName)
         self.tableView.reloadData()
-        //print(AllItems)
+        receiptImage.image = fetchImageData(receiptName: receiptName)
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     

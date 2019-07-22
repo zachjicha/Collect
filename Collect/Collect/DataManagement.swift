@@ -249,7 +249,7 @@ func SaveReceiptData (NameOfReceipt: String/*, ItemCost: Double*/) {
 //Function for saving full receipt Data using
 //(not part of the Receipt and ReceiptItems Extension)
 //Takes name of receipt and an item struct array as inputs
-func SaveAllReceiptData (NameOfReceipt: String, Items: [Item], taxPercent: Double) {
+func SaveAllReceiptData (NameOfReceipt: String, Items: [Item], taxPercent: Double, imageData: UIImage) {
     
     //context variable for fetching and storing data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -258,6 +258,12 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item], taxPercent: Doubl
     let ReceiptName = Receipt(context: context)
     ReceiptName.receiptName = NameOfReceipt
     ReceiptName.taxPercent = taxPercent
+    
+    //Converts the UI Image to NSData
+    let imageBinData = imageData.pngData()
+    
+    //Saves the image into core data
+    ReceiptName.receiptImage = imageBinData as NSData?
     
     //Loops through all items to create a relaitonsip with the receipt
     for item in Items {
@@ -288,6 +294,20 @@ func DeleteReceiptData (NameOfItem: String) {
 func updateReceiptData (receiptName: String,newReceiptName: String) {
     guard let item = Receipt.FetchData(with: receiptName) else { return }
     item.updateData(with: newReceiptName)
+}
+
+//Function that fetches image data based on receipt name (returns a UIImage)
+func fetchImageData(receiptName: String) -> UIImage {
+    //Fetches the receiptData from receipt
+    let receiptData: Receipt = Receipt.FetchData(with: receiptName)!
+    
+    //gets image bin data and converts it to UIImage
+    let imgUIData = receiptData.receiptImage! as Data
+    
+    //Converts image binary data to a UIImage
+    let imgData = UIImage(data: imgUIData)
+
+    return imgData!
 }
 
 //Checks if receipt name already exists within core database

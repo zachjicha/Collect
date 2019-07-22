@@ -195,7 +195,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         
                         //Saves item content to local storage
                         //Passes array of Items
-                        SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items, taxPercent: taxPercent)
+                        //SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items, taxPercent: taxPercent)
                     }
                     
                 case .failure(let error):
