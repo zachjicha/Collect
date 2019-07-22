@@ -70,10 +70,6 @@ import SCLAlertView
             let activityController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
             present(activityController, animated: true, completion: nil)
         }
-        
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

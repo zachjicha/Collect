@@ -7,6 +7,7 @@
 //  YOOOOOOOOO
 
 import UIKit
+import SCLAlertView
 
 class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -44,6 +45,48 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         return AllItems.count
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            
+            //Show an alert that asks for a new name and price
+            let alert = SCLAlertView()
+            let getNewName = alert.addTextField("Enter a new Item name")
+            let getNewPrice = alert.addTextField("Enter new item price")
+            alert.addButton("Finish Editing") {
+                // If field is empty
+                if (getNewName.text == "" || getNewPrice.text == "") {
+                    SCLAlertView().showError("Edit Error", subTitle: "You must enter a new name and price", colorStyle:0xFF002A)
+                    return
+                }
+                //If price is not a double
+                else if (Double(getNewPrice.text!) == nil) {
+                    SCLAlertView().showError("Edit Error", subTitle: "You must enter a valid price", colorStyle:0xFF002A)
+                    return
+                }
+                //If all conditions met
+                else {
+                    //Update cost and name with text field entries
+                    self.AllItems[indexPath.row].updateItemData(newItemName: getNewName.text!, newItemPrice: Double(getNewPrice.text!)!)
+                    //Reload the view
+                    self.viewDidLoad()
+                }
+            }
+            //Show the alert
+            alert.showEdit("Edit item", subTitle: "Change item name and price", colorStyle:0xFF002A)
+            
+        }
+        
+        //Delete action
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.AllItems[indexPath.row].deleteItem()
+            self.viewDidLoad()
+        }
+        
+        return [delete, edit]
+        
+    }
+    /*
     //Function that adds the swipe to delete function to the receipt view
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -52,7 +95,8 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         }
         //reloads the view
         viewDidLoad()
-    }
+        
+    }*/
     
     //Uses identifier of table view cell (can be set in properties of the cell) to retrieve the data that will be displayed within each row of the table (in this case, its the item names of within the receipt entity)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->UITableViewCell {
@@ -84,7 +128,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         //Sets the color of the payers
-        cell.detailTextLabel!.textColor = UIColor.red
+        cell.detailTextLabel!.textColor = UIColor(named: "CollectRed")
         
         // Accessory View
         // Image containing red arrow
