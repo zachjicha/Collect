@@ -49,10 +49,24 @@ class DebtListViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.textLabel!.text = person.nameOfPerson!
         
+        let cellSwitch = UISwitch(frame: .zero)
         
-        
+        //Sets the cell switch properties
+        cellSwitch.tag = indexPath.row // for detect which row switch Changed
+        cellSwitch.addTarget(self, action: #selector(self.SwitchToggleDelection(_:)), for: .valueChanged)
+        cell.accessoryView = cellSwitch
         
         return cell
+        
+    }
+    
+    @objc func SwitchToggleDelection(_ sender : UISwitch!){
+        
+        if (sender.isOn == true) {
+            print("Swith was toggled on")
+        } else {
+            print("Switch was toggled off")
+        }
         
     }
 
