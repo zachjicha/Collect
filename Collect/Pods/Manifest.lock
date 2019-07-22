@@ -1,20 +1,28 @@
 PODS:
   - Alamofire (5.0.0-beta.6)
+  - SCLAlertView (0.8)
+  - SwiftyGif (5.1.1)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
+  - SCLAlertView
+  - SwiftyGif
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - SCLAlertView
+    - SwiftyGif
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SwiftyGif: f7702483db93586a41f04f4927cd682852a2fa10
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: a52b0ee39bf8aa3110d9b7a019e40403adf0d823
+PODFILE CHECKSUM: e8aea6ba9705634cc61150979545d297053b625a
 
 COCOAPODS: 1.7.3

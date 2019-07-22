@@ -12,6 +12,7 @@ import CoreData
 class ItemListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var AllItems:[ReceiptItems] = []
+    var peopleArray: [PeopleList] = []
     @IBOutlet weak var tableView: UITableView!
     
     var receiptname:String = ""
@@ -48,6 +49,24 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
         let oneRecord = AllItems[indexPath.row]
         cell.textLabel!.text = oneRecord.itemName!
         return cell
+    }
+    
+    //Function that adds swipe to delete feature
+    //Function that adds the swipe to delete function to the receipt view
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            //Goes through all items to see if the person is within the list, then deletes them from every item
+            for item in AllItems {
+                //If name is found within item's payer list, it will be deleted/removed
+                if (item.CheckItemPeopleList(nameOfPerson: peopleArray[indexPath.row].nameOfPerson!) == true) {
+                    item.deletePayerOfItemRelationship(with: peopleArray[indexPath.row].nameOfPerson!)
+                }
+            }
+            //Deletes the person from person list
+            peopleArray[indexPath.row].deletePerson()
+            viewDidLoad()
+        }
     }
     
     //Fetches item data based on the receipt name selected

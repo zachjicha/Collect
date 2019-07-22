@@ -23,10 +23,10 @@ struct Item : Codable
 
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     var selectedPhoto:UIImage!
     var Items : [Item] = []
-
+    
     @IBOutlet weak var outputText: UITextView!
     @IBOutlet weak var loadingText: UILabel!
     @IBOutlet weak var labelMessage: UILabel!
@@ -34,7 +34,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //Creates variable/ref for container (Data Storage management)
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Receipts"
@@ -44,13 +44,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-
+    
     //Display an action menu to select from camera or camera roll
     @IBAction func addReceipt(_ sender: Any) {
         
+        //Ensures that a receipt name is inputted
         if (GetInfo.text == "") {
             print("Please Enter a receipt Name")
-            loadingText.text = "Required: Receipt Name"
+            ReceiptNameRequiredAlert()
+            return
+        }
+        
+        //Checks to see if the receipt name entered already exists within the core database
+        //If it does already exist, tells the user to input a new name
+        if (CheckDuplicity(receiptName: GetInfo.text!) == true) {
+            print("Data already exists")
+            DuplicityAlert()
             return
         }
         
@@ -59,61 +68,61 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //camera or camera roll based on user selection
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-
+        
         //Action sheet to pick photo source
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
-
+        
         //Add source slections to action sheet
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
-
+            
             //Check if camera is available before accessing it
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
             }
             else {
-
+                
                 //Alert the user that the camera is not available
                 //This will probably never happen
                 let noCameraAlert = UIAlertController(title: "Camera Not Available", message: "The device's camera cannot be accessed by Collect", preferredStyle: .alert)
                 noCameraAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(noCameraAlert, animated: true, completion: nil)
-
+                
             }
-
+            
         } ))
-
+        
         actionSheet.addAction(UIAlertAction(title: "Camera Roll", style: .default, handler: { (action: UIAlertAction) in
-
+            
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true, completion: nil)
         } ))
-
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
+        
         //Present the action sheet
         self.present(actionSheet, animated: true, completion: nil)
-
+        
     }
-
-
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+        
         //Get the image from the picker controller and set it to the selected photo
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         selectedPhoto = image
-
+        
         //Parse the receipt
         self.parseReceipt()
-
+        
         //Dismiss the picker controller
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     //Parse the receipt using Harsh's code
     func parseReceipt() {
         
@@ -128,7 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let url = URL(string: "https://api-au.taggun.io/api/receipt/v1/verbose/file") else {
             return
         } // URL for API
-
+        
         // Headers for JSON request
         let headers: HTTPHeaders = [
             "apikey": key,
@@ -145,14 +154,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 {
                 case .success(let value):
                     let json = JSON(value)
-                    // print(json["amounts"])
+                    //print(json["amounts"])
+                    //print(json)
+                    
+                    //Gets the total amount and the tax amount
+                    let totalAmount = json["totalAmount"]["data"].double
+                    let taxAmount = json["taxAmount"]["data"].double
+                    
+                    //Gets the tax percent of the receipt based on totalAmount and taxAmount
+                    let taxPercent = Double(taxAmount!)/Double(totalAmount!)
+                    
+                    //print("TOTAL AMOUNT: \(String(describing: totalAmount))")
+                    //print("TAX AMOUNT: \(String(describing: taxAmount))")
                     if let amounts = json["amounts"].array
+                        
                     {
                         for JSONItem in amounts
                         {
                             let item = Item(itemName: JSONItem["text"].string, totalAmount: JSONItem["data"].double)
                             // print(item.itemName!, item.totalAmount!)
-                            self.Items.append(item)
+                            let lowerItem = item.itemName!.lowercased()
+                            if(!lowerItem.contains("total") && !lowerItem.contains("debit") && !lowerItem.contains("debit")) {
+                                self.Items.append(item)
+                            }
                         }
                         //self.printItems()
                         self.loadingText.text = "Items:"
@@ -165,24 +189,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             self.outputText.text += item.itemName!
                             self.outputText.text += "\n"
                             
-                            print(item.itemName!);
-                            
-                            //Saves item content to local storage
-                            SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: item)
-                            print("Output Printed!")
+                            print(item.itemName!)
                         }
-                    }
 
+                        
+                        //Saves item content to local storage
+                        //Passes array of Items
+                        SaveAllReceiptData(NameOfReceipt: self.GetInfo.text!, Items: self.Items, taxPercent: taxPercent)
+                    }
+                    
                 case .failure(let error):
                     print(error)
                 }
         }
     }
     
-
+    
     
     //Function that makes a dialog box pop up to ask for Receipt Name
-        //TEMPORARY (TEST FNCTION)
+    //TEMPORARY (TEST FNCTION)
     func showInputDialog() {
         //Creating UIAlertController and
         //Setting title and message for the alert dialog
@@ -214,7 +239,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Make the dialog box appear
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    //Function that makes an alert pop up saying the receipt name already exists
+    func DuplicityAlert() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Receipt Name Error", message: "The receipt name entered already exists", preferredStyle: .alert)
         
+        //Cancel button - makes popup disappear (glorified do nothing button)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (_) in }
+        
+        //adding the action to dialogbox
+        alertController.addAction(cancelAction)
+        
+        //Make the dialog box appear
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //Function that makes an alert pop up saying the a receipt name is required
+    func ReceiptNameRequiredAlert() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Receipt Name Error", message: "A receipt name must be entered before proceeding", preferredStyle: .alert)
+        
+        //Cancel button - makes popup disappear (glorified do nothing button)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (_) in }
+        
+        //adding the action to dialogbox
+        alertController.addAction(cancelAction)
+        
+        //Make the dialog box appear
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     //Button that triggers Dialog box input
     @IBAction func ChangeReceiptName(_ sender: UIButton) {
         showInputDialog()
@@ -234,7 +292,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             else {
                 self.LoadChange.text = "No Data Found"
                 return
-            }
+        }
         self.LoadChange.text = item.receiptName!
     }
     
@@ -259,42 +317,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let itemInReceipt = ReceiptItems(context: context)
         itemInReceipt.itemName = ItemDataText.text!
         NameOfReceipt.addToItemsOnReceipt(itemInReceipt)
-        
-        
-        
-        
-        /*
-        //Create reference to receipt
-        let request: NSFetchRequest<Receipt> = Receipt.fetchRequest()
-        request.predicate = NSPredicate(format: "receiptName = %@" , GetInfo.text!)
-        
-        //Executes the search
-        do {
-            let receipts = try context.fetch(request)
-            print(receipts.first!)
-            
-            var AllItems:[ReceiptItems] = []
-            //Fetches all items in receipt
-            do {
-                do {
-                    AllItems = try context.fetch(ReceiptItems.fetchRequest())
-                } catch{
-                    print(error)
-                }
-            }
-            
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }*/
-
-        
     }
-
-
-
-
-
+    
+    
+    
+    
+    
 }
+
 
 
