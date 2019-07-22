@@ -141,6 +141,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
             "Accept" : "application/json"]
         
         guard let img_data = selectedPhoto.jpegData(compressionQuality: 1.0) else { return  }
+        
         // Use Alamofire to upload image
         AF.upload(multipartFormData: { (multipartFormData) in
             multipartFormData.append(img_data, withName: "file", fileName: "rec.img", mimeType: "image/jpg")
@@ -196,7 +197,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                         
                         //Saves item content to local storage
                         //Passes array of Items
-                        SaveAllReceiptData(NameOfReceipt: self.recName, Items: self.Items, taxPercent: taxPercent)
+                        SaveAllReceiptData(NameOfReceipt: self.recName, Items: self.Items, taxPercent: taxPercent, imageData: self.selectedPhoto)
                         // Close Alert View
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
                         {
