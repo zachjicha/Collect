@@ -180,6 +180,14 @@ extension ReceiptItems {
         }
     }
     
+    //function that updates the cost and/or the item name
+    func updateItemData (newItemName: String, newItemPrice: Double) {
+        //Changes the itemPrice to be the inputted item price
+        self.itemName = newItemName
+        self.itemPrice = newItemPrice
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
     //A function that deletes this item from the list
     func deleteItem() {
         //Does the actual deleting
