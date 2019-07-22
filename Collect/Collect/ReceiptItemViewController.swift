@@ -65,8 +65,8 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
                     SCLAlertView().showError("Edit Error", subTitle: "You must enter a new name and price", colorStyle:0xFF002A)
                     return
                 }
-                //If price is not a double, alert the user
-                else if (Double(getNewPrice.text!) == nil) {
+                //If price is not a double or is negative, alert the user
+                else if (Double(getNewPrice.text!) == nil || Double(getNewPrice.text!)! < 0) {
                     SCLAlertView().showError("Edit Error", subTitle: "You must enter a valid price", colorStyle:0xFF002A)
                     return
                 }
