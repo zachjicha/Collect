@@ -58,9 +58,21 @@ import SCLAlertView
             return
         }
         
-        let activityController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+        //Get the image of the receipt
+        let receiptImage = fetchImageData(receiptName: receiptName)
+    
+        //Gaurd against nil images
+        if(receiptImage != nil) {
+            let activityController = UIActivityViewController(activityItems: [shareString, receiptImage], applicationActivities: nil)
+            present(activityController, animated: true, completion: nil)
+        }
+        else {
+            let activityController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+            present(activityController, animated: true, completion: nil)
+        }
         
-        present(activityController, animated: true, completion: nil)
+        
+        
         
     }
     

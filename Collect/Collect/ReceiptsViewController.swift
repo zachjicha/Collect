@@ -263,6 +263,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
             
             return trimmedItemName
         }
+        //If the last token is not a double put it back in the string
         else {
             //Trim any remaining trailing whitespace
             while(trimmedItemName[trimmedItemName.index(before: trimmedItemName.endIndex)] == " ") {
