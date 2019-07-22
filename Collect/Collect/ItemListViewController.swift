@@ -64,4 +64,23 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
         print("SUCCESS")
         AllItems = receiptItemsObj
     }
+    
+    //Function to implement "swipe to delete" row
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction{
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            self.AllItems.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completion(true)
+        }
+        //Icon for "swipe to delete" row
+        action.image = #imageLiteral(resourceName: "Trash")
+        action.backgroundColor = .red
+        
+        return action
+    }
 }
