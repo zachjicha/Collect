@@ -172,10 +172,12 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                     {
                         for JSONItem in amounts
                         {
-                            let item = Item(itemName: JSONItem["text"].string, totalAmount: JSONItem["data"].double)
+                            
+                            let item = Item(itemName: self.trimItemName(itemName: JSONItem["text"].string!), totalAmount: JSONItem["data"].double)
                             // print(item.itemName!, item.totalAmount!)
                             let lowerItem = item.itemName!.lowercased()
-                            if(!lowerItem.contains("total") && !lowerItem.contains("debit") && !lowerItem.contains("debit")) {
+                            //Dont add these as items
+                            if(!lowerItem.contains("total") && !lowerItem.contains("debit") && !lowerItem.contains("cash")) {
                                 self.Items.append(item)
                             }
                         }
@@ -209,6 +211,66 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                 case .failure(let error):
                     print(error)
                 }
+        }
+    }
+    
+    //Removes the price from the end of an item name
+    func trimItemName(itemName: String) -> String {
+        var trimmedItemName = itemName
+        //Get the last token of the itemName
+        var lastToken = ""
+        var nonWhiteSpaceEncountered = false
+        //Start at the back and make our way forward
+        for index in (0...itemName.count-1).reversed() {
+            //Get the index of the char we want to look at
+            let charIndex = itemName.index(itemName.startIndex, offsetBy: index)
+            
+            //If we encounter whitespace after non-whitespace, we are done
+            if(nonWhiteSpaceEncountered && itemName[charIndex] == " ") {
+                break
+            }
+            
+            //If the character is whitespace and we haven't seen non whitespace
+            //characters yet, skip this loop
+            if(itemName[charIndex] == " " && !nonWhiteSpaceEncountered) {
+                trimmedItemName.remove(at: charIndex)
+                continue
+            }
+            
+            //If we have encountered non-whitespace for the first time
+            //record that we have
+            if(itemName[charIndex] != " " && !nonWhiteSpaceEncountered) {
+                nonWhiteSpaceEncountered = true
+            }
+            
+            //Add the current char to the beginning of the last token
+            lastToken.insert(itemName[charIndex], at: lastToken.startIndex)
+            //Remove the char from the trimmed string
+            trimmedItemName.remove(at: charIndex)
+            
+        }
+        
+        //At this point the last token contains whatever the last token is
+        //So now we check if it is a double
+        
+        //If the last token is a number
+        if (Double(lastToken) != nil) {
+            //Trim any remaining trailing whitespace
+            while(trimmedItemName[trimmedItemName.index(before: trimmedItemName.endIndex)] == " ") {
+                trimmedItemName.removeLast()
+            }
+            
+            return trimmedItemName
+        }
+        else {
+            //Trim any remaining trailing whitespace
+            while(trimmedItemName[trimmedItemName.index(before: trimmedItemName.endIndex)] == " ") {
+                trimmedItemName.removeLast()
+            }
+            
+            //Put the last token back in the string and return it
+            trimmedItemName +=  " " + lastToken
+            return trimmedItemName
         }
     }
     

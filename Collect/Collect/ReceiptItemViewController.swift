@@ -57,7 +57,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath)
         let receiptItem = AllItems[indexPath.row]
-        cell.textLabel!.text = receiptItem.itemName!
+        cell.textLabel!.text = receiptItem.itemName! + String(format: " - $%.2f", receiptItem.itemPrice)
         
         //Predefined strings for detailedTextLabel
         let prependText = "Payers:  "
