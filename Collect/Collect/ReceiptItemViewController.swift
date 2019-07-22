@@ -32,7 +32,6 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
-    
     //Sets number of sections of the table
     func SecNum (in tableView: UITableView) -> Int {
         return 1
@@ -42,6 +41,16 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
     //In this case, the table view will constantly expend, thereby using the array size of the Receipt entity
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AllItems.count
+    }
+    
+    //Function that adds the swipe to delete function to the receipt view
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            //Deletes the item from the list
+            AllItems[indexPath.row].deleteItem()
+        }
+        //reloads the view
+        viewDidLoad()
     }
     
     //Uses identifier of table view cell (can be set in properties of the cell) to retrieve the data that will be displayed within each row of the table (in this case, its the item names of within the receipt entity)
@@ -119,6 +128,8 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
+    
+    
     
     //Called whenever the view appears, used for refreshing when popping off view controller stack
     override func viewDidAppear(_ animated: Bool) {

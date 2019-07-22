@@ -12,6 +12,7 @@ import CoreData
 class ItemListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var AllItems:[ReceiptItems] = []
+    var peopleArray: [PeopleList] = []
     @IBOutlet weak var tableView: UITableView!
     
     var receiptname:String = ""

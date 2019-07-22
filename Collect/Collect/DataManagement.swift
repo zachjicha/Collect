@@ -180,15 +180,12 @@ extension ReceiptItems {
         }
     }
     
-    //Funciton that returns a list of payer of a specific item (returns an NSSet)
-    /*func getPayerList () -> String {
-        let payerList:[PeoplePaying] = self.payerOfItem!
-        
-        
-        
-        
-        
-    }*/
+    //A function that deletes this item from the list
+    func deleteItem() {
+        //Does the actual deleting
+        context.delete(self)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
     
     //Function that gets the tax % of the receipt that this item is related to
     func GetTaxPercent () -> Double {
