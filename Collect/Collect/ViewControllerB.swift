@@ -80,9 +80,25 @@ import SCLAlertView
         cell.textLabel!.text = person.nameOfPerson!
         //Set the right detail text to the amount owed for that person
         cell.detailTextLabel!.text = String(format: "$%.2f", moneyOwed[indexPath.row])
-        
+    
+        //Checks if the person has paid or not (a check mark will show up if they have)
+        if (peopleArray[indexPath.row].hasPaid == true) {
+            cell.accessoryType = .checkmark
+        }
+        else {
+            cell.accessoryType = .none
+        }
         return cell
     }
+    
+    //Function that detects of the row was selected or not
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Changes the payment status of the row
+        peopleArray[indexPath.row].ChangePaymentStatus()
+        //reloads the table view
+        viewDidLoad()
+    }
+
     
     
     func fetchPeople(receiptName: String)

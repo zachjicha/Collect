@@ -229,6 +229,24 @@ extension PeopleList
         return allPeople
     }
     
+    //Function that checks to see if the person has paid
+    func CheckPaymentStatus () -> Bool {
+        //Returns the Boolean value of if they've paid or not
+        return self.hasPaid
+    }
+    //Function that changes the table row status to Paid
+    func ChangePaymentStatus() {
+        //Checks if hasPaid status is paid or not to change/flip it to the correct status
+        if (self.hasPaid == true) {
+            self.hasPaid = false
+        }
+        else {
+            self.hasPaid = true
+        }
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    
     //A function that deletes the person form the list
     func deletePerson() {
         //Does the actual deleting
@@ -349,6 +367,7 @@ func addPerson(nameOfPerson : String, nameOfReceipt : String)
     //Creates Person Entity Context
     let personContext = PeopleList(context: context)
     personContext.nameOfPerson = nameOfPerson
+    personContext.hasPaid = false
     
     
     guard let receipt = Receipt.FetchData(with: nameOfReceipt) else { return }
