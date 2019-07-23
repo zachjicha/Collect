@@ -16,6 +16,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     var Items : [Item] = []
     // Global Receipt Name
     var recName : String = ""
+    var numberOfUnknowns:Int = 1
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -182,6 +183,10 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                     if let amounts = json["amounts"].array
                         
                     {
+                        
+                        //Reset number of unknowns for each receipt
+                        self.numberOfUnknowns = 1
+                        
                         for JSONItem in amounts
                         {
                             
@@ -270,7 +275,9 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         if (Double(lastToken) != nil) {
             //If string is empty, there is no item name, give a default one
             if(trimmedItemName == "") {
-                trimmedItemName = "UNKNOWN"
+                trimmedItemName = "UNKNOWN " + String(numberOfUnknowns)
+                //Increment number of unknowns
+                numberOfUnknowns += 1
             }
             else {
                 //If string is not empty, trim any remaining trailing whitespace

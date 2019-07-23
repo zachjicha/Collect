@@ -104,7 +104,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
             //Show the alert
-            alert.showEdit("Edit item", subTitle: "Change item name and price", colorStyle:0xFF002A)
+            alert.showEdit("Edit item", subTitle: "Change item name and price", closeButtonTitle: "Cancel", colorStyle:0xFF002A)
             
         }
         
