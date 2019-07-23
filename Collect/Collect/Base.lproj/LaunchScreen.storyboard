@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Collect Logo" translatesAutoresizingMaskIntoConstraints="NO" id="j6k-St-6ph">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Collect Logo Alpha" translatesAutoresizingMaskIntoConstraints="NO" id="j6k-St-6ph">
                                 <rect key="frame" x="50" y="84" width="275" height="275"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j6k-St-6ph" secondAttribute="height" multiplier="1:1" id="BdK-TQ-FTU"/>
@@ -48,7 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Collect Logo" width="1666.6666259765625" height="1666.6666259765625"/>
+        <image name="Collect Logo Alpha" width="1350" height="1350"/>
         <image name="Collect Spelled from" width="1666.6666259765625" height="1000"/>
     </resources>
 </document>
