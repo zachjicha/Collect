@@ -39,11 +39,12 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func showImage()
     {
         // Call Lightbox
-        let recImage = fetchImageData(receiptName: receiptName)
+        var recImage = fetchImageData(receiptName: receiptName)
+        recImage = recImage.fixedOrientation()!
         let images = [
             LightboxImage(
                 // Orientation
-                image: UIImage(cgImage: recImage.cgImage!, scale: recImage.scale, orientation: .right),
+                image: recImage,
                 text: "Collect: " + self.receiptName
             )
         ]
