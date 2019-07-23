@@ -92,12 +92,10 @@ extension ReceiptItems {
     
     //Function that returns a specific Item entity
     class func FetchSingleReceiptItem(with receiptName: String, with itemName: String) -> ReceiptItems {
-        
-        var ReceiptItem:[ReceiptItems] = []
-        
         //Fetch 1 item within the a list of receipts
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
+        var receiptItemToReturn: ReceiptItems = ReceiptItems(context: context)
+
         //Creates fetch request for all items
         let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
         let myPredicate = NSPredicate(format: "itemReceipt.receiptName == %@", receiptName)
@@ -107,15 +105,18 @@ extension ReceiptItems {
         do {
             let result = try context.fetch(myFetch)
             print(result.count)
-            let filteredresults = result.filter {
-                $0.itemName!.contains(itemName)
+            //For loops that loops through NSList
+            for receiptItem in result {
+                if (receiptItem.itemName == itemName) { //item name will always be found
+                    receiptItemToReturn = receiptItem
+                    continue
+                }
             }
-            ReceiptItem = filteredresults
         }
         catch {
             print(error)
         }
-        return ReceiptItem.first!
+        return receiptItemToReturn
     }
     
     //Function that fetches the receipt items based on the receipt name given and returns the receipt item entity array
@@ -142,6 +143,38 @@ extension ReceiptItems {
         }
         return AllItems
     }
+    
+    
+    //Function that checks to see if the item name already exists within the receipt.
+    //if it does, returns the number of duplicate names in the list
+    //if it doesn't returns a zero
+    func CheckForDuplicateItemName(itemName: String) -> Int {
+        var DuplicateItems: [ReceiptItems] = []
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //Creates fetch request for all items
+        let myFetch:NSFetchRequest<ReceiptItems> = ReceiptItems.fetchRequest()
+        let myPredicate = NSPredicate(format: "itemName == %@", itemName)
+        myFetch.predicate = myPredicate
+        
+        //Fetches the data
+        //Does the actual fetching of data
+        do {
+            let result = try context.fetch(myFetch)
+            print(result.count)
+            DuplicateItems = result
+        }
+        catch {
+            print(error)
+        }
+        print("********")
+        print(DuplicateItems.count)
+        print("********")
+        return DuplicateItems.count
+        
+    }
+    
     
     //Function that deletes a specific entity from a relationship
     func deletePayerOfItemRelationship(with nameOfPerson: String) {
@@ -171,6 +204,9 @@ extension ReceiptItems {
         
         //Filters the payer list to pinpoint the single person we need to delete
         let payer = itemPayerList.filtered(using: fetchPayerPredicate) as NSSet
+        print("*********")
+        print(payer)
+        print("*********")
         
         if (payer.count > 0) {
             return true //returns true if name already exists within the list
@@ -285,21 +321,49 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item], taxPercent: Doubl
     ReceiptName.receiptName = NameOfReceipt
     ReceiptName.taxPercent = taxPercent
     
+    
+    
     //Converts the UI Image to NSData
     let imageBinData = imageData.pngData()
     
     //Saves the image into core data
     ReceiptName.receiptImage = imageBinData as NSData?
     
+    //Creates an array that keeps track of what has already gone into the Receipt Entity
+    var DuplicateItemChecker: [String] = []
+    
     //Loops through all items to create a relaitonsip with the receipt
     for item in Items {
+        //Creates a ReceiptItem entity context
         let itemsInReceipt = ReceiptItems(context: context)
-        itemsInReceipt.itemName = item.itemName
+        //variable that keeps track of duplicate item count
+        var duplicateInteger = 0
+        //For loop that goes through array and checks for name duplicate
+        for DuplicateItemName in DuplicateItemChecker {
+            //If similar item is found, duplicateInteger incremented by 1
+            if (DuplicateItemName == item.itemName) {
+                duplicateInteger = duplicateInteger + 1
+            }
+        }
+        //Checks if item already exists within the receipt
+        if(duplicateInteger > 0) {
+            //Creates new item name with "#x" added to it where x = # of duplicate items+1
+            let newItemName = String(format:"#%d: %@", duplicateInteger+1, item.itemName!)
+            itemsInReceipt.itemName = newItemName
+        }else { //else occurs if no duplicate item is found
+            itemsInReceipt.itemName = item.itemName
+        }
+        //Adds the rest of the required variables into ReceiptItem Entity
         itemsInReceipt.itemPrice = item.totalAmount!
         print("Item: " + itemsInReceipt.itemName! + "\nPrice: " + String(itemsInReceipt.itemPrice))
+        DuplicateItemChecker.append(itemsInReceipt.itemName!)
         ReceiptName.addToItemsOnReceipt(itemsInReceipt)
     }
-    //save to container/core data
+    
+    print(DuplicateItemChecker)
+    
+    //Clear duplicate items array
+    DuplicateItemChecker = []   //sets it as an empty
     do {
         try context.save()
     } catch {
@@ -332,7 +396,7 @@ func fetchImageData(receiptName: String) -> UIImage {
     
     //Converts image binary data to a UIImage
     let imgData = UIImage(data: imgUIData)
-
+    
     return imgData!
 }
 
