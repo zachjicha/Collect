@@ -157,7 +157,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                     //checks to see if error is detected or not
                     let errorCheck = json["error"].string
                     
-                    //If receipt could not be read, makes an alert show up sayinh that
+                    //If receipt could not be read, makes an alert show up saying that
                     if (errorCheck == "I'm a teapot") {
                         alert.close()
                         SCLAlertView().showError("Receipt Read Error", subTitle: "Could Not Read Receipt", closeButtonTitle: "OK", colorStyle:0xFF002A)

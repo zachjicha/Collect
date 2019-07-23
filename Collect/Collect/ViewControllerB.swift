@@ -166,36 +166,6 @@ import SCLAlertView
         }
     }
     
-    @IBAction func addRecipient(_ sender: UIBarButtonItem) {
-        // Custom alert view
-        let alert = SCLAlertView()
-        let name = alert.addTextField("Enter Recipient Name")
-        alert.addButton("Add Recipient") {
-            // If field is empty
-            if (name.text == "") {
-                SCLAlertView().showError("Receipt Name Error", subTitle: "You Must Enter a Recipient's name", colorStyle:0xFF002A)
-                return
-            }
-            else {
-                //Chakes to see if person already exists within the list of people (to prevent fetch errors)
-                for people in self.peopleArray {
-                    if (people.nameOfPerson == name.text) {
-                        SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.", colorStyle:0xFF002A)
-                        return
-                    }
-                }
-                addPerson(nameOfPerson: name.text!, nameOfReceipt: self.receiptName)
-                
-                //Add an entry to money owed for the new person
-                self.moneyOwed.append(0)
-                
-                self.fetchPeople(receiptName: self.receiptName)
-                self.tableView.reloadData()
-            }
-        }
-        alert.showEdit("Add a Recipient", subTitle: "Please Add a Recipient's Name", colorStyle:0xFF002A)
-    }
-    
     
     @objc func addMethod()
     {
