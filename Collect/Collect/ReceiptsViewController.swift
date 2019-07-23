@@ -18,6 +18,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     var recName : String = ""
     var numberOfUnknowns:Int = 1
     
+    
     @IBOutlet weak var tableView: UITableView!
     
     @objc func newReceiptButton()
@@ -119,13 +120,13 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         
         let alert = SCLAlertView(appearance: appearance).showWait(self.recName, subTitle: "Adding receipt to Collect...", closeButtonTitle: nil, timeout: nil, colorStyle: 0xFF002A, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.topToBottom)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            alert.setSubTitle("Progress: 50%")
+            alert.setSubTitle("Progress: " + String(50 + Int.random(in: -5..<5)) + "%")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                alert.setSubTitle("Progress: 80%")
+                alert.setSubTitle("Progress: " + String(75 + Int.random(in: -5..<5)) + "%")
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    alert.setSubTitle("Progress: 95%")
+                    alert.setSubTitle("Progress: " + String(90 + Int.random(in: -5..<5)) + "%")
                     
                 }
             }
