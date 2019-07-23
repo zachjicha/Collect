@@ -11,6 +11,21 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Cache.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Imaginary.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Lightbox.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Pods-Collect.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -21,12 +36,12 @@
 		<key>SCLAlertView.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>7</integer>
 		</dict>
 		<key>SwiftyGif.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>8</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>

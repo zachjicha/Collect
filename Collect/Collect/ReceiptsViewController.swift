@@ -154,6 +154,16 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                     let json = JSON(value)
                     print(json)
                     
+                    //checks to see if error is detected or not
+                    let errorCheck = json["error"].string
+                    
+                    //If receipt could not be read, makes an alert show up sayinh that
+                    if (errorCheck == "I'm a teapot") {
+                        alert.close()
+                        SCLAlertView().showError("Receipt Read Error", subTitle: "Could Not Read Receipt", closeButtonTitle: "OK", colorStyle:0xFF002A)
+                        return
+                    }
+                    
                     //Variable to keep track of taxPercent (initialized to 0 in case taxAmount is not valid)
                     var taxPercent: Double = 0.000
                     
