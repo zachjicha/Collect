@@ -79,10 +79,9 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
             let getNewName = alert.addTextField("Enter a new Item name")
             let getNewPrice = alert.addTextField("Enter new item price")
             
-            //Auto fill the name field as most will just want to edit price
+            //Auto fill the name field & price as most will just want to edit price
             getNewName.text = self.AllItems[indexPath.row].itemName
-            //Uncomment to add autofill for price as well
-            //getNewPrice.text = String(self.AllItems[indexPath.row].itemPrice)
+            getNewPrice.text = String(self.AllItems[indexPath.row].itemPrice)
             
             alert.addButton("Finish Editing") {
                 // If field is empty, alert the user
@@ -97,6 +96,12 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 //If all conditions met
                 else {
+                    //Checks if item name is already in list
+                    if (self.AllItems[indexPath.row].CheckForDuplicateItemName(itemName: getNewName.text!) > 0) {
+                        SCLAlertView().showError("Edit Error", subTitle: "Item name already exists", colorStyle:0xFF002A)
+                        return
+                    }
+                
                     //Update cost and name with text field entries
                     self.AllItems[indexPath.row].updateItemData(newItemName: getNewName.text!, newItemPrice: Double(getNewPrice.text!)!)
                     //Reload the view
