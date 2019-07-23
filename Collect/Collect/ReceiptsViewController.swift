@@ -151,7 +151,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                 {
                 case .success(let value):
                     let json = JSON(value)
-                    //print(json)
+                    print(json)
                     
                     //Variable to keep track of taxPercent (initialized to 0 in case taxAmount is not valid)
                     var taxPercent: Double = 0.000
@@ -335,6 +335,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         let oneRecord = AllReceipts[indexPath.row]
         cell.textLabel!.text = oneRecord.receiptName!
         cell.textLabel?.textColor = UIColor.red
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         // Image containing red arrow
         let image = UIImage(named: "arrow.png")
         // Image View (0,0) because it will attach to accessoryView.

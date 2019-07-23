@@ -25,6 +25,7 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.reloadData()
         tableView.delegate = self
         tableView.dataSource = self
+        self.title = itemName
     }
     
     func fetchPeople(receiptName: String)
@@ -50,7 +51,7 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "NameSwitchCell", for: indexPath) /*as! NameSwitchesTableViewCell*/
         let person = peopleArray[indexPath.row]
         
-        
+        cell.textLabel?.textColor = UIColor.red
         cell.textLabel!.text = person.nameOfPerson!
         
         //This is where we need to grab from storage if the person is
@@ -60,6 +61,7 @@ class SelectNamesViewController: UIViewController, UITableViewDelegate, UITableV
         
         
         let cellSwitch = UISwitch(frame: .zero)
+        cellSwitch.onTintColor = UIColor.red
         
         
         var item = ReceiptItems(context: context)
