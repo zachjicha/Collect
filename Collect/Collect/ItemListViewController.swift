@@ -25,11 +25,11 @@ class ItemListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         self.title = "Receipt Items"
         
+        
         //Fetches the necessary data based on the receipt name passed from the previous storyboard/viewController
         self.FetchData(receiptName: receiptname)
         self.tableView.reloadData()
     }
-    
     
     
     //Sets number of sections of the table

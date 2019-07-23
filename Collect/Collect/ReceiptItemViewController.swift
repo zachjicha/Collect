@@ -8,6 +8,7 @@
 
 import UIKit
 import SCLAlertView
+import Lightbox
 
 class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -16,7 +17,6 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
     var receiptName:String = ""
     var AllItems:[ReceiptItems] = []
     
-    @IBOutlet weak var receiptImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +25,39 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         self.title = "Receipt Items"
+        let viewRecButton = UIBarButtonItem(image: UIImage(named: "imageicon.png"), style: .plain, target: self, action: Selector(("showImage")))
+        self.navigationItem.rightBarButtonItem = viewRecButton
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+        navigationController?.navigationBar.tintColor = .red
         
         //Fetches the necessary data based on the receipt name passed from the previous storyboard/viewController
         self.FetchData(receiptName: receiptName)
         self.tableView.reloadData()
-        receiptImage.image = fetchImageData(receiptName: receiptName)
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
+    @objc func showImage()
+    {
+        // Call Lightbox
+        let recImage = fetchImageData(receiptName: receiptName)
+        let images = [
+            LightboxImage(
+                // Orientation
+                image: UIImage(cgImage: recImage.cgImage!, scale: recImage.scale, orientation: .right),
+                text: "Collect: " + self.receiptName
+            )
+        ]
+        
+        // Create an instance of LightboxController.
+        let controller = LightboxController(images: images)
+        
+        
+        // Use dynamic background.
+        controller.dynamicBackground = true
+        
+        // Present your controller.
+        present(controller, animated: true, completion: nil)
+    }
     
     //Sets number of sections of the table
     func SecNum (in tableView: UITableView) -> Int {

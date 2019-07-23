@@ -6,4 +6,5 @@ platform :ios, '10.3'
    pod 'SwiftyJSON', '~> 4.0'
    pod 'SwiftyGif'
    pod 'SCLAlertView'
+   pod 'Lightbox'
  end
