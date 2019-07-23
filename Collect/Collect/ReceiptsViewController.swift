@@ -32,12 +32,12 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
             // If field is empty
             if (GetInfo.text == "") {
                 print("Please Enter a receipt Name")
-                SCLAlertView().showError("Add Error", subTitle: "You must enter a receipt name", colorStyle:0xFF002A)
+                SCLAlertView().showError("Add Error", subTitle: "You must enter a receipt name", closeButtonTitle: "OK", colorStyle:0xFF002A)
                 return
             }
             if (CheckDuplicity(receiptName: GetInfo.text!) == true) {
                 print("Data already exists")
-                SCLAlertView().showError("Add Error", subTitle: "This receipt name already exists.", colorStyle:0xFF002A)
+                SCLAlertView().showError("Add Error", subTitle: "This receipt name already exists.", closeButtonTitle: "OK", colorStyle:0xFF002A)
                 return
             }
             else
@@ -85,7 +85,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                 
             }
         }
-        alert.showEdit("Add a Receipt", subTitle: "Either upload from camera roll or take a picture", colorStyle:0xFF002A)
+        alert.showEdit("Add a Receipt", subTitle: "Either upload from camera roll or take a picture", closeButtonTitle: "Cancel", colorStyle:0xFF002A)
 
     }
     
@@ -268,19 +268,29 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         
         //If the last token is a number
         if (Double(lastToken) != nil) {
-            //Trim any remaining trailing whitespace
-            while(trimmedItemName[trimmedItemName.index(before: trimmedItemName.endIndex)] == " ") {
-                trimmedItemName.removeLast()
+            //If string is empty, there is no item name, give a default one
+            if(trimmedItemName == "") {
+                trimmedItemName = "UNKNOWN"
             }
+            else {
+                //If string is not empty, trim any remaining trailing whitespace
+                while(trimmedItemName[trimmedItemName.index(before: trimmedItemName.endIndex)] == " ") {
+                    trimmedItemName.removeLast()
+                }
+            }
+            
             
             return trimmedItemName
         }
         //If the last token is not a double put it back in the string
         else {
-            //Trim any remaining trailing whitespace
-            while(trimmedItemName[trimmedItemName.index(before: trimmedItemName.endIndex)] == " ") {
-                trimmedItemName.removeLast()
+            //Trim any remaining trailing whitespace if string is non empty
+            if(trimmedItemName != "") {
+                while(trimmedItemName[trimmedItemName.index(before: trimmedItemName.endIndex)] == " ") {
+                    trimmedItemName.removeLast()
+                }
             }
+            
             
             //Put the last token back in the string and return it
             trimmedItemName +=  " " + lastToken

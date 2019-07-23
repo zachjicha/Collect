@@ -31,7 +31,7 @@ import SCLAlertView
         
         //If there are no recipients, show an alert and cancel sharing
         if(peopleArray.count == 0) {
-            SCLAlertView().showError("Share Error", subTitle: "You must enter recipients before sharing", colorStyle: 0xFF002A)
+            SCLAlertView().showError("Share Error", subTitle: "You must enter recipients before sharing", closeButtonTitle: "OK", colorStyle: 0xFF002A)
             return
         }
         
@@ -40,7 +40,8 @@ import SCLAlertView
         for (index, person) in peopleArray.enumerated() {
             
             //If the person owes no money, no need to tell them that
-            if(moneyOwed[index] == 0) {
+            //IF the person already paid, dont tell them their balance
+            if(moneyOwed[index] == 0 || person.CheckPaymentStatus()) {
                 continue
             }
             
@@ -54,7 +55,7 @@ import SCLAlertView
         }
         
         if(shareString == "") {
-            SCLAlertView().showError("Share Error", subTitle: "No recipients owe any money", colorStyle: 0xFF002A)
+            SCLAlertView().showError("Share Error", subTitle: "No recipients owe any money", closeButtonTitle: "OK", colorStyle: 0xFF002A)
             return
         }
         
@@ -176,14 +177,14 @@ import SCLAlertView
         alert.addButton("Add Recipient") {
             // If field is empty
             if (name.text == "") {
-                SCLAlertView().showError("Add Error", subTitle: "You Must Enter a Recipient's name", colorStyle:0xFF002A)
+                SCLAlertView().showError("Add Error", subTitle: "You Must Enter a Recipient's name", closeButtonTitle: "OK", colorStyle:0xFF002A)
                 return
             }
             else {
                 //Chakes to see if person already exists within the list of people (to prevent fetch errors)
                 for people in self.peopleArray {
                     if (people.nameOfPerson == name.text) {
-                        SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.", colorStyle:0xFF002A)
+                        SCLAlertView().showError("Identical Name Already Exists", subTitle: "Please enter another name.", closeButtonTitle: "OK", colorStyle:0xFF002A)
                         return
                     }
                 }
@@ -196,7 +197,7 @@ import SCLAlertView
                 self.tableView.reloadData()
             }
         }
-        alert.showEdit("Add a Recipient", subTitle: "Please Add a Recipient's Name", colorStyle:0xFF002A)
+        alert.showEdit("Add a Recipient", subTitle: "Please Add a Recipient's Name", closeButtonTitle: "Cancel", colorStyle:0xFF002A)
     }
     
     // displays list
