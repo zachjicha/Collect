@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Collect Spelled.png",
+      "filename" : "Collect Spelled Small 500.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Collect Spelled-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Collect Spelled-2.png",
       "scale" : "3x"
     }
   ],

@@ -308,7 +308,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         //Sets up table view
         tableView.delegate = self
         tableView.dataSource = self
-        self.title = "Receipts"
+        //self.title = "Receipts"
         
         //Fetches data needed to be loaded into table view
         self.FetchData()
@@ -316,7 +316,20 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.newReceiptButton))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.red
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        let logo = UIImage(named: "Collect Spelled Small 500")
+        let imageView = UIImageView(image:logo)
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin]//, .flexibleTopMargin]
+        //imageView.layer.shouldRasterize = true
+        //imageView.image?.resizingMode =
         
+        imageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+        imageView.clipsToBounds = true
+        //let imageInView: UIView = imageView
+        let fixedSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+        fixedSpace.width = 40
+        navigationItem.leftBarButtonItems = [fixedSpace]
+        self.navigationItem.titleView = imageView
+        self.navigationController?.navigationBar.setTitleVerticalPositionAdjustment(-2, for: .default)
     }
     
     //Override function for passing data from one ViewController to another
