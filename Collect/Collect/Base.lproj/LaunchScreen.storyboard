@@ -49,6 +49,6 @@
     </scenes>
     <resources>
         <image name="Collect Logo Alpha" width="1350" height="1350"/>
-        <image name="Collect Spelled from" width="1666.6666259765625" height="1000"/>
+        <image name="Collect Spelled from" width="700" height="274"/>
     </resources>
 </document>
