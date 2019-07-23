@@ -185,12 +185,12 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                         for JSONItem in amounts
                         {
                             
-                            //let item = Item(itemName: self.trimItemName(itemName: JSONItem["text"].string!), totalAmount: JSONItem["data"].double)
-                            let item = Item(itemName: JSONItem["text"].string!, totalAmount: JSONItem["data"].double)
+                            let item = Item(itemName: self.trimItemName(itemName: JSONItem["text"].string!), totalAmount: JSONItem["data"].double)
+                            //let item = Item(itemName: JSONItem["text"].string!, totalAmount: JSONItem["data"].double)
                             // print(item.itemName!, item.totalAmount!)
-                            let lowerItem = item.itemName!
+                            let lowerItem = item.itemName?.lowercased()
                             //Dont add these as items
-                            if(!lowerItem.contains("total") && !lowerItem.contains("debit") && !lowerItem.contains("cash")) {
+                            if(!lowerItem!.contains("total") && !lowerItem!.contains("debit") && !lowerItem!.contains("cash")) {
                                 self.Items.append(item)
                             }
                         }
