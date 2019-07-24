@@ -348,7 +348,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         self.navigationItem.titleView = imageView
         self.navigationController?.navigationBar.setTitleVerticalPositionAdjustment(-2, for: .default)
         
-        let viewRecButton = UIBarButtonItem(image: UIImage(named: "icons8-info-75.png"), style: .plain, target: self, action: Selector(("tutorialPressed")))
+        let viewRecButton = UIBarButtonItem(image: UIImage(named: "icons8-info-75"), style: .plain, target: self, action: Selector(("tutorialPressed")))
         self.navigationItem.leftBarButtonItem = viewRecButton
 
         navigationItem.leftBarButtonItem?.tintColor = UIColor(named: "CollectRed")
@@ -381,7 +381,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         let textImage = UIImage(named: textImageName)
         let textImageView = UIImageView(image: textImage!)
         
-        textImageView.frame = CGRect(x: 45, y: 40, width: screenSize.width, height: screenSize.width)
+        textImageView.frame = CGRect(x: 45, y: 60, width: screenSize.width, height: screenSize.width)
         textImageView.tag = 420
         
         if currBool == false
