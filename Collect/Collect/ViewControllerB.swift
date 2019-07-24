@@ -85,7 +85,7 @@ import SCLAlertView
         
         //Set the right detail text to the amount owed for that person
         cell.detailTextLabel!.text = String(format: "$%.2f", moneyOwed[indexPath.row])
-        cell.detailTextLabel?.textColor = UIColor(red: 47/255.0, green: 110/255.0, blue: 45/255.0, alpha: 1.0)
+        cell.detailTextLabel?.textColor = UIColor(named: "Color")
     
         //Checks if the person has paid or not (a check mark will show up if they have)
         if (peopleArray[indexPath.row].hasPaid == true) {
