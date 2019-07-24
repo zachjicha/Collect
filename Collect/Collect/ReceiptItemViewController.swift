@@ -79,6 +79,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
             let getNewName = alert.addTextField("Enter a new Item name")
             let getNewPrice = alert.addTextField("Enter new item price")
             
+
             //Auto fill the name field and price field
             getNewName.text = self.AllItems[indexPath.row].itemName
             getNewPrice.text = String(self.AllItems[indexPath.row].itemPrice)
@@ -96,6 +97,12 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 //If all conditions met
                 else {
+                    //Checks if item name is already in list
+                    if (self.AllItems[indexPath.row].CheckForDuplicateItemName(itemName: getNewName.text!) > 0) {
+                        SCLAlertView().showError("Edit Error", subTitle: "Item name already exists", colorStyle:0xFF002A)
+                        return
+                    }
+                
                     //Update cost and name with text field entries
                     self.AllItems[indexPath.row].updateItemData(newItemName: getNewName.text!, newItemPrice: Double(getNewPrice.text!)!)
                     //Reload the view
