@@ -345,6 +345,10 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item], taxPercent: Doubl
                 duplicateInteger = duplicateInteger + 1
             }
         }
+        
+        //Adds original name to Duplicate checker array to take into account 2+ duplicates
+        DuplicateItemChecker.append(item.itemName!)
+        
         //Checks if item already exists within the receipt
         if(duplicateInteger > 0) {
             //Creates new item name with "#x" added to it where x = # of duplicate items+1
@@ -356,7 +360,6 @@ func SaveAllReceiptData (NameOfReceipt: String, Items: [Item], taxPercent: Doubl
         //Adds the rest of the required variables into ReceiptItem Entity
         itemsInReceipt.itemPrice = item.totalAmount!
         print("Item: " + itemsInReceipt.itemName! + "\nPrice: " + String(itemsInReceipt.itemPrice))
-        DuplicateItemChecker.append(itemsInReceipt.itemName!)
         ReceiptName.addToItemsOnReceipt(itemsInReceipt)
     }
     
