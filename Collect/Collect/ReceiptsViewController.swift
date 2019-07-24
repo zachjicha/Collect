@@ -24,6 +24,15 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     @objc func newReceiptButton()
     {
         
+        if let viewWithTag = self.view.viewWithTag(69) {
+            viewWithTag.removeFromSuperview()
+        }
+        if let viewWithTag2 = self.view.viewWithTag(420) {
+            viewWithTag2.removeFromSuperview()
+        }
+        
+        
+        
         //Re-initializes Items array back to having nothing (previous items stay if you scan 2 or more receipts in 1 session)
         Items = []
         
@@ -321,8 +330,12 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         //Fetches data needed to be loaded into table view
         self.FetchData()
         self.tableView.reloadData()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.newReceiptButton))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+        
+        let fixedSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+        fixedSpace.width = 35
+        
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.newReceiptButton)), fixedSpace]
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "CollectRed")
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         let logo = UIImage(named: "Collect Spelled Small 500")
@@ -331,11 +344,65 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         
         imageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
         imageView.clipsToBounds = true
-        let fixedSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
-        fixedSpace.width = 40
-        navigationItem.leftBarButtonItems = [fixedSpace]
+        //navigationItem.leftBarButtonItems = [fixedSpace]
         self.navigationItem.titleView = imageView
         self.navigationController?.navigationBar.setTitleVerticalPositionAdjustment(-2, for: .default)
+        
+        let viewRecButton = UIBarButtonItem(image: UIImage(named: "icons8-info-75.png"), style: .plain, target: self, action: Selector(("tutorialPressed")))
+        self.navigationItem.leftBarButtonItem = viewRecButton
+
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(named: "CollectRed")
+        navigationController?.navigationBar.tintColor = UIColor(named: "CollectRed")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let viewWithTag = self.view.viewWithTag(69) {
+            viewWithTag.removeFromSuperview()
+        }
+        if let viewWithTag2 = self.view.viewWithTag(420) {
+            viewWithTag2.removeFromSuperview()
+        }
+    }
+    
+    
+    
+    var currBool = false
+    
+    @objc func tutorialPressed() {
+        let imageName = "Shade75"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        imageView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
+        imageView.tag = 69
+        
+        let textImageName = "Tap to add"
+        let textImage = UIImage(named: textImageName)
+        let textImageView = UIImageView(image: textImage!)
+        
+        textImageView.frame = CGRect(x: 45, y: 40, width: screenSize.width, height: screenSize.width)
+        textImageView.tag = 420
+        
+        if currBool == false
+        {
+            currBool = true
+            UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                self.view.addSubview(imageView)
+                self.view.addSubview(textImageView)
+            }, completion: nil)
+            
+        }
+        else {
+            if let viewWithTag = self.view.viewWithTag(69) {
+                viewWithTag.removeFromSuperview()
+            }
+            if let viewWithTag2 = self.view.viewWithTag(420) {
+                viewWithTag2.removeFromSuperview()
+            }
+            currBool = false
+        }
+        
     }
     
     //Override function for passing data from one ViewController to another

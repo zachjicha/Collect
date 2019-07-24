@@ -27,8 +27,8 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
         self.title = "Receipt Items"
         let viewRecButton = UIBarButtonItem(image: UIImage(named: "imageicon.png"), style: .plain, target: self, action: Selector(("showImage")))
         self.navigationItem.rightBarButtonItem = viewRecButton
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.red
-        navigationController?.navigationBar.tintColor = .red
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "CollectRed")
+        navigationController?.navigationBar.tintColor = UIColor(named: "CollectRed")
         
         //Fetches the necessary data based on the receipt name passed from the previous storyboard/viewController
         self.FetchData(receiptName: receiptName)
@@ -79,10 +79,9 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
             let getNewName = alert.addTextField("Enter a new Item name")
             let getNewPrice = alert.addTextField("Enter new item price")
             
-            //Auto fill the name field as most will just want to edit price
+            //Auto fill the name field and price field
             getNewName.text = self.AllItems[indexPath.row].itemName
-            //Uncomment to add autofill for price as well
-            //getNewPrice.text = String(self.AllItems[indexPath.row].itemPrice)
+            getNewPrice.text = String(self.AllItems[indexPath.row].itemPrice)
             
             alert.addButton("Finish Editing") {
                 // If field is empty, alert the user

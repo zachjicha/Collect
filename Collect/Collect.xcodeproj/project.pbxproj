@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152C457822E8025200895F13 /* icons8-info-75.png in Resources */ = {isa = PBXBuildFile; fileRef = 152C457722E8025200895F13 /* icons8-info-75.png */; };
 		15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */; };
 		15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */; };
 		15BF53FE22E0573400BB1C22 /* NameSwitchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		152C457722E8025200895F13 /* icons8-info-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-info-75.png"; sourceTree = "<group>"; };
 		15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemViewController.swift; sourceTree = "<group>"; };
 		15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNamesViewController.swift; sourceTree = "<group>"; };
 		15BF53FD22E0573400BB1C22 /* NameSwitchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSwitchesTableViewCell.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				AEA34EC822E6BE39009446BB /* imageicon.png */,
 				AE69FCDF22E5086400FF0641 /* arrow.png */,
+				152C457722E8025200895F13 /* icons8-info-75.png */,
 				15BF540422E0E71000BB1C22 /* CoreData */,
 				15BF53FF22E0DCDE00BB1C22 /* gifs */,
 				ED972B0322D6B68300CD6B01 /* Main.storyboard */,
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEA34EC922E6BE39009446BB /* imageicon.png in Resources */,
+				152C457822E8025200895F13 /* icons8-info-75.png in Resources */,
 				ED972B0D22D6B68800CD6B01 /* LaunchScreen.storyboard in Resources */,
 				ED972B0A22D6B68800CD6B01 /* Assets.xcassets in Resources */,
 				15BF540122E0DD0F00BB1C22 /* Loading-Final TM.gif in Resources */,
