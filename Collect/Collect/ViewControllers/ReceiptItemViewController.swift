@@ -87,7 +87,7 @@ class ReceiptItemViewController: UIViewController, UITableViewDelegate, UITableV
 
             //Auto fill the name field and price field
             getNewName.text = self.AllItems[indexPath.row].itemName
-            getNewPrice.text = String(self.AllItems[indexPath.row].itemPrice)
+            getNewPrice.text = String(format: "%.2f", self.AllItems[indexPath.row].itemPrice)
             
             alert.addButton("Finish Editing") {
                 // If field is empty, alert the user
