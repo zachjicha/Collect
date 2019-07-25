@@ -26,10 +26,10 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     @objc func newReceiptButton()
     {
         
-        if let viewWithTag = self.view.viewWithTag(69) {
+        if let viewWithTag = self.view.viewWithTag(20) {
             viewWithTag.removeFromSuperview()
         }
-        if let viewWithTag2 = self.view.viewWithTag(420) {
+        if let viewWithTag2 = self.view.viewWithTag(30) {
             viewWithTag2.removeFromSuperview()
         }
         
@@ -210,7 +210,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
                             // print(item.itemName!, item.totalAmount!)
                             let lowerItem = item.itemName?.lowercased()
                             //Dont add these as items
-                            if(!lowerItem!.contains("total") && !lowerItem!.contains("debit") && !lowerItem!.contains("cash")) {
+                            if(!lowerItem!.contains("total") && !lowerItem!.contains("debit") && !lowerItem!.contains("cash") && !lowerItem!.contains("visa") && !lowerItem!.contains("savings") && !lowerItem!.contains("discount") && !lowerItem!.contains("tax")) {
                                 self.Items.append(item)
                             }
                         }
@@ -335,7 +335,7 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         self.tableView.reloadData()
         
         let fixedSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
-        fixedSpace.width = 25
+        fixedSpace.width = 20
         
         navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.newReceiptButton)), fixedSpace]
         navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "CollectRed")
@@ -360,10 +360,10 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     
     
     override func viewDidDisappear(_ animated: Bool) {
-        if let viewWithTag = self.view.viewWithTag(69) {
+        if let viewWithTag = self.view.viewWithTag(20) {
             viewWithTag.removeFromSuperview()
         }
-        if let viewWithTag2 = self.view.viewWithTag(420) {
+        if let viewWithTag2 = self.view.viewWithTag(30) {
             viewWithTag2.removeFromSuperview()
         }
     }
@@ -377,14 +377,14 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
         
         let screenSize: CGRect = UIScreen.main.bounds
         imageView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
-        imageView.tag = 69
+        imageView.tag = 20
         
         let textImageName = "Tap to add"
         let textImage = UIImage(named: textImageName)
         let textImageView = UIImageView(image: textImage!)
         
         textImageView.frame = CGRect(x: 45, y: 60, width: screenSize.width, height: screenSize.width)
-        textImageView.tag = 420
+        textImageView.tag = 30
         
         if currBool == false
         {
@@ -396,10 +396,10 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
             
         }
         else {
-            if let viewWithTag = self.view.viewWithTag(69) {
+            if let viewWithTag = self.view.viewWithTag(20) {
                 viewWithTag.removeFromSuperview()
             }
-            if let viewWithTag2 = self.view.viewWithTag(420) {
+            if let viewWithTag2 = self.view.viewWithTag(30) {
                 viewWithTag2.removeFromSuperview()
             }
             currBool = false
