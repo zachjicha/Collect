@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		152C457822E8025200895F13 /* icons8-info-75.png in Resources */ = {isa = PBXBuildFile; fileRef = 152C457722E8025200895F13 /* icons8-info-75.png */; };
 		15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */; };
 		15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */; };
 		15BF540122E0DD0F00BB1C22 /* Loading-Final TM.gif in Resources */ = {isa = PBXBuildFile; fileRef = 15BF540022E0DD0F00BB1C22 /* Loading-Final TM.gif */; };
@@ -33,7 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		152C457722E8025200895F13 /* icons8-info-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-info-75.png"; sourceTree = "<group>"; };
 		15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemViewController.swift; sourceTree = "<group>"; };
 		15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNamesViewController.swift; sourceTree = "<group>"; };
 		15BF540022E0DD0F00BB1C22 /* Loading-Final TM.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Loading-Final TM.gif"; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				ED972B0E22D6B68800CD6B01 /* Info.plist */,
 				AEA34EC822E6BE39009446BB /* imageicon.png */,
 				AE69FCDF22E5086400FF0641 /* arrow.png */,
-				152C457722E8025200895F13 /* icons8-info-75.png */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -164,10 +161,10 @@
 		EDF7C64222E8154600D485C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */,
 				ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */,
 				A4B1DF5822DC342E00E8DBEF /* RecipientsViewController.swift */,
 				15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */,
+				15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -233,7 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEA34EC922E6BE39009446BB /* imageicon.png in Resources */,
-				152C457822E8025200895F13 /* icons8-info-75.png in Resources */,
 				ED972B0D22D6B68800CD6B01 /* LaunchScreen.storyboard in Resources */,
 				ED972B0A22D6B68800CD6B01 /* Assets.xcassets in Resources */,
 				15BF540122E0DD0F00BB1C22 /* Loading-Final TM.gif in Resources */,
@@ -454,14 +450,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2U3HN2D38E;
+				DEVELOPMENT_TEAM = 7ZGWV3RJDC;
 				INFOPLIST_FILE = Collect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS115.Collect;
+				PRODUCT_BUNDLE_IDENTIFIER = CS115.Collect1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -474,14 +470,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2U3HN2D38E;
+				DEVELOPMENT_TEAM = 7ZGWV3RJDC;
 				INFOPLIST_FILE = Collect/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS115.Collect;
+				PRODUCT_BUNDLE_IDENTIFIER = CS115.Collect1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
