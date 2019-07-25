@@ -411,13 +411,6 @@ class ReceiptsViewController: UIViewController, UITableViewDelegate, UIImagePick
     //Override function for passing data from one ViewController to another
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //segue identifier set at segue properties in toolbar (right side)
-        if segue.identifier == "ShowReceiptItems" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                //In Storyboard ItemListViewController, there is a global variable titled "receiptname".  This sends the receipt name to the ItemListViewController so it can load the items of that specific receipt
-                let controller = segue.destination as! ItemListViewController
-                controller.receiptname = AllReceipts[indexPath.row].receiptName!
-            }
-        }
         if segue.identifier == "AddPeopleVC" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 //In Storyboard ItemListViewController, there is a global variable titled "receiptname".  This sends the receipt name to the ItemListViewController so it can load the items of that specific receipt

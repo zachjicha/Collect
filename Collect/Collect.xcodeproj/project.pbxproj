@@ -23,7 +23,6 @@
 		ED972B0D22D6B68800CD6B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED972B0B22D6B68800CD6B01 /* LaunchScreen.storyboard */; };
 		ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */; };
 		ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B1A22D82A3800CD6B01 /* DataManagement.swift */; };
-		ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */; };
 		EDF7C63022E5627700D485C8 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF7C62E22E5627700D485C8 /* Receipt+CoreDataClass.swift */; };
 		EDF7C63122E5627700D485C8 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF7C62F22E5627700D485C8 /* Receipt+CoreDataProperties.swift */; };
 		EDF7C63822E80C2900D485C8 /* ReceiptEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF7C63722E80C2900D485C8 /* ReceiptEntityExtension.swift */; };
@@ -34,16 +33,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		152C457722E8025200895F13 /* icons8-info-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-info-75.png"; path = "../icons8-info-75.png"; sourceTree = "<group>"; };
-		15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiptItemViewController.swift; path = ../ReceiptItemViewController.swift; sourceTree = "<group>"; };
-		15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectNamesViewController.swift; path = ../SelectNamesViewController.swift; sourceTree = "<group>"; };
+		152C457722E8025200895F13 /* icons8-info-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-info-75.png"; sourceTree = "<group>"; };
+		15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemViewController.swift; sourceTree = "<group>"; };
+		15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNamesViewController.swift; sourceTree = "<group>"; };
 		15BF540022E0DD0F00BB1C22 /* Loading-Final TM.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Loading-Final TM.gif"; sourceTree = "<group>"; };
 		86EFF462AFFFE55B8A93B41D /* Pods-Collect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.release.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.release.xcconfig"; sourceTree = "<group>"; };
-		A4B1DF5822DC342E00E8DBEF /* RecipientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipientsViewController.swift; path = ../RecipientsViewController.swift; sourceTree = "<group>"; };
+		A4B1DF5822DC342E00E8DBEF /* RecipientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientsViewController.swift; sourceTree = "<group>"; };
 		A885A0ACCEF4C8A8E96F62D2 /* Pods-Collect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.debug.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.debug.xcconfig"; sourceTree = "<group>"; };
 		AE69FCDD22E403C100FF0641 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AE69FCDF22E5086400FF0641 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow.png; path = ../arrow.png; sourceTree = "<group>"; };
-		AEA34EC822E6BE39009446BB /* imageicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imageicon.png; path = ../imageicon.png; sourceTree = "<group>"; };
+		AE69FCDF22E5086400FF0641 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		AEA34EC822E6BE39009446BB /* imageicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageicon.png; sourceTree = "<group>"; };
 		E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFC22D6B68300CD6B01 /* Collect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,9 +51,8 @@
 		ED972B0922D6B68800CD6B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED972B0C22D6B68800CD6B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED972B0E22D6B68800CD6B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiptsViewController.swift; path = ../ReceiptsViewController.swift; sourceTree = "<group>"; };
-		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManagement.swift; path = ../DataManagement.swift; sourceTree = "<group>"; };
-		ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = ../ItemListViewController.swift; sourceTree = "<group>"; };
+		ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
+		ED972B1A22D82A3800CD6B01 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		EDF7C62E22E5627700D485C8 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EDF7C62F22E5627700D485C8 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EDF7C63722E80C2900D485C8 /* ReceiptEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptEntityExtension.swift; sourceTree = "<group>"; };
@@ -139,13 +137,15 @@
 				ED972B0322D6B68300CD6B01 /* Main.storyboard */,
 				ED972B0B22D6B68800CD6B01 /* LaunchScreen.storyboard */,
 				EDF7C64222E8154600D485C8 /* ViewControllers */,
-				EDF7C64122E8151E00D485C8 /* Images */,
 				EDF7C63622E80B9900D485C8 /* Database Management */,
 				15BF540422E0E71000BB1C22 /* CoreData */,
 				15BF53FF22E0DCDE00BB1C22 /* gifs */,
 				ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */,
 				ED972B0922D6B68800CD6B01 /* Assets.xcassets */,
 				ED972B0E22D6B68800CD6B01 /* Info.plist */,
+				AEA34EC822E6BE39009446BB /* imageicon.png */,
+				AE69FCDF22E5086400FF0641 /* arrow.png */,
+				152C457722E8025200895F13 /* icons8-info-75.png */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -161,22 +161,11 @@
 			path = "Database Management";
 			sourceTree = "<group>";
 		};
-		EDF7C64122E8151E00D485C8 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				AEA34EC822E6BE39009446BB /* imageicon.png */,
-				AE69FCDF22E5086400FF0641 /* arrow.png */,
-				152C457722E8025200895F13 /* icons8-info-75.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		EDF7C64222E8154600D485C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				15BF53FB22E0564800BB1C22 /* SelectNamesViewController.swift */,
 				ED972B1822D6C03F00CD6B01 /* ReceiptsViewController.swift */,
-				ED972B2422D84E6800CD6B01 /* ItemListViewController.swift */,
 				A4B1DF5822DC342E00E8DBEF /* RecipientsViewController.swift */,
 				15BF53F922E0454000BB1C22 /* ReceiptItemViewController.swift */,
 			);
@@ -307,7 +296,6 @@
 				EDF7C63122E5627700D485C8 /* Receipt+CoreDataProperties.swift in Sources */,
 				EDF7C63F22E80C9500D485C8 /* PeopleListExtension.swift in Sources */,
 				ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */,
-				ED972B2522D84E6800CD6B01 /* ItemListViewController.swift in Sources */,
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
 				EDF7C63822E80C2900D485C8 /* ReceiptEntityExtension.swift in Sources */,
 				EDFCA73622E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
