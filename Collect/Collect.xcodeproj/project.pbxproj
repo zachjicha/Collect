@@ -13,6 +13,10 @@
 		A4B1DF5922DC342E00E8DBEF /* RecipientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1DF5822DC342E00E8DBEF /* RecipientsViewController.swift */; };
 		AE69FCDE22E403C100FF0641 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE69FCDD22E403C100FF0641 /* Foundation.framework */; };
 		AE69FCE022E5086400FF0641 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE69FCDF22E5086400FF0641 /* arrow.png */; };
+		AE90722F24121A800050FDA8 /* PeopleList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90722D24121A800050FDA8 /* PeopleList+CoreDataProperties.swift */; };
+		AE90723024121A800050FDA8 /* PeoplePaying+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90722B24121A800050FDA8 /* PeoplePaying+CoreDataClass.swift */; };
+		AE90723124121A800050FDA8 /* PeoplePaying+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90722E24121A800050FDA8 /* PeoplePaying+CoreDataProperties.swift */; };
+		AE90723224121A800050FDA8 /* PeopleList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90722C24121A800050FDA8 /* PeopleList+CoreDataClass.swift */; };
 		AEA34EC922E6BE39009446BB /* imageicon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA34EC822E6BE39009446BB /* imageicon.png */; };
 		EB6F20C85A21879ED50E72F3 /* Pods_Collect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */; };
 		ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED972AFF22D6B68300CD6B01 /* AppDelegate.swift */; };
@@ -40,6 +44,10 @@
 		A885A0ACCEF4C8A8E96F62D2 /* Pods-Collect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collect.debug.xcconfig"; path = "Target Support Files/Pods-Collect/Pods-Collect.debug.xcconfig"; sourceTree = "<group>"; };
 		AE69FCDD22E403C100FF0641 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE69FCDF22E5086400FF0641 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		AE90722B24121A800050FDA8 /* PeoplePaying+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PeoplePaying+CoreDataClass.swift"; path = "../../PeoplePaying+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AE90722C24121A800050FDA8 /* PeopleList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PeopleList+CoreDataClass.swift"; path = "../../PeopleList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AE90722D24121A800050FDA8 /* PeopleList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PeopleList+CoreDataProperties.swift"; path = "../../PeopleList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AE90722E24121A800050FDA8 /* PeoplePaying+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PeoplePaying+CoreDataProperties.swift"; path = "../../PeoplePaying+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AEA34EC822E6BE39009446BB /* imageicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageicon.png; sourceTree = "<group>"; };
 		E0F6CA95C85C86E3FC63F85D /* Pods_Collect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED972AFC22D6B68300CD6B01 /* Collect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +158,10 @@
 		EDF7C63622E80B9900D485C8 /* Database Management */ = {
 			isa = PBXGroup;
 			children = (
+				AE90722C24121A800050FDA8 /* PeopleList+CoreDataClass.swift */,
+				AE90722D24121A800050FDA8 /* PeopleList+CoreDataProperties.swift */,
+				AE90722B24121A800050FDA8 /* PeoplePaying+CoreDataClass.swift */,
+				AE90722E24121A800050FDA8 /* PeoplePaying+CoreDataProperties.swift */,
 				ED972B1A22D82A3800CD6B01 /* DataManagement.swift */,
 				EDF7C63722E80C2900D485C8 /* ReceiptEntityExtension.swift */,
 				EDF7C63C22E80C7600D485C8 /* ReceiptItemsEntityExtension.swift */,
@@ -291,15 +303,19 @@
 				15BF53FC22E0564800BB1C22 /* SelectNamesViewController.swift in Sources */,
 				EDF7C63122E5627700D485C8 /* Receipt+CoreDataProperties.swift in Sources */,
 				EDF7C63F22E80C9500D485C8 /* PeopleListExtension.swift in Sources */,
+				AE90723124121A800050FDA8 /* PeoplePaying+CoreDataProperties.swift in Sources */,
 				ED972B1B22D82A3800CD6B01 /* DataManagement.swift in Sources */,
 				ED972B1922D6C03F00CD6B01 /* ReceiptsViewController.swift in Sources */,
+				AE90722F24121A800050FDA8 /* PeopleList+CoreDataProperties.swift in Sources */,
 				EDF7C63822E80C2900D485C8 /* ReceiptEntityExtension.swift in Sources */,
+				AE90723024121A800050FDA8 /* PeoplePaying+CoreDataClass.swift in Sources */,
 				EDFCA73622E2D450007ED8BA /* ReceiptItems+CoreDataProperties.swift in Sources */,
 				ED972B0822D6B68300CD6B01 /* Collect.xcdatamodeld in Sources */,
 				15BF53FA22E0454000BB1C22 /* ReceiptItemViewController.swift in Sources */,
 				EDF7C63D22E80C7600D485C8 /* ReceiptItemsEntityExtension.swift in Sources */,
 				EDFCA73522E2D450007ED8BA /* ReceiptItems+CoreDataClass.swift in Sources */,
 				A4B1DF5922DC342E00E8DBEF /* RecipientsViewController.swift in Sources */,
+				AE90723224121A800050FDA8 /* PeopleList+CoreDataClass.swift in Sources */,
 				ED972B0022D6B68300CD6B01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
